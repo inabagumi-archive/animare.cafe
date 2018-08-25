@@ -7,7 +7,7 @@ module.exports = {
   mode: env === 'production' ? 'production' : 'development',
   plugins: [
     new CopyPlugin([
-      path.resolve(__dirname, 'public', '**', '*'),
+      path.resolve(__dirname, 'public', '_redirects'),
     ]),
   ],
 };
