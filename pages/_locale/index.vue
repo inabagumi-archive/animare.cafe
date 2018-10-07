@@ -43,7 +43,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 30vh;
+    min-height: 40vh;
     position: relative;
   }
 
@@ -72,6 +72,10 @@
     font-weight: 700;
     letter-spacing: 0.25rem;
     margin: 0;
+  }
+
+  h1:lang(en) {
+    letter-spacing: 0.5rem;
   }
 
   .subheadline {
