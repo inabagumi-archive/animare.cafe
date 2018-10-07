@@ -3,8 +3,8 @@ module.exports = {
   dev: process.env.NODE_ENV !== 'production',
   generate: {
     routes: [
-      '/en',
-      '/ja'
+      '/en/',
+      '/ja/'
     ],
   },
   loading: {
