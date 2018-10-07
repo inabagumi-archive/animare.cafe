@@ -1,8 +1,5 @@
 /_nuxt/*.js
   Cache-Control: immutable, max-age=31536000, public
 
-/_nuxt/*.svg
-  Cache-Control: immutable, max-age=31536000, public
-
-/_nuxt/*.jpg
+/_nuxt/img/*
   Cache-Control: immutable, max-age=31536000, public
