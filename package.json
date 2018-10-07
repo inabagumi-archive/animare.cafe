@@ -1,13 +1,36 @@
 {
-  "dependencies": {},
-  "devDependencies": {
-    "copy-webpack-plugin": "^4.5.2",
-    "webpack": "^4.17.1",
-    "webpack-cli": "^3.1.0"
+  "author": "Yamagishi Kazutoshi <ykzts@desire.sh>",
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.3",
+    "cross-env": "^5.2.0",
+    "express": "^4.16.3",
+    "nuxt": "^2.1.0",
+    "nuxt-class-component": "^1.2.1",
+    "vue-i18n": "^8.1.0"
   },
+  "description": "The animare.cafe is a unofficial website",
+  "devDependencies": {
+    "@types/node": "^10.11.4",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.6.1",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-vue": "^5.0.0-beta.3",
+    "nodemon": "^1.18.4",
+    "prettier": "1.14.3",
+    "ts-loader": "^5.2.1",
+    "typescript": "^3.1.1"
+  },
+  "license": "UNLICENSED",
   "name": "@ykzts/animare.cafe",
   "private": true,
   "scripts": {
-    "build": "NODE_ENV=production webpack"
-  }
+    "build": "nuxt build",
+    "dev": "cross-env NODE_ENV=development nodemon server --watch server",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.ts,.vue .",
+    "precommit": "${npm_execpath} run lint",
+    "start": "cross-env NODE_ENV=production node server"
+  },
+  "version": "1.0.0"
 }

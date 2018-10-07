@@ -1,0 +1,47 @@
+[
+  {
+    "id": "haneru_inaba",
+    "name": {
+      "en": "Haneru Inaba",
+      "ja": "因幡 はねる"
+    },
+    "twitter": "https://twitter.com/Haneru_Inaba",
+    "youtube": "https://www.youtube.com/channel/UC0Owc36U9lOyi9Gx9Ic-4qg"
+  },
+  {
+    "id": "hinako_umori",
+    "name": {
+      "en": "Hinako Umori",
+      "ja": "宇森 ひなこ"
+    },
+    "twitter": "https://twitter.com/Hinako_Umori",
+    "youtube": "https://www.youtube.com/channel/UChqYnJlFxlBi6DfRz6jRenQ"
+  },
+  {
+    "id": "ichika_souya",
+    "name": {
+      "en": "Ichika Souya",
+      "ja": "宗谷 いちか"
+    },
+    "twitter": "https://twitter.com/Ichika_Souya",
+    "youtube": "https://www.youtube.com/channel/UC2kyQhzGOB-JPgcQX9OMgEw"
+  },
+  {
+    "id": "kuromu_inari",
+    "name": {
+      "en": "Kuromu Inari",
+      "ja": "稲荷 くろむ"
+    },
+    "twitter": "https://twitter.com/Kuromu_Inari",
+    "youtube": "https://www.youtube.com/channel/UCGiFzwdasSAHILrx-DB1pVQ"
+  },
+  {
+    "id": "ran_hinokuma",
+    "name": {
+      "en": "Ran Hinokuma",
+      "ja": "日ノ隈 らん"
+    },
+    "twitter": "https://twitter.com/Ran_Hinokuma",
+    "youtube": "https://www.youtube.com/channel/UCRvpMpzAXBRKJQuk-8-Sdvg"
+  }
+]
