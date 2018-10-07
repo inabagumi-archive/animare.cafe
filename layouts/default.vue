@@ -54,19 +54,24 @@
             property: 'og:type'
           },
           {
+            content: url,
+            hid: 'og:url',
+            property: 'og:url'
+          },
+          {
             content: title,
             hid: 'og:title',
             property: 'og:title'
           },
           {
-            content: mainVisualPath,
-            hid: 'og:url',
-            property: 'og:image'
+            content: description,
+            hid: 'og:description',
+            property: 'og:description'
           },
           {
-            content: url,
-            hid: 'og:url',
-            property: 'og:url'
+            content: mainVisualPath,
+            hid: 'og:image',
+            property: 'og:image'
           },
           {
             content: 'summary_large_image',
