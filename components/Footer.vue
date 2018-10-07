@@ -5,15 +5,37 @@
         <img src="~/assets/images/animare.svg" width="227" height="53" :alt="$t('global.animare')">
       </div>
       <div class="links">
+        <nav>
+          <h2>
+            Links
+          </h2>
+          <ul>
+            <li>
+              <a rel="noopener noreferrer" target="_blank" href="https://www.youtube.com/channel/UC8BS2IrE9NmxKLX7ObRVyxQ">
+                YouTube
+              </a>
+            </li>
+            <li>
+              <a rel="noopener noreferrer" target="_blank" href="https://twitter.com/AniMare_cafe">
+                Twitter
+              </a>
+            </li>
+            <li>
+              <a rel="noopener noreferrer" target="_blank" href="https://upd8.jp/virtual_talent/vt_category/anima-re/">
+                upd8
+              </a>
+            </li>
+          </ul>
+        </nav>
         <nav v-for="service in services">
           <h2>
             {{ service }}
           </h2>
           <ul>
             <li v-for="(talent, id) in talents">
-              <nuxt-link :to="talent[service.toLowerCase()]">
+              <a rel="noopener noreferrer" target="_blank" :href="talent[service.toLowerCase()]">
                 {{ talent.name[$i18n.locale] }}
-              </nuxt-link>
+              </a>
             </li>
           </ul>
         </nav>
