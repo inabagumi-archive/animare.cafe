@@ -41,9 +41,9 @@
     background-size: cover;
     color: #eee;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    min-height: 40vh;
+    height: 40vh;
     position: relative;
   }
 
