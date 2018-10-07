@@ -1,0 +1,12 @@
+{
+  "global": {
+    "animare": "AniMare",
+    "title": "AniMare Unofficial Website"
+  },
+  "home": {
+    "subheadline": "Welcome to AniMare!"
+  },
+  "recommended_videos": {
+    "title": "Recommended Videos"
+  }
+}
