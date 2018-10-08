@@ -98,6 +98,7 @@
 
   .links {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
   }
 
@@ -111,8 +112,20 @@
     margin: 0 2rem;
   }
 
+  nav:first-child {
+    margin: 0 0 2rem;
+    width: 100%;
+  }
+
+  @media (min-width: 600px) {
+    nav:first-child {
+      margin: 0 2rem;
+      width: auto;
+    }
+  }
+
   nav h2 {
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin: 0 0 1rem;
     padding: 0;
     text-align: center;
@@ -120,13 +133,39 @@
 
   @media (min-width: 600px) {
     nav h2 {
+      font-size: 1rem;
+    }
+  }
+
+  nav:first-child h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  @media (min-width: 600px) {
+    nav h2 {
       text-align: left;
+    }
+
+    nav:first-child h2 {
+      margin-bottom: 1rem;
     }
   }
 
   nav ul {
+    display: block;
     margin: 0;
     padding: 0;
+  }
+
+  nav:first-child ul {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  @media (min-width: 600px) {
+    nav:first-child ul {
+      display: block;
+    }
   }
 
   nav li {
@@ -134,6 +173,32 @@
     font-size: 0.9rem;
     margin: 0.5rem 0 0 0;
     padding: 0;
+  }
+
+  nav:first-child li {
+    margin-top: 0;
+    text-align: center;
+    width: 20%;
+  }
+
+  nav li + li {
+    margin-top: 0.75rem;
+  }
+
+  nav:first-child li + li {
+    margin-top: 0;
+  }
+
+  @media (min-width: 600px) {
+    nav:first-child li {
+      margin-top: 0.5rem;
+      text-align: left;
+      width: auto;
+    }
+
+    nav:first-child li + li {
+      margin-top: 0.75rem;
+    }
   }
 
   a {

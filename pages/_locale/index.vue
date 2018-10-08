@@ -2,7 +2,7 @@
   <div>
     <div class="hero">
       <div class="title">
-        <h1>{{ $t('global.animare') }}</h1>
+        <h1 v-html="$t('global.animare_html')"></h1>
         <h2 class="subheadline">{{ $t('home.subheadline') }}</h2>
       </div>
     </div>
@@ -59,10 +59,7 @@
   }
 
   .title {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding: 3rem 1rem;
     position: relative;
     z-index: 2;
   }
@@ -71,6 +68,7 @@
     font-size: 3rem;
     font-weight: 700;
     letter-spacing: 0.25rem;
+    text-align: center;
     margin: 0;
   }
 
@@ -78,10 +76,17 @@
     letter-spacing: 0.5rem;
   }
 
+  @media (min-width: 600px) {
+    h1 >>> br {
+      display: none;
+    }
+  }
+
   .subheadline {
     font-size: 1rem;
     font-weight: 400;
     margin: 1rem 0 0;
+    text-align: center;
   }
 
   section {
