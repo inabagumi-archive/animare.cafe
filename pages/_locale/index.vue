@@ -76,9 +76,13 @@
     letter-spacing: 0.5rem;
   }
 
+  h1 >>> .line {
+    display: block;
+  }
+
   @media (min-width: 600px) {
-    h1 >>> br {
-      display: none;
+    h1 >>> .line {
+      display: inline;
     }
   }
 

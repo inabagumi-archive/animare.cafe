@@ -1,4 +1,21 @@
 module.exports = {
+  build: {
+    html: {
+      minify: {
+        caseSensitive: false,
+        collapseBooleanAttributes: true,
+        collapseWhitespace: true,
+        conservativeCollapse: false,
+        minifyCSS: true,
+        minifyJS: true,
+        preserveLineBreaks: false,
+        removeAttributeQuotes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        removeTagWhitespace: true
+      }
+    }
+  },
   css: [],
   dev: process.env.NODE_ENV !== 'production',
   generate: {
