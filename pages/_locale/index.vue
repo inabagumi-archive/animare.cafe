@@ -26,9 +26,7 @@
       </section>
       <section id="about">
         <div class="inner">
-          <h2>
-            {{ $t('home.about_animare.title') }}
-          </h2>
+          <h2 v-html="$t('home.about_animare.title')"/>
           <p>
             {{ $t('home.about_animare.text') }}
           </p>
@@ -128,6 +126,12 @@
     margin: 0 0 2rem;
     padding: 0;
     text-align: center;
+  }
+
+  @media (min-width: 600px) {
+    section h2 >>> br {
+      display: none;
+    }
   }
 
   section p {
