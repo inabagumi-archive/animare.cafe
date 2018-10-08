@@ -2,7 +2,7 @@
   <header>
     <div class="brand">
       <nuxt-link :to="`/${$i18n.locale}/`">
-        <img src="~/assets/images/animare.svg" width="227" height="53" :alt="$t('global.animare')">
+        <img src="~/assets/images/animare-logo.png" width="200" height="50" :alt="$t('global.animare')">
       </nuxt-link>
     </div>
     <nav>
@@ -38,8 +38,8 @@
 <style scoped>
   header {
     align-items: flex-end;
-    background-color: #333;
-    color: #eee;
+    background-color: #282828;
+    color: #fff;
     display: flex;
     justify-content: space-between;
     margin: 0;
@@ -64,14 +64,19 @@
   }
 
   nav li + li {
-    border-left: 1px solid #eee;
+    border-left: 1px solid #fff;
     margin-left: 1rem;
     padding-left: 1rem;
   }
 
   a {
-    color: inherit;
+    color: rgba(255, 255, 255, 0.5);
     display: block;
     text-decoration: none;
+    transition: color 0.5s;
+  }
+
+  a:hover {
+    color: rgba(255, 255, 255, 0.8);
   }
 </style>
