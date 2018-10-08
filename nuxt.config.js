@@ -1,3 +1,6 @@
+import kebabCase from 'lodash/kebabCase'
+import talents from './static/talents.json'
+
 module.exports = {
   build: {
     html: {
@@ -19,10 +22,11 @@ module.exports = {
   css: [],
   dev: process.env.NODE_ENV !== 'production',
   generate: {
-    routes: [
-      '/en/',
-      '/ja/'
-    ],
+    routes: talents.reduce((routes, talent) => [
+      ...routes,
+      `/en/member/${kebabCase(talent.id)}`,
+      `/ja/member/${kebabCase(talent.id)}`
+    ], ['/en', '/ja']),
   },
   loading: {
     color: '#fff'

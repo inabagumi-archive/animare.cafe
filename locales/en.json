@@ -6,6 +6,13 @@
     "title": "AniMare Unofficial Website"
   },
   "home": {
+    "about_animare": {
+      "text": "",
+      "title": "About AniMare"
+    },
+    "members": {
+      "title": "Members"
+    },
     "subheadline": "Welcome to AniMare!"
   },
   "recommended_videos": {
