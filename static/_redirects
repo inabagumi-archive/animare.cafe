@@ -1,2 +1,4 @@
 / /ja/ 302 Language=ja
 / /en/ 302
+
+/:locale/member/:id /:locale/member/:id/index.html 200!

@@ -45,8 +45,8 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue'
   import Component, { State } from 'nuxt-class-component'
+  import Vue from 'vue'
 
   @Component
   export default class extends Vue {

@@ -7,17 +7,31 @@
       </div>
     </div>
     <main>
-      <section>
+      <section id="members">
         <h2>
-          {{ $t('recommended_videos.title') }}
+          {{ $t('home.members.title') }}
         </h2>
-        <div class="movie">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/TzdMmvzYtCQ?rel=0"
-            frameborder="0"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
-          />
+        <ul>
+          <li v-for="(talent, id) in talents" :key="id" :class="`member-${id}`">
+            <nuxt-link :to="`/${$i18n.locale}${talent.path}`">
+              <img
+                :src="talent.avatar"
+                :alt="talent.name[$i18n.locale]"
+                width="256"
+                height="256"
+              >
+            </nuxt-link>
+          </li>
+        </ul>
+      </section>
+      <section id="about">
+        <div class="inner">
+          <h2>
+            {{ $t('home.about_animare.title') }}
+          </h2>
+          <p>
+            {{ $t('home.about_animare.text') }}
+          </p>
         </div>
       </section>
     </main>
@@ -25,11 +39,12 @@
 </template>
 
 <script lang="ts">
-  import Component from 'nuxt-class-component'
+  import Component, { State } from 'nuxt-class-component'
   import Vue from 'vue'
 
   @Component
   export default class extends Vue {
+    @State(({ talents }) => talents.list) talents
   }
 </script>
 
@@ -94,33 +109,103 @@
   }
 
   section {
-    padding: 2rem 1rem;
+    background-color: #fff;
+    color: #333;
+    padding: 6rem 1rem;
   }
 
-  @media (min-width: 600px) {
-    section {
-      padding: 4rem 10rem 1rem;
-    }
+  section + section {
+    margin-top: 5rem;
+  }
+
+  section .inner {
+    max-width: 800px;
+    margin: 0 auto;
   }
 
   section h2 {
-    display: none;
+    font-size: 2rem;
+    margin: 0 0 2rem;
+    padding: 0;
+    text-align: center;
   }
 
-  .movie {
-    height: 0;
-    margin-bottom: 50px;
-    overflow: hidden;
-    padding-bottom: 56.25%;
-    position: relative;
-    width: 100%;
+  section p {
+    line-height: 2;
   }
 
-  .movie iframe {
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
+  #members ul {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2rem 0 2rem;
+    padding: 0;
+  }
+
+  @media (min-width: 600px) {
+    #members ul {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  #members li {
+    display: block;
+    padding: 0.75rem;
+  }
+
+  #members li.member-haneru_inaba {
+    order: 3;
+  }
+
+  #members li.member-hinako_umori {
+    order: 2;
+  }
+
+  #members li.member-ichika_souya {
+    order: 4;
+  }
+
+  #members li.member-kuromu_inari {
+    order: 5;
+  }
+
+  #members li.member-ran_hinokuma {
+    order: 1;
+  }
+
+  #members li a {
+    background-color: transparent;
+    border-radius: 50%;
+    display: block;
+    transition: background-color 1.5s;
+  }
+
+  #members li.member-haneru_inaba a:hover {
+    background-color: #ffe082;
+  }
+
+  #members li.member-hinako_umori a:hover {
+    background-color: #f48fb1;
+  }
+
+  #members li.member-ichika_souya a:hover {
+    background-color: #b3e5fc;
+  }
+
+  #members li.member-kuromu_inari a:hover {
+    background-color: #ffccbc;
+  }
+
+  #members li.member-ran_hinokuma a:hover {
+    background-color: #c8e6c9;
+  }
+
+  #members li img {
+    border-radius: 50%;
+    display: block;
+    height: 200px;
+    width: 200px;
   }
 </style>
