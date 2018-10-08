@@ -39,6 +39,11 @@
             rel: 'canonical'
           },
           {
+            rel: 'icon',
+            hid: 'icon',
+            href: require('~/assets/images/favicon.png')
+          },
+          {
             href: 'https://fonts.googleapis.com/css?family=Roboto|Noto+Sans+JP:400,700',
             rel: 'stylesheet'
           }
