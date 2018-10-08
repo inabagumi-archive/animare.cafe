@@ -108,7 +108,7 @@
 
   section {
     background-color: #fff;
-    color: #333;
+    color: #282828;
     padding: 6rem 1rem;
   }
 
@@ -186,12 +186,16 @@
     transition: background-color 1.5s;
   }
 
+  #members li a:hover {
+    transition-duration: 0.5s;
+  }
+
   #members li.member-haneru_inaba a:hover {
-    background-color: #ffe082;
+    background-color: #ffecb3;
   }
 
   #members li.member-hinako_umori a:hover {
-    background-color: #f48fb1;
+    background-color: #fce4ec;
   }
 
   #members li.member-ichika_souya a:hover {

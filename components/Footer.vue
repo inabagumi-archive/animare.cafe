@@ -2,7 +2,7 @@
   <footer>
     <div class="container">
       <div class="brand">
-        <img src="~/assets/images/animare.svg" width="227" height="53" :alt="$t('global.animare')">
+        <img src="~/assets/images/animare-logo.png" width="200" height="50" :alt="$t('global.animare')">
       </div>
       <div class="links">
         <nav>
@@ -65,8 +65,8 @@
 
 <style scoped>
   footer {
-    background-color: #333;
-    color: #eee;
+    background-color: #282828;
+    color: #fff;
     min-height: 100px;
     padding: 3rem 1rem 5rem;
   }
@@ -202,7 +202,12 @@
   }
 
   a {
-    color: inherit;
-    text-decoration: underline;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.5s;
+  }
+
+  a:hover {
+    color: rgba(255, 255, 255, 0.8);
   }
 </style>
