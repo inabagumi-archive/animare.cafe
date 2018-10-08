@@ -22,10 +22,11 @@
   })
   export default class extends Vue {
     head(args) {
-      const url = `https://animare.cafe${this.$route.fullPath}`;
+      const base = 'https://animare.cafe'
+      const url = `${base}${this.$route.fullPath}`
       const title = this.$t('global.title')
       const description = this.$t('global.description')
-      const mainVisualPath = require('~/assets/images/main-visual.jpg')
+      const mainVisualPath = `${base}${require('~/assets/images/main-visual.jpg')}`
 
       return {
         htmlAttrs: {
