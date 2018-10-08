@@ -1,5 +1,5 @@
-import kebabCase from 'lodash/kebabCase'
-import talents from './static/talents.json'
+const kebabCase = require('lodash/kebabCase')
+const talents = require('./static/talents.json')
 
 module.exports = {
   build: {
