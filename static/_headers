@@ -1,8 +1,8 @@
+/*/
+  Cache-Control: max-age=600, must-revalidate, public, s-maxage=60
+
 /_nuxt/*.js
   Cache-Control: immutable, max-age=31536000, public
 
 /_nuxt/img/*
   Cache-Control: immutable, max-age=31536000, public
-
-/*/
-  Cache-Control: max-age=600, must-revalidate, public, s-maxage=60
