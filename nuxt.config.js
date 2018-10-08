@@ -1,6 +1,12 @@
 const kebabCase = require('lodash/kebabCase')
 const talents = require('./static/talents.json')
 
+const routes = talents.reduce((routes, talent) => [
+  ...routes,
+  `/en/member/${kebabCase(talent.id)}`,
+  `/ja/member/${kebabCase(talent.id)}`
+], ['/en/', '/ja/'])
+
 module.exports = {
   build: {
     html: {
@@ -22,11 +28,7 @@ module.exports = {
   css: [],
   dev: process.env.NODE_ENV !== 'production',
   generate: {
-    routes: talents.reduce((routes, talent) => [
-      ...routes,
-      `/en/member/${kebabCase(talent.id)}`,
-      `/ja/member/${kebabCase(talent.id)}`
-    ], ['/en', '/ja']),
+    routes
   },
   loading: {
     color: '#fff'
@@ -34,6 +36,7 @@ module.exports = {
   mode: 'universal',
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/sitemap',
     '~/modules/typescript'
   ],
   plugins: [
@@ -42,5 +45,14 @@ module.exports = {
   ],
   router: {
     middleware: 'i18n'
+  },
+  sitemap: {
+    generate: true,
+    hostname: 'https://animare.cafe',
+    routes: routes.map(url => ({
+      changefreq: 'daily',
+      priority: 1.0,
+      url
+    }))
   }
 }
