@@ -71,6 +71,7 @@ export default class extends Vue {
   background-color: rgba(0, 0, 0, 0.5);
   bottom: 0;
   content: '';
+  display: block;
   left: 0;
   position: absolute;
   right: 0;

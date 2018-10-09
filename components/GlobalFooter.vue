@@ -44,16 +44,16 @@
             </li>
           </ul>
         </nav>
-        <nav 
-          v-for="service in services" 
+        <nav
+          v-for="service in services"
           :key="service"
         >
           <h2>
             {{ service }}
           </h2>
           <ul>
-            <li 
-              v-for="(talent, id) in talents" 
+            <li
+              v-for="(talent, id) in talents"
               :key="id"
             >
               <a
