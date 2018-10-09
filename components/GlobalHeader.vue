@@ -12,18 +12,18 @@
     </div>
     <nav>
       <h2>
-        {{ $i18n.locale.toUpperCase() }}
+        {{ locales[$i18n.locale] }}
       </h2>
       <ul>
         <li
-          v-for="locale in $store.state.locales"
+          v-for="(label, locale) in locales"
           :key="locale"
         >
           <nuxt-link
             :to="`/${locale}${path}`"
             exact
           >
-            {{ locale.toUpperCase() }}
+            {{ label }}
           </nuxt-link>
         </li>
       </ul>
@@ -32,18 +32,28 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
 import Component from 'nuxt-class-component'
+import Vue from 'vue'
 
-@Component({
-  data() {
-    const { fullPath } = this.$route
-    const path = fullPath.replace(/^\/[^\/]+\//, '/')
-
-    return { path }
+@Component
+export default class extends Vue {
+  get locales(): object {
+    return this.$store.state.locales.reduce(
+      (locales, locale) => ({
+        ...locales,
+        [locale]: locale.toUpperCase()
+      }),
+      {}
+    )
   }
-})
-export default class extends Vue {}
+
+  get path(): string {
+    const fullPath: string = this.$route.fullPath
+    const path: string = fullPath.replace(/^\/[^\/]+\//, '/')
+
+    return path
+  }
+}
 </script>
 
 <style scoped>
@@ -87,7 +97,15 @@ a {
   transition: color 0.5s;
 }
 
+a.nuxt-link-active {
+  color: #fff;
+}
+
 a:hover {
   color: rgba(255, 255, 255, 0.8);
+}
+
+a.nuxt-link:hover {
+  color: #fff;
 }
 </style>
