@@ -1,14 +1,27 @@
 const kebabCase = require('lodash/kebabCase')
 const talents = require('./static/talents.json')
 
-const routes = talents.reduce((routes, talent) => [
-  ...routes,
-  `/en/member/${kebabCase(talent.id)}`,
-  `/ja/member/${kebabCase(talent.id)}`
-], ['/en/', '/ja/'])
+const routes = talents.reduce(
+  (routes, talent) => [
+    ...routes,
+    `/en/member/${kebabCase(talent.id)}`,
+    `/ja/member/${kebabCase(talent.id)}`
+  ],
+  ['/en/', '/ja/']
+)
 
 module.exports = {
   build: {
+    extend(config, { isClient, isDev }) {
+      if (isDev && isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          exclude: /\/node_modules\//,
+          loader: 'eslint-loader',
+          test: /\.(js|ts|vue)$/
+        })
+      }
+    },
     html: {
       minify: {
         caseSensitive: false,
@@ -34,15 +47,8 @@ module.exports = {
     color: '#fff'
   },
   mode: 'universal',
-  modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/sitemap',
-    '~/modules/typescript'
-  ],
-  plugins: [
-    '~/plugins/axios',
-    '~/plugins/i18n'
-  ],
+  modules: ['@nuxtjs/axios', '@nuxtjs/sitemap', '~/modules/typescript'],
+  plugins: ['~/plugins/axios', '~/plugins/i18n'],
   router: {
     middleware: 'i18n'
   },

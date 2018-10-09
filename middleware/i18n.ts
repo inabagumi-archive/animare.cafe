@@ -11,6 +11,6 @@ export default ({ app, error, isHMR, params, redirect, req, route, store }) => {
   app.i18n.locale = store.state.locale
 
   if (route.fullPath === '/') {
-    redirect(`/${locale}/`);
+    redirect(`/${locale}/`)
   }
 }

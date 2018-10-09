@@ -2,7 +2,8 @@
   <div>
     <div class="hero">
       <div class="title">
-        <h1 v-html="$t('global.animare_html')"></h1>
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <h1 v-html="$t('global.animare_html')" />
         <h2 class="subheadline">{{ $t('home.subheadline') }}</h2>
       </div>
     </div>
@@ -12,7 +13,11 @@
           {{ $t('home.members.title') }}
         </h2>
         <ul>
-          <li v-for="(talent, id) in talents" :key="id" :class="`member-${id}`">
+          <li
+            v-for="(talent, id) in talents"
+            :key="id"
+            :class="`member-${id}`"
+          >
             <nuxt-link :to="`/${$i18n.locale}${talent.path}`">
               <img
                 :src="talent.avatar"
@@ -26,7 +31,8 @@
       </section>
       <section id="about">
         <div class="inner">
-          <h2 v-html="$t('home.about_animare.title')"/>
+          <!-- eslint-disable-next-line vue/no-v-html -->
+          <h2 v-html="$t('home.about_animare.title')" />
           <p>
             {{ $t('home.about_animare.text') }}
           </p>
@@ -37,183 +43,184 @@
 </template>
 
 <script lang="ts">
-  import Component, { State } from 'nuxt-class-component'
-  import Vue from 'vue'
+import Component, { State } from 'nuxt-class-component'
+import Vue from 'vue'
 
-  @Component
-  export default class extends Vue {
-    @State(({ talents }) => talents.list) talents
-  }
+@Component
+export default class extends Vue {
+  @State(({ talents }) => talents.list)
+  talents
+}
 </script>
 
 <style scoped>
-  .hero {
-    align-items: center;
-    background-color: #666;
-    background-image: url("~@/assets/images/animare-background.jpg");
-    background-size: cover;
-    color: #eee;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    height: 40vh;
-    position: relative;
-  }
+.hero {
+  align-items: center;
+  background-color: #666;
+  background-image: url('~@/assets/images/animare-background.jpg');
+  background-size: cover;
+  color: #eee;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 40vh;
+  position: relative;
+}
 
-  .hero::before {
-    background-color: rgba(0, 0, 0, 0.5);
-    bottom: 0;
-    content: "";
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 1;
-  }
+.hero::before {
+  background-color: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  content: '';
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
 
-  .title {
-    padding: 3rem 1rem;
-    position: relative;
-    z-index: 2;
-  }
+.title {
+  padding: 3rem 1rem;
+  position: relative;
+  z-index: 2;
+}
 
-  h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    letter-spacing: 0.25rem;
-    text-align: center;
-    margin: 0;
-  }
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.25rem;
+  text-align: center;
+  margin: 0;
+}
 
-  h1:lang(en) {
-    letter-spacing: 0.5rem;
-  }
+h1:lang(en) {
+  letter-spacing: 0.5rem;
+}
 
+h1 >>> .line {
+  display: block;
+}
+
+@media (min-width: 600px) {
   h1 >>> .line {
-    display: block;
+    display: inline;
   }
+}
 
-  @media (min-width: 600px) {
-    h1 >>> .line {
-      display: inline;
-    }
+.subheadline {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 1rem 0 0;
+  text-align: center;
+}
+
+section {
+  background-color: #fff;
+  color: #282828;
+  padding: 6rem 1rem;
+}
+
+section + section {
+  margin-top: 5rem;
+}
+
+section .inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+section h2 {
+  font-size: 2rem;
+  margin: 0 0 2rem;
+  padding: 0;
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+  section h2 >>> br {
+    display: none;
   }
+}
 
-  .subheadline {
-    font-size: 1rem;
-    font-weight: 400;
-    margin: 1rem 0 0;
-    text-align: center;
-  }
+section p {
+  line-height: 2;
+}
 
-  section {
-    background-color: #fff;
-    color: #282828;
-    padding: 6rem 1rem;
-  }
+#members ul {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2rem 0 2rem;
+  padding: 0;
+}
 
-  section + section {
-    margin-top: 5rem;
-  }
-
-  section .inner {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  section h2 {
-    font-size: 2rem;
-    margin: 0 0 2rem;
-    padding: 0;
-    text-align: center;
-  }
-
-  @media (min-width: 600px) {
-    section h2 >>> br {
-      display: none;
-    }
-  }
-
-  section p {
-    line-height: 2;
-  }
-
+@media (min-width: 600px) {
   #members ul {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 2rem 0 2rem;
-    padding: 0;
+    flex-direction: row;
+    justify-content: space-between;
   }
+}
 
-  @media (min-width: 600px) {
-    #members ul {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-  }
+#members li {
+  display: block;
+  padding: 0.75rem;
+}
 
-  #members li {
-    display: block;
-    padding: 0.75rem;
-  }
+#members li.member-haneru_inaba {
+  order: 3;
+}
 
-  #members li.member-haneru_inaba {
-    order: 3;
-  }
+#members li.member-hinako_umori {
+  order: 2;
+}
 
-  #members li.member-hinako_umori {
-    order: 2;
-  }
+#members li.member-ichika_souya {
+  order: 4;
+}
 
-  #members li.member-ichika_souya {
-    order: 4;
-  }
+#members li.member-kuromu_inari {
+  order: 5;
+}
 
-  #members li.member-kuromu_inari {
-    order: 5;
-  }
+#members li.member-ran_hinokuma {
+  order: 1;
+}
 
-  #members li.member-ran_hinokuma {
-    order: 1;
-  }
+#members li a {
+  background-color: transparent;
+  border-radius: 50%;
+  display: block;
+  transition: background-color 1.5s;
+}
 
-  #members li a {
-    background-color: transparent;
-    border-radius: 50%;
-    display: block;
-    transition: background-color 1.5s;
-  }
+#members li a:hover {
+  transition-duration: 0.5s;
+}
 
-  #members li a:hover {
-    transition-duration: 0.5s;
-  }
+#members li.member-haneru_inaba a:hover {
+  background-color: #ffecb3;
+}
 
-  #members li.member-haneru_inaba a:hover {
-    background-color: #ffecb3;
-  }
+#members li.member-hinako_umori a:hover {
+  background-color: #fce4ec;
+}
 
-  #members li.member-hinako_umori a:hover {
-    background-color: #fce4ec;
-  }
+#members li.member-ichika_souya a:hover {
+  background-color: #b3e5fc;
+}
 
-  #members li.member-ichika_souya a:hover {
-    background-color: #b3e5fc;
-  }
+#members li.member-kuromu_inari a:hover {
+  background-color: #ffccbc;
+}
 
-  #members li.member-kuromu_inari a:hover {
-    background-color: #ffccbc;
-  }
+#members li.member-ran_hinokuma a:hover {
+  background-color: #c8e6c9;
+}
 
-  #members li.member-ran_hinokuma a:hover {
-    background-color: #c8e6c9;
-  }
-
-  #members li img {
-    border-radius: 50%;
-    display: block;
-    height: 200px;
-    width: 200px;
-  }
+#members li img {
+  border-radius: 50%;
+  display: block;
+  height: 200px;
+  width: 200px;
+}
 </style>

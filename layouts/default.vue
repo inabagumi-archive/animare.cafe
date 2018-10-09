@@ -1,126 +1,128 @@
 <template>
   <div>
-    <GlobalHeader/>
+    <GlobalHeader />
     <div class="container">
-      <nuxt/>
+      <nuxt />
     </div>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
 <script lang="ts">
-  import Vue from 'vue'
-  import Component from 'nuxt-class-component'
-  import Footer from '~/components/Footer.vue'
-  import GlobalHeader from '~/components/GlobalHeader.vue'
+import Vue from 'vue'
+import Component from 'nuxt-class-component'
+import Footer from '~/components/Footer.vue'
+import GlobalHeader from '~/components/GlobalHeader.vue'
 
-  @Component({
-    components: {
-      Footer,
-      GlobalHeader
-    }
-  })
-  export default class extends Vue {
-    head(args) {
-      const base = 'https://animare.cafe'
-      const url = `${base}${this.$route.fullPath}`
-      const title = this.$t('global.title')
-      const description = this.$t('global.description')
-      const mainVisualPath = `${base}${require('~/assets/images/main-visual.jpg')}`
+@Component({
+  components: {
+    Footer,
+    GlobalHeader
+  }
+})
+export default class extends Vue {
+  head(args) {
+    const base = 'https://animare.cafe'
+    const url = `${base}${this.$route.fullPath}`
+    const title = this.$t('global.title')
+    const description = this.$t('global.description')
+    const mainVisualPath = `${base}${require('~/assets/images/main-visual.jpg')}`
 
-      return {
-        htmlAttrs: {
-          lang: this.$i18n.locale
+    return {
+      htmlAttrs: {
+        lang: this.$i18n.locale
+      },
+      link: [
+        {
+          href: url,
+          hid: 'canonical',
+          rel: 'canonical'
         },
-        link: [
-          {
-            href: url,
-            hid: 'canonical',
-            rel: 'canonical'
-          },
-          {
-            rel: 'icon',
-            hid: 'icon',
-            href: require('~/assets/images/favicon.png')
-          },
-          {
-            href: 'https://fonts.googleapis.com/css?family=Roboto|Noto+Sans+JP:400,700',
-            rel: 'stylesheet'
-          }
-        ],
-        meta: [
-          { charset: 'UTF-8' },
-          {
-            content: 'initial-scale=1.0,width=device-width',
-            name: 'viewport'
-          },
-          {
-            content: 'website',
-            hid: 'og:type',
-            property: 'og:type'
-          },
-          {
-            content: url,
-            hid: 'og:url',
-            property: 'og:url'
-          },
-          {
-            content: title,
-            hid: 'og:title',
-            property: 'og:title'
-          },
-          {
-            content: description,
-            hid: 'og:description',
-            property: 'og:description'
-          },
-          {
-            content: mainVisualPath,
-            hid: 'og:image',
-            property: 'og:image'
-          },
-          {
-            content: 'summary_large_image',
-            hid: 'twitter:card',
-            name: 'twitter:card'
-          },
-          {
-            content: title,
-            hid: 'twitter:title',
-            name: 'twitter:title'
-          },
-          {
-            content: description,
-            hid: 'twitter:description',
-            name: 'twitter:description'
-          },
-          {
-            content: mainVisualPath,
-            hid: 'twitter:image',
-            name: 'twitter:image'
-          }
-        ],
-        title
-      }
+        {
+          rel: 'icon',
+          hid: 'icon',
+          href: require('~/assets/images/favicon.png')
+        },
+        {
+          href:
+            'https://fonts.googleapis.com/css?family=Roboto|Noto+Sans+JP:400,700',
+          rel: 'stylesheet'
+        }
+      ],
+      meta: [
+        { charset: 'UTF-8' },
+        {
+          content: 'initial-scale=1.0,width=device-width',
+          name: 'viewport'
+        },
+        {
+          content: 'website',
+          hid: 'og:type',
+          property: 'og:type'
+        },
+        {
+          content: url,
+          hid: 'og:url',
+          property: 'og:url'
+        },
+        {
+          content: title,
+          hid: 'og:title',
+          property: 'og:title'
+        },
+        {
+          content: description,
+          hid: 'og:description',
+          property: 'og:description'
+        },
+        {
+          content: mainVisualPath,
+          hid: 'og:image',
+          property: 'og:image'
+        },
+        {
+          content: 'summary_large_image',
+          hid: 'twitter:card',
+          name: 'twitter:card'
+        },
+        {
+          content: title,
+          hid: 'twitter:title',
+          name: 'twitter:title'
+        },
+        {
+          content: description,
+          hid: 'twitter:description',
+          name: 'twitter:description'
+        },
+        {
+          content: mainVisualPath,
+          hid: 'twitter:image',
+          name: 'twitter:image'
+        }
+      ],
+      title
     }
   }
+}
 </script>
 
 <style>
-  html, body {
-    margin: 0;
-    padding: 0;
-  }
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 
-  html {
-    line-height: 1;
-    font-family: Roboto, Noto Sans JP, sans-serif;
-    font-size: 16px;
-  }
+html {
+  line-height: 1;
+  font-family: Roboto, Noto Sans JP, sans-serif;
+  font-size: 16px;
+}
 </style>
 
 <style scoped>
-  .container {
-    min-height: 70vh;
-  }
+.container {
+  min-height: 70vh;
+}
 </style>
