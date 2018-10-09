@@ -9,8 +9,8 @@
 </template>
 
 <script lang="ts">
+import Component, { State } from 'nuxt-class-component'
 import Vue from 'vue'
-import Component from 'nuxt-class-component'
 import Footer from '~/components/Footer.vue'
 import GlobalHeader from '~/components/GlobalHeader.vue'
 
@@ -21,16 +21,24 @@ import GlobalHeader from '~/components/GlobalHeader.vue'
   }
 })
 export default class extends Vue {
-  head(args) {
+  @State
+  locale
+
+  @State
+  locales
+
+  head() {
+    const { fullPath } = this.$route
     const base = 'https://animare.cafe'
-    const url = `${base}${this.$route.fullPath}`
+    const url = `${base}${fullPath}`
+    const path = fullPath.replace(/^\/[^\/]+\//, '/')
     const title = this.$t('global.title')
     const description = this.$t('global.description')
     const mainVisualPath = `${base}${require('~/assets/images/main-visual.jpg')}`
 
     return {
       htmlAttrs: {
-        lang: this.$i18n.locale
+        lang: this.locale
       },
       link: [
         {
@@ -47,7 +55,14 @@ export default class extends Vue {
           href:
             'https://fonts.googleapis.com/css?family=Roboto|Noto+Sans+JP:400,700',
           rel: 'stylesheet'
-        }
+        },
+        ...this.locales
+          .filter(locale => locale !== this.locale)
+          .map(locale => ({
+            href: `/${locale}${path}`,
+            hreflang: locale,
+            rel: 'alternate'
+          }))
       ],
       meta: [
         { charset: 'UTF-8' },
