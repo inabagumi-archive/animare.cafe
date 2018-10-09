@@ -1,22 +1,22 @@
 <template>
   <div>
-    <GlobalHeader />
+    <global-header />
     <div class="container">
       <nuxt />
     </div>
-    <Footer />
+    <global-footer />
   </div>
 </template>
 
 <script lang="ts">
 import Component, { State } from 'nuxt-class-component'
 import Vue from 'vue'
-import Footer from '~/components/Footer.vue'
+import GlobalFooter from '~/components/GlobalFooter.vue'
 import GlobalHeader from '~/components/GlobalHeader.vue'
 
 @Component({
   components: {
-    Footer,
+    GlobalFooter,
     GlobalHeader
   }
 })
@@ -116,7 +116,8 @@ export default class extends Vue {
           name: 'twitter:image'
         }
       ],
-      title
+      titleTemplate: titleChunk =>
+        titleChunk ? `${titleChunk} - ${title}` : title
     }
   }
 }

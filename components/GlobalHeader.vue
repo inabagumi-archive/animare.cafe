@@ -40,7 +40,7 @@ import Component from 'nuxt-class-component'
     const { fullPath } = this.$route
     const path = fullPath.replace(/^\/[^\/]+\//, '/')
 
-    return { path: '/' }
+    return { path }
   }
 })
 export default class extends Vue {}
