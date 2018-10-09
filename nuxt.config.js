@@ -41,6 +41,7 @@ module.exports = {
   css: [],
   dev: process.env.NODE_ENV !== 'production',
   generate: {
+    fallback: true,
     routes
   },
   loading: {
