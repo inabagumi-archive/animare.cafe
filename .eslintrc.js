@@ -5,15 +5,17 @@ module.exports = {
   },
   extends: [
     'plugin:prettier/recommended',
-    'plugin:vue/recommended'
+    'plugin:vue/recommended',
+    'prettier'
   ],
-  // required to lint *.vue files
+  parserOptions: {
+    parser: 'typescript-eslint-parser'
+  },
   plugins: [
     'prettier',
     'vue'
   ],
   root: true,
-  // add your custom rules here
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'

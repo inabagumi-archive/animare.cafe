@@ -10,12 +10,15 @@ const TALENT_AVATAR_LIST = {
 }
 
 export const state = () => ({
-  list: talents.reduce((list, { id, ...talent }) => ({
-    ...list,
-    [id]: {
-      ...talent,
-      avatar: TALENT_AVATAR_LIST[id],
-      path: `/member/${kebabCase(id)}`
-    }
-  }), {})
+  list: talents.reduce(
+    (list, { id, ...talent }) => ({
+      ...list,
+      [id]: {
+        ...talent,
+        avatar: TALENT_AVATAR_LIST[id],
+        path: `/member/${kebabCase(id)}`
+      }
+    }),
+    {}
+  )
 })
