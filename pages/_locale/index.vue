@@ -16,7 +16,8 @@
           <li
             v-for="(talent, id) in talents"
             :key="id"
-            :class="`member-${id}`"
+            class="member"
+            :class="`member__${kebabCase(id)}`"
           >
             <nuxt-link :to="`/${$i18n.locale}${talent.path}`">
               <img
@@ -43,13 +44,18 @@
 </template>
 
 <script lang="ts">
+import kebabCase from 'lodash/kebabCase'
 import Component, { State } from 'nuxt-class-component'
 import Vue from 'vue'
 
 @Component
 export default class extends Vue {
-  @State(({ talents }) => talents.list)
+  @State(state => state.talents.list)
   talents
+
+  kebabCase(...args) {
+    return kebabCase(...args)
+  }
 }
 </script>
 
@@ -117,11 +123,22 @@ h1 >>> .line {
 section {
   background-color: #fff;
   color: #282828;
-  padding: 6rem 1rem;
+  padding: 3rem 1rem;
 }
 
 section + section {
-  margin-top: 5rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 600px) {
+  section {
+    padding-bottom: 6rem;
+    padding-top: 6rem;
+  }
+
+  section + section {
+    margin-top: 5rem;
+  }
 }
 
 section .inner {
@@ -158,70 +175,84 @@ section p {
 @media (min-width: 600px) {
   #members ul {
     flex-direction: row;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-arond;
   }
 }
 
-#members li {
+li.member {
+  box-sizing: border-box;
   display: block;
   padding: 0.75rem;
 }
 
-#members li.member-haneru_inaba {
-  order: 3;
+@media (min-width: 600px) {
+  li.member__haneru-inaba {
+    order: 2;
+    width: 33%;
+  }
+
+  li.member__hinako-umori {
+    margin-top: 2rem;
+    order: 4;
+    width: 40%;
+  }
+
+  li.member__ichika-souya {
+    order: 3;
+    width: 33%;
+  }
+
+  li.member__kuromu-inari {
+    margin-top: 2rem;
+    order: 5;
+    width: 40%;
+  }
+
+  li.member__ran-hinokuma {
+    order: 1;
+    width: 33%;
+  }
 }
 
-#members li.member-hinako_umori {
-  order: 2;
-}
-
-#members li.member-ichika_souya {
-  order: 4;
-}
-
-#members li.member-kuromu_inari {
-  order: 5;
-}
-
-#members li.member-ran_hinokuma {
-  order: 1;
-}
-
-#members li a {
+li.member a {
   background-color: transparent;
   border-radius: 50%;
   display: block;
+  height: 256px;
+  margin: 0 auto;
   transition: background-color 1.5s;
+  width: 256px;
 }
 
-#members li a:hover {
+li.member a:hover {
   transition-duration: 0.5s;
 }
 
-#members li.member-haneru_inaba a:hover {
+li.member__haneru-inaba a:hover {
   background-color: #ffecb3;
 }
 
-#members li.member-hinako_umori a:hover {
+li.member__hinako-umori a:hover {
   background-color: #fce4ec;
 }
 
-#members li.member-ichika_souya a:hover {
+li.member__ichika-souya a:hover {
   background-color: #b3e5fc;
 }
 
-#members li.member-kuromu_inari a:hover {
+li.member__kuromu--inari a:hover {
   background-color: #ffccbc;
 }
 
-#members li.member-ran_hinokuma a:hover {
+li.member__ran--hinokuma a:hover {
   background-color: #c8e6c9;
 }
 
-#members li img {
+li.member img {
   border-radius: 50%;
   display: block;
-  height: 200px;
-  width: 200px;
+  height: 100%;
+  width: 100%;
 }
 </style>
