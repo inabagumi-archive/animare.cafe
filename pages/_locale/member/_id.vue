@@ -7,7 +7,7 @@
       :src="talent.avatar"
       width="256"
       height="256"
-      :alt="talent.name[$i18n.locale]"
+      :alt="name"
     >
   </main>
 </template>
@@ -39,8 +39,27 @@ export default class Member extends Vue {
   }
 
   head() {
+    const globalTitle = this.$t('global.title')
+    const title = `${this.name} - ${this.$t('member.title')}`
+
     return {
-      title: this.name
+      meta: [
+        {
+          content: title,
+          hid: 'og:title',
+          property: 'og:title'
+        },
+        {
+          content: globalTitle,
+          property: 'og:site_name'
+        },
+        {
+          content: `${title} - ${globalTitle}`,
+          hid: 'twitter:title',
+          name: 'twitter:title'
+        }
+      ],
+      title
     }
   }
 
