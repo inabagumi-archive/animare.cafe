@@ -45,7 +45,7 @@ export default class Member extends Vue {
     return {
       meta: [
         {
-          content: title,
+          content: `${title} - ${globalTitle}`,
           hid: 'og:title',
           property: 'og:title'
         },
