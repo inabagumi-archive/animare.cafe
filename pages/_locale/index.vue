@@ -243,11 +243,11 @@ li.member__ichika-souya a:hover {
   background-color: #b3e5fc;
 }
 
-li.member__kuromu--inari a:hover {
+li.member__kuromu-inari a:hover {
   background-color: #ffccbc;
 }
 
-li.member__ran--hinokuma a:hover {
+li.member__ran-hinokuma a:hover {
   background-color: #c8e6c9;
 }
 
