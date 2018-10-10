@@ -1,4 +1,5 @@
 import kebabCase from 'lodash/kebabCase'
+import snakeCase from 'lodash/snakeCase'
 import talents from '~/static/talents.json'
 
 const TALENT_AVATAR_LIST = {
@@ -10,6 +11,7 @@ const TALENT_AVATAR_LIST = {
 }
 
 export const state = () => ({
+  current: null,
   list: talents.reduce(
     (list, { id, ...talent }) => ({
       ...list,
@@ -22,3 +24,22 @@ export const state = () => ({
     {}
   )
 })
+
+export const mutations = {
+  set(state, { talent }) {
+    state.current = talent
+  }
+}
+
+export const actions = {
+  async fetch({ commit, state }, payload) {
+    const id = snakeCase(payload.id)
+    const talent = state.list[id]
+
+    if (!talent) {
+      throw new TypeError('This page could not be found')
+    }
+
+    commit('set', { talent })
+  }
+}

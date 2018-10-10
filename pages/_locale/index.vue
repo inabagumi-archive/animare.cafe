@@ -45,12 +45,14 @@
 
 <script lang="ts">
 import kebabCase from 'lodash/kebabCase'
-import Component, { State } from 'nuxt-class-component'
+import Component, { namespace } from 'nuxt-class-component'
 import Vue from 'vue'
+
+const Talent = namespace('talents')
 
 @Component
 export default class extends Vue {
-  @State(state => state.talents.list)
+  @Talent.State('list')
   talents
 
   kebabCase(...args) {

@@ -1,7 +1,7 @@
 <template>
   <main>
     <h1>
-      {{ talent.name[$i18n.locale] }}
+      {{ name }}
     </h1>
     <img
       :src="talent.avatar"
@@ -13,31 +13,34 @@
 </template>
 
 <script lang="ts">
-import snakeCase from 'lodash/snakeCase'
-import Component, { State } from 'nuxt-class-component'
+import Component, { namespace } from 'nuxt-class-component'
 import Vue from 'vue'
+
+const Talent = namespace('talents')
 
 @Component
 export default class Member extends Vue {
-  talent: any
+  @Talent.State('current')
+  talent
 
-  async asyncData({ error, params, store }) {
-    const id = snakeCase(params.id)
-    const talent = store.state.talents.list[id]
+  get name() {
+    return this.talent.name[this.$i18n.locale]
+  }
 
-    if (!talent) {
-      return error({
-        message: 'This page could not be found',
+  async fetch({ error, params, store }) {
+    try {
+      await store.dispatch('talents/fetch', params)
+    } catch ({ message }) {
+      error({
+        message,
         statusCode: 404
       })
     }
-
-    return { talent }
   }
 
   head() {
     return {
-      title: this.talent.name[this.$i18n.locale]
+      title: this.name
     }
   }
 
