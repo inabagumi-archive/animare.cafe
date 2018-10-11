@@ -11,6 +11,9 @@ const routes = talents.reduce(
 )
 
 module.exports = {
+  axios: {
+    browserBaseURL: process.env.DEPLOY_PRIME_URL || process.env.URL
+  },
   build: {
     extend(config, { isClient, isDev }) {
       if (isDev && isClient) {
