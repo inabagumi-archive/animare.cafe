@@ -51,7 +51,10 @@ module.exports = {
   modules: ['@nuxtjs/axios', '@nuxtjs/sitemap', '~/modules/typescript'],
   plugins: ['~/plugins/axios', '~/plugins/i18n'],
   router: {
-    middleware: 'i18n'
+    middleware: [
+      'i18n',
+      'talents'
+    ]
   },
   sitemap: {
     generate: true,
