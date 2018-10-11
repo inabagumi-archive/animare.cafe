@@ -1,8 +1,6 @@
-/en/*
+/*
   Cache-Control: max-age=600, public, s-maxage=60
-
-/ja/*
-  Cache-Control: max-age=600, public, s-maxage=60
+  Referrer-Policy: same-origin
 
 /_nuxt/*.js
   Cache-Control: immutable, max-age=31536000, public
