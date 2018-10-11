@@ -57,7 +57,12 @@ div {
 section {
   box-sizing: border-box;
   padding: 1rem;
-  width: 30%;
+}
+
+@media (min-width: 600px) {
+  section {
+    width: 30%;
+  }
 }
 
 section a {
