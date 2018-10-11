@@ -23,6 +23,12 @@
           </p>
         </div>
       </section>
+      <section id="news">
+        <h2>
+          {{ $t('home.news.title') }}
+        </h2>
+        <news />
+      </section>
     </main>
   </div>
 </template>
@@ -31,13 +37,19 @@
 import Component from 'nuxt-class-component'
 import Vue from 'vue'
 import MemberList from '~/components/MemberList.vue'
+import News from '~/components/News.vue'
 
 @Component({
   components: {
-    MemberList
+    MemberList,
+    News
   }
 })
-export default class extends Vue {}
+export default class extends Vue {
+  async fetch({ store }) {
+    await store.dispatch('articles/fetch')
+  }
+}
 </script>
 
 <style scoped>

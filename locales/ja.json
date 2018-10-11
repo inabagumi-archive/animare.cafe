@@ -13,6 +13,9 @@
     "members": {
       "title": "メンバー"
     },
+    "news": {
+      "title": "ニュース"
+    },
     "subheadline": "あにまーれにあつまーれ！"
   },
   "member": {
