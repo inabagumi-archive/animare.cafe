@@ -1,3 +1,6 @@
+https://animare-cafe.netlify.com/* https://animare.cafe/:splat 301!
+http://animare-cafe.netlify.com/* https://animare.cafe/:splat 301!
+
 / /ja/ 302 Language=ja
 / /en/ 302
 
