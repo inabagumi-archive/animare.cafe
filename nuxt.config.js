@@ -12,7 +12,7 @@ const routes = talents.reduce(
 
 module.exports = {
   axios: {
-    browserBaseURL: process.env.DEPLOY_PRIME_URL || process.env.URL
+    browserBaseURL: process.env.URL || process.env.DEPLOY_PRIME_URL
   },
   build: {
     extend(config, { isClient, isDev }) {
