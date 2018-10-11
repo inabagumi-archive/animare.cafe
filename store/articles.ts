@@ -10,7 +10,7 @@ export const mutations = {
 
 export const actions = {
   async fetch({ commit }) {
-    const articles = await this.$axios.$get('/api/articles.json')
+    const { default: articles } = await import('~/static/api/articles.json')
 
     commit('setList', {
       articles: articles.map(article => ({
