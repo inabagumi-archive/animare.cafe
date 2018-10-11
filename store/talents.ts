@@ -10,15 +10,24 @@ const TALENT_AVATAR_LIST = {
   ran_hinokuma: require('~/assets/images/avatar/ran-hinokuma.png')
 }
 
+const TALENT_MAIN_VISUAL_LIST = {
+  haneru_inaba: require('~/assets/images/main-visual/haneru-inaba.jpg'),
+  hinako_umori: require('~/assets/images/main-visual/hinako-umori.jpg'),
+  ichika_souya: require('~/assets/images/main-visual/ichika-souya.jpg'),
+  kuromu_inari: require('~/assets/images/main-visual/kuromu-inari.jpg'),
+  ran_hinokuma: require('~/assets/images/main-visual/ran-hinokuma.jpg')
+}
+
 export const state = () => ({
   current: null,
   list: talents.reduce(
     (list, { id, ...talent }) => ({
       ...list,
       [id]: {
-        ...talent,
         avatar: TALENT_AVATAR_LIST[id],
-        path: `/member/${kebabCase(id)}`
+        mainVisual: TALENT_MAIN_VISUAL_LIST[id],
+        path: `/member/${kebabCase(id)}`,
+        ...talent
       }
     }),
     {}

@@ -41,6 +41,7 @@ export default class Member extends Vue {
   head() {
     const globalTitle = this.$t('global.title')
     const title = `${this.name} - ${this.$t('member.title')}`
+    const { mainVisual } = this.talent
 
     return {
       meta: [
@@ -54,9 +55,19 @@ export default class Member extends Vue {
           property: 'og:site_name'
         },
         {
+          content: mainVisual,
+          hid: 'og:image',
+          name: 'og:image'
+        },
+        {
           content: `${title} - ${globalTitle}`,
           hid: 'twitter:title',
           name: 'twitter:title'
+        },
+        {
+          content: mainVisual,
+          hid: 'twitter:image',
+          name: 'twitter:image'
         }
       ],
       title
