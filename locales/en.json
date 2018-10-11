@@ -13,6 +13,9 @@
     "members": {
       "title": "Members"
     },
+    "news": {
+      "title": "News"
+    },
     "subheadline": "Welcome to AniMare!"
   },
   "member": {
