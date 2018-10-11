@@ -41,7 +41,7 @@ export default class Member extends Vue {
   head() {
     const globalTitle = this.$t('global.title')
     const title = `${this.name} - ${this.$t('member.title')}`
-    const { mainVisual } = this.talent
+    const mainVisual = `https://animare.cafe${this.talent.mainVisual}`
 
     return {
       meta: [
