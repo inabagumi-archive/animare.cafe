@@ -120,21 +120,22 @@ h1 >>> .line {
 section {
   background-color: #fff;
   color: #282828;
-  padding: 3rem 1rem;
+  padding: 3rem 1rem 2rem;
 }
 
 section + section {
+  border-top: 1px solid #ddd;
   margin-top: 1rem;
 }
 
 @media (min-width: 600px) {
   section {
-    padding-bottom: 6rem;
+    padding-bottom: 5rem;
     padding-top: 6rem;
   }
 
   section + section {
-    margin-top: 5rem;
+    margin-top: 2rem;
   }
 }
 
