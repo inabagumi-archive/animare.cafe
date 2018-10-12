@@ -5,7 +5,10 @@
       <nuxt />
     </div>
     <global-footer />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700"
+      rel="stylesheet"
+    >
     <link
       v-if="locale == 'ja'"
       href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700"
@@ -141,5 +144,25 @@ html {
 <style scoped>
 .container {
   min-height: 70vh;
+}
+
+.home-enter-active,
+.home-leave-active {
+  transition: opacity 0.5s;
+}
+
+.home-enter,
+.home-leave-active {
+  opacity: 0;
+}
+
+.member-enter-active,
+.member-leave-active {
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.member-enter {
+  opacity: 0;
+  transform: translateY(24px);
 }
 </style>

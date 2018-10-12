@@ -4,7 +4,8 @@
       {{ name }}
     </h1>
     <img
-      :src="talent.avatar"
+      :src="talent.avatar['1x']"
+      :srcset="imageSet(talent.avatar)"
       width="256"
       height="256"
       :alt="name"
@@ -15,6 +16,7 @@
 <script lang="ts">
 import Component, { namespace } from 'nuxt-class-component'
 import Vue from 'vue'
+import imageSet from '~/utils/imageSet'
 
 const Talent = namespace('talents')
 
@@ -71,6 +73,16 @@ export default class Member extends Vue {
         }
       ],
       title
+    }
+  }
+
+  imageSet(images) {
+    return imageSet(images)
+  }
+
+  transition(to, from) {
+    if ((from && to.name !== from.name) || to.params.id !== from.params.id) {
+      return 'member'
     }
   }
 
