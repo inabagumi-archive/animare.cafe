@@ -2,12 +2,7 @@
   <footer>
     <div class="container">
       <div class="brand">
-        <img
-          src="~/assets/images/animare-logo.png"
-          width="200"
-          height="50"
-          :alt="$t('global.animare')"
-        >
+        <animare-logo />
       </div>
       <div class="links">
         <nav>
@@ -74,8 +69,11 @@
 <script lang="ts">
 import Component, { State } from 'nuxt-class-component'
 import Vue from 'vue'
+import AnimareLogo from '~/components/AnimareLogo.vue'
 
-@Component
+@Component({
+  components: { AnimareLogo }
+})
 export default class extends Vue {
   @State(state => state.talents.list)
   talents
