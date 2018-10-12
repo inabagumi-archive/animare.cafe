@@ -110,7 +110,7 @@ export const actions = {
   async fetchAll({ commit, state }, payload) {
     if (Object.keys(state.list).length > 0) return
 
-    const { default: talents } = await import('~/static/talents.json')
+    const { default: talents } = await import('~/data/talents.json')
 
     commit('setList', {
       talents: talents.reduce(
