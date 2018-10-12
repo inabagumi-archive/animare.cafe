@@ -42,7 +42,9 @@ export const actions = {
 
     commit('set', { talent })
   },
-  async fetchAll({ commit }, payload) {
+  async fetchAll({ commit, state }, payload) {
+    if (Object.keys(state.list).length > 0) return
+
     const { default: talents } = await import('~/static/talents.json')
 
     commit('setList', {

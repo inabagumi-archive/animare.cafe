@@ -1,3 +1,3 @@
-export default ({ store }) => {
-  return store.dispatch('talents/fetchAll')
+export default async ({ store }) => {
+  await store.dispatch('talents/fetchAll')
 }
