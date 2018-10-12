@@ -34,7 +34,7 @@ module.exports = {
         removeAttributeQuotes: true,
         removeScriptTypeAttributes: true,
         removeStyleLinkTypeAttributes: true,
-        removeTagWhitespace: true
+        removeTagWhitespace: false
       }
     }
   },
