@@ -5,6 +5,12 @@
       <nuxt />
     </div>
     <global-footer />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link
+      v-if="locale == 'ja'"
+      href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700"
+      rel="stylesheet"
+    >
   </div>
 </template>
 
@@ -50,11 +56,6 @@ export default class extends Vue {
           rel: 'icon',
           hid: 'icon',
           href: require('~/assets/images/favicon.png')
-        },
-        {
-          href:
-            'https://fonts.googleapis.com/css?family=Roboto|Noto+Sans+JP:400,700',
-          rel: 'stylesheet'
         },
         ...this.locales
           .filter(locale => locale !== this.locale)
