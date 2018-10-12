@@ -1,28 +1,20 @@
 <template>
-  <div>
-    <section
+  <div class="articles">
+    <a
       v-for="article in articles"
       :key="article.url"
+      :href="article.url"
+      rel="noopener noreferrer"
+      target="_blank"
+      class="card"
     >
-      <a
-        :href="article.url"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <h3>
-          {{ article.title }}
-        </h3>
+      <div class="inner">
+        <h3>{{ article.title }}</h3>
         <p class="published">
-          <time :datetime="article.published.toISOString()">
-            {{ article.published.getFullYear() }}
-            /
-            {{ article.published.getMonth() + 1 }}
-            /
-            {{ article.published.getDate() }}
-          </time>
+          <time :datetime="article.published.toISOString()">{{ format(article.published) }}</time>
         </p>
-      </a>
-    </section>
+      </div>
+    </a>
   </div>
 </template>
 
@@ -36,36 +28,46 @@ const Article = namespace('articles')
 export default class extends Vue {
   @Article.State('list')
   articles
+
+  format(date) {
+    return [date.getFullYear(), date.getMonth() + 1, date.getDate()].join('/')
+  }
 }
 </script>
 
 <style scoped>
-div {
-  align-items: center;
+.articles {
   display: flex;
   flex-direction: column;
 }
 
 @media (min-width: 600px) {
-  div {
+  .articles {
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-around;
   }
 }
 
-section {
-  box-sizing: border-box;
-  padding: 1rem;
+.card {
+  border-radius: 4px;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+  color: #333;
+  display: block;
+  margin: 1.5rem 0.5rem 0.5rem;
+  padding: 0 0 3rem;
+  position: relative;
+  text-decoration: none;
 }
 
 @media (min-width: 600px) {
-  section {
+  .card {
+    margin-top: 0.5rem;
     width: 30%;
   }
 }
 
-section a {
+.card::before {
+  background-color: rgba(0, 0, 0, 0.7);
   background-image: url('~@/assets/images/animare-logo.png');
   background-image: image-set(
     url('~@/assets/images/animare-logo.png') 1x,
@@ -75,51 +77,27 @@ section a {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  border-radius: 24px;
-  box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
-  color: #333;
-  display: block;
-  height: 200px;
-  justify-content: center;
-  padding: 24px;
-  position: relative;
-  text-decoration: none;
-  width: 100%;
-  z-index: 1;
-}
-
-section a::before {
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 24px;
-  bottom: 0;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   content: '';
   display: block;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 2;
+  height: 150px;
 }
 
-section h3,
-section p {
-  position: relative;
-  z-index: 3;
+.card .inner {
+  margin: 1rem;
 }
 
-section h3 {
-  font-size: 1.2rem;
-  font-weight: 400;
+.card h3 {
+  font-size: 1rem;
   margin: 0;
 }
 
-section .published {
+.card .published {
   bottom: 0;
-  font-size: 0.9rem;
   left: 0;
   margin: 0;
-  padding: 0 12px 12px 0;
+  padding: 0 1rem 0.5rem 0;
   position: absolute;
   right: 0;
   text-align: right;
