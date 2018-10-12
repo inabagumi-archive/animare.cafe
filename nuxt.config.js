@@ -1,5 +1,5 @@
 const kebabCase = require('lodash/kebabCase')
-const talents = require('./static/talents.json')
+const talents = require('./data/talents.json')
 
 const routes = talents.reduce(
   (routes, talent) => [
