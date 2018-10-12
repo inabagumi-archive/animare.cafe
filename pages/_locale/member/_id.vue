@@ -41,19 +41,17 @@ export default class Member extends Vue {
   }
 
   head() {
-    const globalTitle = this.$t('global.title')
-    const title = `${this.name} - ${this.$t('member.title')}`
     const mainVisual = `https://animare.cafe${this.talent.mainVisual}`
 
     return {
       meta: [
         {
-          content: `${title} - ${globalTitle}`,
+          content: this.name,
           hid: 'og:title',
           property: 'og:title'
         },
         {
-          content: globalTitle,
+          content: this.$t('global.title'),
           property: 'og:site_name'
         },
         {
@@ -62,7 +60,7 @@ export default class Member extends Vue {
           name: 'og:image'
         },
         {
-          content: `${title} - ${globalTitle}`,
+          content: this.name,
           hid: 'twitter:title',
           name: 'twitter:title'
         },
@@ -72,7 +70,7 @@ export default class Member extends Vue {
           name: 'twitter:image'
         }
       ],
-      title
+      title: this.name
     }
   }
 
@@ -81,7 +79,7 @@ export default class Member extends Vue {
   }
 
   transition(to, from) {
-    if ((from && to.name !== from.name) || to.params.id !== from.params.id) {
+    if (from && (to.name !== from.name || to.params.id !== from.params.id)) {
       return 'member'
     }
   }

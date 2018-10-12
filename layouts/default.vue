@@ -85,9 +85,11 @@ export default class extends Vue {
           property: 'og:url'
         },
         {
-          content: title,
+          content: null,
           hid: 'og:title',
-          property: 'og:title'
+          property: 'og:title',
+          template: titleChunk =>
+            titleChunk ? `${titleChunk} - ${title}` : title
         },
         {
           content: description,
@@ -105,9 +107,11 @@ export default class extends Vue {
           name: 'twitter:card'
         },
         {
-          content: title,
+          content: null,
           hid: 'twitter:title',
-          name: 'twitter:title'
+          name: 'twitter:title',
+          template: titleChunk =>
+            titleChunk ? `${titleChunk} - ${title}` : title
         },
         {
           content: description,
