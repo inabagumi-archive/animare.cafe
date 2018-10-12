@@ -67,6 +67,11 @@ section {
 
 section a {
   background-image: url('~@/assets/images/animare-logo.png');
+  background-image: image-set(
+    url('~@/assets/images/animare-logo.png') 1x,
+    url('~@/assets/images/animare-logo@2x.png') 2x,
+    url('~@/assets/images/animare-logo@3x.png') 3x
+  );
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;

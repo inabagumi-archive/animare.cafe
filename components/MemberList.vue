@@ -8,7 +8,8 @@
     >
       <nuxt-link :to="`/${locale}${talent.path}`">
         <img
-          :src="talent.avatar"
+          :src="talent.avatar['1x']"
+          :srcset="imageSet(talent.avatar)"
           :alt="talent.name[locale]"
           width="256"
           height="256"
@@ -32,6 +33,12 @@ export default class extends Vue {
 
   @Talent.State('list')
   talents
+
+  imageSet(avatar) {
+    return Object.keys(avatar)
+      .map(key => `${avatar[key]} ${key}`)
+      .join(', ')
+  }
 
   kebabCase(...args) {
     return kebabCase(...args)

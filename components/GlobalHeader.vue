@@ -2,12 +2,7 @@
   <header>
     <div class="brand">
       <nuxt-link :to="`/${$i18n.locale}/`">
-        <img
-          src="~/assets/images/animare-logo.png"
-          width="200"
-          height="50"
-          :alt="$t('global.animare')"
-        >
+        <animare-logo />
       </nuxt-link>
     </div>
     <nav>
@@ -34,8 +29,11 @@
 <script lang="ts">
 import Component from 'nuxt-class-component'
 import Vue from 'vue'
+import AnimareLogo from '~/components/AnimareLogo.vue'
 
-@Component
+@Component({
+  components: { AnimareLogo }
+})
 export default class extends Vue {
   get locales(): object {
     return this.$store.state.locales.reduce(

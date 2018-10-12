@@ -2,11 +2,76 @@ import kebabCase from 'lodash/kebabCase'
 import snakeCase from 'lodash/snakeCase'
 
 const TALENT_AVATAR_LIST = {
-  haneru_inaba: require('~/assets/images/avatar/haneru-inaba.png'),
-  hinako_umori: require('~/assets/images/avatar/hinako-umori.png'),
-  ichika_souya: require('~/assets/images/avatar/ichika-souya.png'),
-  kuromu_inari: require('~/assets/images/avatar/kuromu-inari.png'),
-  ran_hinokuma: require('~/assets/images/avatar/ran-hinokuma.png')
+  haneru_inaba: [
+    {
+      sizes: '256x256',
+      src: require('~/assets/images/avatar/haneru-inaba.png')
+    },
+    {
+      sizes: '512x512',
+      src: require('~/assets/images/avatar/haneru-inaba@2x.png')
+    },
+    {
+      sizes: '768x768',
+      src: require('~/assets/images/avatar/haneru-inaba@3x.png')
+    }
+  ],
+  hinako_umori: [
+    {
+      sizes: '256x256',
+      src: require('~/assets/images/avatar/hinako-umori.png')
+    },
+    {
+      sizes: '512x512',
+      src: require('~/assets/images/avatar/hinako-umori@2x.png')
+    },
+    {
+      sizes: '768x768',
+      src: require('~/assets/images/avatar/hinako-umori@3x.png')
+    }
+  ],
+  ichika_souya: [
+    {
+      sizes: '256x256',
+      src: require('~/assets/images/avatar/ichika-souya.png')
+    },
+    {
+      sizes: '512x512',
+      src: require('~/assets/images/avatar/ichika-souya@2x.png')
+    },
+    {
+      sizes: '768x768',
+      src: require('~/assets/images/avatar/ichika-souya@3x.png')
+    }
+  ],
+  kuromu_inari: [
+    {
+      sizes: '256x256',
+      src: require('~/assets/images/avatar/kuromu-inari.png')
+    },
+    {
+      sizes: '512x512',
+      src: require('~/assets/images/avatar/kuromu-inari@2x.png')
+    },
+    {
+      sizes: '768x768',
+      src: require('~/assets/images/avatar/kuromu-inari@3x.png')
+    }
+  ],
+  ran_hinokuma: [
+    {
+      sizes: '256x256',
+      src: require('~/assets/images/avatar/ran-hinokuma.png')
+    },
+    {
+      sizes: '512x512',
+      src: require('~/assets/images/avatar/ran-hinokuma@2x.png')
+    },
+    {
+      sizes: '768x768',
+      src: require('~/assets/images/avatar/ran-hinokuma@3x.png')
+    }
+  ]
 }
 
 const TALENT_MAIN_VISUAL_LIST = {
@@ -50,7 +115,13 @@ export const actions = {
         (list, { id, ...talent }) => ({
           ...list,
           [id]: {
-            avatar: TALENT_AVATAR_LIST[id],
+            avatar: TALENT_AVATAR_LIST[id].reduce(
+              (avatar, { sizes, src }) => ({
+                ...avatar,
+                [`${sizes.split('x')[0] / 256}x`]: src
+              }),
+              {}
+            ),
             mainVisual: TALENT_MAIN_VISUAL_LIST[id],
             path: `/member/${kebabCase(id)}`,
             ...talent
