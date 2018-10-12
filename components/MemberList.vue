@@ -23,6 +23,7 @@
 import kebabCase from 'lodash/kebabCase'
 import Component, { namespace, State } from 'nuxt-class-component'
 import Vue from 'vue'
+import imageSet from '~/utils/imageSet'
 
 const Talent = namespace('talents')
 
@@ -34,10 +35,8 @@ export default class extends Vue {
   @Talent.State('list')
   talents
 
-  imageSet(avatar) {
-    return Object.keys(avatar)
-      .map(key => `${avatar[key]} ${key}`)
-      .join(', ')
+  imageSet(images) {
+    return imageSet(images)
   }
 
   kebabCase(...args) {

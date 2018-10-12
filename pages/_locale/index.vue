@@ -46,6 +46,10 @@ import News from '~/components/News.vue'
   }
 })
 export default class extends Vue {
+  transition(to, from) {
+    if (from && to.name !== from.name) return 'home'
+  }
+
   async fetch({ store }) {
     await store.dispatch('articles/fetch')
   }

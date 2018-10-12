@@ -11,6 +11,7 @@
 <script lang="ts">
 import Component from 'nuxt-class-component'
 import Vue from 'vue'
+import imageSet from '~/utils/imageSet'
 
 @Component
 export default class extends Vue {
@@ -21,9 +22,7 @@ export default class extends Vue {
   }
 
   imageSet(images) {
-    return Object.keys(images)
-      .map(key => `${images[key]} ${key}`)
-      .join(', ')
+    return imageSet(images)
   }
 }
 </script>
