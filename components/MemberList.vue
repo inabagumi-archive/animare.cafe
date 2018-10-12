@@ -60,7 +60,7 @@ ul {
   ul {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-arond;
+    justify-content: space-around;
   }
 }
 
