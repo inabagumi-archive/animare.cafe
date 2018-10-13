@@ -157,7 +157,11 @@ section h2 {
   }
 }
 
-section p {
+#about p {
   line-height: 2;
+}
+
+#about p:lang(ja) {
+  font-family: Roboto, Noto Serif JP, serif;
 }
 </style>

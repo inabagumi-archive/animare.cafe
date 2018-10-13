@@ -14,11 +14,16 @@
       href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700"
       rel="stylesheet"
     >
+    <link
+      v-if="locale == 'ja'"
+      href="https://fonts.googleapis.com/css?family=Noto+Serif+JP:400"
+      rel="stylesheet"
+    >
   </div>
 </template>
 
 <script lang="ts">
-import Component, { Getter, State } from 'nuxt-class-component'
+import Component, { Getter } from 'nuxt-class-component'
 import Vue from 'vue'
 import GlobalFooter from '~/components/GlobalFooter.vue'
 import GlobalHeader from '~/components/GlobalHeader.vue'
@@ -30,7 +35,7 @@ import GlobalHeader from '~/components/GlobalHeader.vue'
   }
 })
 export default class extends Vue {
-  @State
+  @Getter
   locale
 
   @Getter
@@ -140,8 +145,12 @@ body {
 
 html {
   line-height: 1;
-  font-family: Roboto, Noto Sans JP, sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 16px;
+}
+
+html:lang(ja) {
+  font-family: Roboto, Noto Sans JP, sans-serif;
 }
 </style>
 
