@@ -9,24 +9,18 @@
     </div>
     <main>
       <section id="members">
-        <h2>
-          {{ $t('home.members.title') }}
-        </h2>
+        <h2>{{ $t('home.members.title') }}</h2>
         <member-list />
       </section>
       <section id="about">
         <div class="inner">
           <!-- eslint-disable-next-line vue/no-v-html -->
           <h2 v-html="$t('home.about_animare.title')" />
-          <p>
-            {{ $t('home.about_animare.text') }}
-          </p>
+          <p>{{ $t('home.about_animare.text') }}</p>
         </div>
       </section>
       <section id="news">
-        <h2>
-          {{ $t('home.news.title') }}
-        </h2>
+        <h2>{{ $t('home.news.title') }}</h2>
         <news />
       </section>
     </main>
