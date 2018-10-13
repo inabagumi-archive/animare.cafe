@@ -11,7 +11,7 @@
       <div class="inner">
         <h3>{{ article.title }}</h3>
         <p class="published">
-          <time :datetime="article.published.toISOString()">{{ format(article.published) }}</time>
+          <time :datetime="article.published.toISOString()">{{ $d(article.published) }}</time>
         </p>
       </div>
     </a>
@@ -28,10 +28,6 @@ const Article = namespace('articles')
 export default class extends Vue {
   @Article.State('list')
   articles
-
-  format(date) {
-    return [date.getFullYear(), date.getMonth() + 1, date.getDate()].join('/')
-  }
 }
 </script>
 
