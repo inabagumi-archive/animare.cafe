@@ -1,25 +1,21 @@
 <template>
   <header>
     <div class="brand">
-      <nuxt-link :to="`/${$i18n.locale}/`">
+      <nuxt-link :to="$i18n.path('/')">
         <animare-logo />
       </nuxt-link>
     </div>
     <nav>
-      <h2>
-        {{ locales[$i18n.locale] }}
-      </h2>
+      <h2>{{ locales[$i18n.locale] }}</h2>
       <ul>
         <li
           v-for="(label, locale) in locales"
           :key="locale"
         >
           <nuxt-link
-            :to="`/${locale}${path}`"
+            :to="$i18n.path(path, locale)"
             exact
-          >
-            {{ label }}
-          </nuxt-link>
+          >{{ label }}</nuxt-link>
         </li>
       </ul>
     </nav>
@@ -27,7 +23,7 @@
 </template>
 
 <script lang="ts">
-import Component from 'nuxt-class-component'
+import Component, { Getter } from 'nuxt-class-component'
 import Vue from 'vue'
 import AnimareLogo from '~/components/AnimareLogo.vue'
 
@@ -35,15 +31,8 @@ import AnimareLogo from '~/components/AnimareLogo.vue'
   components: { AnimareLogo }
 })
 export default class extends Vue {
-  get locales(): object {
-    return this.$store.state.locales.reduce(
-      (locales, locale) => ({
-        ...locales,
-        [locale]: locale.toUpperCase()
-      }),
-      {}
-    )
-  }
+  @Getter
+  locales
 
   get path(): string {
     const fullPath: string = this.$route.fullPath

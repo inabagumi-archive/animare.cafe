@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import Component, { State } from 'nuxt-class-component'
+import Component, { Getter, State } from 'nuxt-class-component'
 import Vue from 'vue'
 import GlobalFooter from '~/components/GlobalFooter.vue'
 import GlobalHeader from '~/components/GlobalHeader.vue'
@@ -33,7 +33,7 @@ export default class extends Vue {
   @State
   locale
 
-  @State
+  @Getter
   locales
 
   head() {
@@ -60,7 +60,7 @@ export default class extends Vue {
           hid: 'icon',
           href: require('~/assets/images/favicon.png')
         },
-        ...this.locales
+        ...Object.keys(this.locales)
           .filter(locale => locale !== this.locale)
           .map(locale => ({
             href: `/${locale}${path}`,

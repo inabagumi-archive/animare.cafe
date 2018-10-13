@@ -1,16 +1,18 @@
-export default ({ app, error, isHMR, params, redirect, req, route, store }) => {
-  const locale = params.locale || 'en'
-  if (!store.state.locales.includes(locale)) {
+export default async ({ app, error, params, redirect, route, store }) => {
+  const locale = params.locale
+  if (!locale) return redirect(app.i18n.path('/', 'en'))
+
+  try {
+    await store.dispatch('i18n/set', { locale })
+  } catch ({ message }) {
     return error({
-      message: 'This page could not be found.',
+      message,
       statusCode: 404
     })
   }
 
-  store.commit('SET_LOCALE', locale)
-  app.i18n.locale = store.state.locale
-
-  if (route.fullPath === '/') {
-    redirect(`/${locale}/`)
+  if (app.i18n.locale !== store.getters.locale) {
+    app.i18n.locale = store.getters.locale
+    app.i18n.mergeLocaleMessage(locale, store.state.i18n.messages[locale])
   }
 }
