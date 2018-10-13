@@ -85,13 +85,13 @@ export default class extends Vue {
 h1 {
   font-size: 3rem;
   font-weight: 700;
-  letter-spacing: 0.25rem;
+  letter-spacing: 0.5rem;
   text-align: center;
   margin: 0;
 }
 
 h1:lang(en) {
-  letter-spacing: 0.5rem;
+  letter-spacing: 1rem;
 }
 
 h1 >>> .line {
