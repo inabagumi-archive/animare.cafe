@@ -122,6 +122,10 @@ section + section {
   margin-top: 1rem;
 }
 
+section:last-of-type {
+  margin-bottom: 2rem;
+}
+
 @media (min-width: 600px) {
   section {
     padding-bottom: 5rem;
