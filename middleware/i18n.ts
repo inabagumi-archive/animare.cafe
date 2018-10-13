@@ -5,6 +5,8 @@ export default async ({ app, error, params, redirect, route, store }) => {
   try {
     await store.dispatch('i18n/set', { locale })
   } catch ({ message }) {
+    await store.dispatch('i18n/set', { locale: 'en' })
+
     return error({
       message,
       statusCode: 404
