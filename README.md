@@ -1,4 +1,6 @@
-# 有閑喫茶 あにまーれ 非公式ウェブサイト ([animare.cafe](https://animare.cafe/))
+# 有閑喫茶 あにまーれ 非公式ウェブサイト
+
+:yellow_heart: [animare.cafe](https://animare.cafe/) :yellow_heart:
 
 ## 画像の変換
 
@@ -16,3 +18,7 @@
 |--------|--------------------------------------------------|----------------------------------------------------------------------|
 | JPEG   | [mozjpeg](https://github.com/mozilla/mozjpeg)    | `jpegtran -copy none -optimize -progressive -outfile out.jpg in.jpg` |
 | PNG    | [pngcrush](https://pmt.sourceforge.io/pngcrush/) | `pngcrush -brute -reduce -rem alla in.png out.png`                   |
+
+## ライセンス
+
+[`assets/images/`](/assets/images/) ディレクトリー以下にある画像は有閑喫茶 あにまーれが著作権を有する物が多く含まれています。利用については細心の注意を払ってください。
