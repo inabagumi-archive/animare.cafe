@@ -6,7 +6,7 @@
       class="member"
       :class="`member__${kebabCase(id)}`"
     >
-      <nuxt-link :to="`/${locale}${talent.path}`">
+      <nuxt-link :to="$i18n.path(talent.path)">
         <img
           :src="talent.avatar['1x']"
           :srcset="imageSet(talent.avatar)"

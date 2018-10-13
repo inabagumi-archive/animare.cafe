@@ -6,36 +6,28 @@
       </div>
       <div class="links">
         <nav>
-          <h2>
-            Links
-          </h2>
+          <h2>Links</h2>
           <ul>
             <li>
               <a
                 rel="noopener noreferrer"
                 target="_blank"
                 href="https://www.youtube.com/channel/UC8BS2IrE9NmxKLX7ObRVyxQ"
-              >
-                YouTube
-              </a>
+              >YouTube</a>
             </li>
             <li>
               <a
                 rel="noopener noreferrer"
                 target="_blank"
                 href="https://twitter.com/AniMare_cafe"
-              >
-                Twitter
-              </a>
+              >Twitter</a>
             </li>
             <li>
               <a
                 rel="noopener noreferrer"
                 target="_blank"
                 href="https://upd8.jp/virtual_talent/vt_category/anima-re/"
-              >
-                upd8
-              </a>
+              >upd8</a>
             </li>
           </ul>
         </nav>
@@ -43,9 +35,7 @@
           v-for="service in services"
           :key="service"
         >
-          <h2>
-            {{ service }}
-          </h2>
+          <h2>{{ service }}</h2>
           <ul>
             <li
               v-for="(talent, id) in talents"
@@ -55,9 +45,7 @@
                 rel="noopener noreferrer"
                 target="_blank"
                 :href="talent[service.toLowerCase()]"
-              >
-                {{ talent.name[$i18n.locale] }}
-              </a>
+              >{{ talent.name[$i18n.locale] }}</a>
             </li>
           </ul>
         </nav>

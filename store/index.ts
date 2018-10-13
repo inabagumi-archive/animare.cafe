@@ -1,15 +1,22 @@
-export const state = () => ({
-  locale: 'en',
-  locales: ['en', 'ja']
-})
+export const state = () => ({})
 
-export const mutations = {
-  SET_LOCALE(state, locale) {
-    if (state.locales.includes(locale)) {
-      state.locale = locale
-    }
+export const getters = {
+  locale(state) {
+    return state.i18n.locale
+  },
+
+  locales(state) {
+    return state.i18n.locales.reduce(
+      (locales, locale) => ({
+        ...locales,
+        [locale]: locale.toUpperCase()
+      }),
+      {}
+    )
   }
 }
+
+export const mutations = {}
 
 export const actions = {
   async nuxtServerInit({ dispatch }) {

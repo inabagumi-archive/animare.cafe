@@ -1,16 +1,17 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-import en from '~/locales/en.json'
-import ja from '~/locales/ja.json'
 
 Vue.use(VueI18n)
 
 export default ({ app, store }) => {
   app.i18n = new VueI18n({
     fallbackLocale: 'en',
-    locale: store.state.locale,
-    messages: { en, ja }
+    locale: store.getters.locale
   })
 
-  app.i18n.path = link => `/${app.i18n.locale}${link}`
+  app.i18n.path = (link, locale = app.i18n.locale) => `/${locale}${link}`
+
+  Object.keys(store.state.i18n.messages).forEach(locale => {
+    app.i18n.mergeLocaleMessage(locale, store.state.i18n.messages[locale])
+  })
 }
