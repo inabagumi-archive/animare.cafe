@@ -72,7 +72,7 @@ export default class extends Vue {
   );
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 85%;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   content: '';
