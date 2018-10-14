@@ -7,7 +7,7 @@ const routes = talents.reduce(
     `/en/member/${kebabCase(talent.id)}`,
     `/ja/member/${kebabCase(talent.id)}`
   ],
-  ['/en/', '/ja/']
+  ['/en/', '/ja/', '/404']
 )
 
 module.exports = {
@@ -41,7 +41,7 @@ module.exports = {
   css: [],
   dev: process.env.NODE_ENV !== 'production',
   generate: {
-    fallback: true,
+    fallback: false,
     routes
   },
   loading: {
