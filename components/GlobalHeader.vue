@@ -31,6 +31,8 @@ import AnimareLogo from '~/components/AnimareLogo.vue'
   components: { AnimareLogo }
 })
 export default class extends Vue {
+  $route: any
+
   @Getter
   locales
 

@@ -48,7 +48,12 @@ module.exports = {
     color: '#fff'
   },
   mode: 'universal',
-  modules: ['@nuxtjs/axios', '@nuxtjs/sitemap', '~/modules/typescript', '~/modules/generate'],
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/sitemap',
+    '~/modules/typescript',
+    '~/modules/generate'
+  ],
   plugins: ['~/plugins/axios', '~/plugins/i18n'],
   router: {
     middleware: ['i18n']
