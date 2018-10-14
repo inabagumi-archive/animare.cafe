@@ -1,0 +1,70 @@
+{
+  "hosting": {
+    "cleanUrls": true,
+    "headers": [
+      {
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=600, public, s-maxage=60"
+          },
+          {
+            "key": "Referrer-Policy",
+            "value": "same-origin"
+          }
+        ],
+        "source": "/**"
+      },
+      {
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "immutable, max-age=31536000, public"
+          }
+        ],
+        "source": "/_nuxt/*.js"
+      },
+      {
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "immutable, max-age=31536000, public"
+          }
+        ],
+        "source": "/_nuxt/img/*"
+      },
+      {
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=0"
+          }
+        ],
+        "source": "/sitemap.xml"
+      },
+      {
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=60, public, s-maxage=0"
+          }
+        ],
+        "source": "/404.html"
+      }
+    ],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "public": "./dist/",
+    "redirects": [
+      {
+        "destination": "/en/",
+        "source": "/",
+        "type": 302
+      }
+    ],
+    "rewrites": []
+  }
+}

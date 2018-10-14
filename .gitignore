@@ -1,5 +1,7 @@
+/.firebase/
 /.nuxt/
 /dist/
 /node_modules/
+/firebase-debug.log
 /static/sitemap.xml
 /yarn-error.log
