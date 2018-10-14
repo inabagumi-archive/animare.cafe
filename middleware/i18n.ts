@@ -1,16 +1,26 @@
 import parsePath from '~/utils/parsePath'
 
-export default async ({ app, redirect, req, route, store }) => {
-  const { locale, path } = parsePath(route.fullPath, req)
+export default async ({ app, error, redirect, route, store }) => {
+  const { locale } = parsePath(route.fullPath)
 
-  if (route.fullPath !== `/${locale}${path}`) {
-    return redirect(app.i18n.path(path, locale))
+  if (route.path === '/') {
+    return redirect(app.i18n.path('/', locale))
+  }
+
+  if (!locale) {
+    await store.dispatch('i18n/set', { locale: 'en' })
+    app.i18n.reload('en')
+
+    return error({
+      message: 'This page could not be found',
+      statusCode: 404
+    })
   }
 
   await store.dispatch('i18n/set', { locale })
 
   if (app.i18n.locale !== store.getters.locale) {
     app.i18n.locale = store.getters.locale
-    app.i18n.mergeLocaleMessage(locale, store.state.i18n.messages[locale])
+    app.i18n.reload(locale)
   }
 }
