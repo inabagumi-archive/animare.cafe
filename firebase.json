@@ -58,13 +58,7 @@
       "**/node_modules/**"
     ],
     "public": "./dist/",
-    "redirects": [
-      {
-        "destination": "/en/",
-        "source": "/",
-        "type": 302
-      }
-    ],
+    "redirects": [],
     "rewrites": []
   }
 }

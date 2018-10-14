@@ -1,17 +1,13 @@
-export default async ({ app, error, params, redirect, route, store }) => {
-  const locale = params.locale
-  if (!locale) return redirect(app.i18n.path('/', 'en'))
+import parsePath from '~/utils/parsePath'
 
-  try {
-    await store.dispatch('i18n/set', { locale })
-  } catch ({ message }) {
-    await store.dispatch('i18n/set', { locale: 'en' })
+export default async ({ app, redirect, req, route, store }) => {
+  const { locale, path } = parsePath(route.fullPath, req)
 
-    return error({
-      message,
-      statusCode: 404
-    })
+  if (route.fullPath !== `/${locale}${path}`) {
+    return redirect(app.i18n.path(path, locale))
   }
+
+  await store.dispatch('i18n/set', { locale })
 
   if (app.i18n.locale !== store.getters.locale) {
     app.i18n.locale = store.getters.locale
