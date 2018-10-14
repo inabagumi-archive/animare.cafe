@@ -11,7 +11,10 @@ export default ({ app, store }) => {
 
   app.i18n.path = (link, locale = app.i18n.locale) => `/${locale}${link}`
 
-  Object.keys(store.state.i18n.messages).forEach(locale => {
+  app.i18n.reload = locale =>
     app.i18n.mergeLocaleMessage(locale, store.state.i18n.messages[locale])
-  })
+
+  for (const locale of Object.keys(store.state.i18n.messages)) {
+    app.i18n.reload(locale)
+  }
 }

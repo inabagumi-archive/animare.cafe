@@ -58,7 +58,13 @@
       "**/node_modules/**"
     ],
     "public": "./dist/",
-    "redirects": [],
+    "redirects": [
+      {
+        "destination": "https://animare.cafe/ja/",
+        "source": "/",
+        "type": 302
+      }
+    ],
     "rewrites": []
   }
 }
