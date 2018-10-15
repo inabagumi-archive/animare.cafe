@@ -5,14 +5,7 @@
       <nuxt />
     </div>
     <global-footer />
-    <a
-      href="#top"
-      class="goto-top"
-      :class="{ show: showButton }"
-      :title="$t('global.go_to_top')"
-    >
-      <span>▲</span>
-    </a>
+    <goto-top />
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:400,700"
       rel="stylesheet"
@@ -31,52 +24,27 @@
 </template>
 
 <script lang="ts">
-import throttle from 'lodash/throttle'
 import Component, { Getter } from 'nuxt-class-component'
 import Vue from 'vue'
 import GlobalFooter from '~/components/GlobalFooter.vue'
 import GlobalHeader from '~/components/GlobalHeader.vue'
+import GotoTop from '~/components/GotoTop'
 
 @Component({
   components: {
     GlobalFooter,
-    GlobalHeader
+    GlobalHeader,
+    GotoTop
   }
 })
 export default class extends Vue {
   $route: any
-  handleScroll: () => void
-  showButton: boolean
 
   @Getter
   locale
 
   @Getter
   locales
-
-  mounted() {
-    this.handleScroll = throttle(() => {
-      const { body, documentElement } = document
-      if (!documentElement || !body) return
-
-      this.showButton =
-        Math.max(documentElement.scrollTop, body.scrollTop) > 100
-    }, 1000 / 60)
-
-    window.addEventListener('scroll', this.handleScroll)
-  }
-
-  beforeDestroy() {
-    if (typeof this.handleScroll === 'function') {
-      window.removeEventListener('scroll', this.handleScroll)
-    }
-  }
-
-  data() {
-    return {
-      showButton: false
-    }
-  }
 
   head() {
     const { fullPath } = this.$route
@@ -180,7 +148,6 @@ html {
   font-size: 16px;
   margin: 0;
   padding: 0;
-  scroll-behavior: smooth;
 }
 
 html:lang(ja) {
@@ -216,34 +183,5 @@ body {
 .member-enter {
   opacity: 0;
   transform: translateY(24px);
-}
-
-.goto-top {
-  align-items: center;
-  background-color: #282828;
-  border-radius: 50%;
-  bottom: 1rem;
-  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.6);
-  color: #fff;
-  display: flex;
-  height: 48px;
-  justify-content: center;
-  position: fixed;
-  right: 1rem;
-  text-decoration: none;
-  transform: translateY(96px);
-  transition: transform 1s;
-  width: 48px;
-}
-
-.goto-top.show {
-  transform: none;
-  transition: transform 0.5s;
-}
-
-.goto-top span {
-  display: block;
-  font-family: Roboto, sans-serif;
-  font-size: 24px;
 }
 </style>
