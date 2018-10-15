@@ -8,7 +8,7 @@
     "lodash": "^4.17.11",
     "nuxt": "^2.2.0",
     "nuxt-class-component": "^1.2.1",
-    "vue-i18n": "^8.2.0"
+    "vue-i18n": "^8.2.1"
   },
   "description": "The animare.cafe is a unofficial website",
   "devDependencies": {
