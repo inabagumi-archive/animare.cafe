@@ -11,10 +11,13 @@ export default ({ app, store }) => {
 
   app.i18n.path = (link, locale = app.i18n.locale) => `/${locale}${link}`
 
-  app.i18n.reload = locale =>
-    app.i18n.mergeLocaleMessage(locale, store.state.i18n.messages[locale])
+  app.i18n.reload = locale => {
+    const message = store.state.locales.messages[locale]
 
-  for (const locale of Object.keys(store.state.i18n.messages)) {
+    app.i18n.mergeLocaleMessage(locale, message)
+  }
+
+  for (const locale of Object.keys(store.getters.locales)) {
     app.i18n.reload(locale)
   }
 }
