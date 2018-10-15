@@ -1,4 +1,5 @@
-const AVAILABLE_LOCALES: string[] = ['en', 'ja']
+import { AVAILABLE_LOCALES } from '~/store/locales'
+
 const PATH_REGEXP: RegExp = /^\/([^/]+)(?:\/.*)?$/
 
 export default (path: string): { locale: string } => {

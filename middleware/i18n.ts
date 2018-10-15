@@ -8,7 +8,7 @@ export default async ({ app, error, redirect, route, store }) => {
   }
 
   if (!locale) {
-    await store.dispatch('i18n/set', { locale: 'en' })
+    await store.dispatch('locales/set', { locale: 'en' })
     app.i18n.reload('en')
 
     return error({
@@ -17,7 +17,7 @@ export default async ({ app, error, redirect, route, store }) => {
     })
   }
 
-  await store.dispatch('i18n/set', { locale })
+  await store.dispatch('locales/set', { locale })
 
   if (app.i18n.locale !== store.getters.locale) {
     app.i18n.locale = store.getters.locale

@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import kebabCase from 'lodash/kebabCase'
-import Component, { namespace, State } from 'nuxt-class-component'
+import Component, { Getter, namespace } from 'nuxt-class-component'
 import Vue from 'vue'
 import imageSet from '~/utils/imageSet'
 
@@ -29,7 +29,7 @@ const Talent = namespace('talents')
 
 @Component
 export default class extends Vue {
-  @State
+  @Getter
   locale
 
   @Talent.State('list')
