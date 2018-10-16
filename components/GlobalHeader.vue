@@ -74,8 +74,9 @@ a {
   transition: color 0.5s;
 }
 
-a.nuxt-link-active {
+li.nuxt-link-active a {
   color: #fff;
+  pointer-events: none;
 }
 
 a:hover {
