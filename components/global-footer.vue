@@ -57,7 +57,7 @@
 <script lang="ts">
 import Component, { State } from 'nuxt-class-component'
 import Vue from 'vue'
-import AnimareLogo from '~/components/AnimareLogo.vue'
+import AnimareLogo from '~/components/animare-logo.vue'
 
 @Component({
   components: { AnimareLogo }
