@@ -32,7 +32,7 @@ export default class extends Vue {
   handleClick(event): void {
     event.preventDefault()
 
-    let position: number = window.scrollY
+    let position: number = window.pageYOffset
     let start: number | null = null
 
     const step = (timestamp: number): void => {
@@ -42,9 +42,9 @@ export default class extends Vue {
 
       const percentage: number = (timestamp - start) / 500
 
-      scroll(window.scrollX, position - position * percentage)
+      scroll(window.pageXOffset, position - position * percentage)
 
-      if (window.scrollY > 0) {
+      if (window.pageYOffset > 0) {
         requestAnimationFrame(step)
       }
     }
@@ -54,7 +54,7 @@ export default class extends Vue {
 
   handleScroll = throttle((): void => {
     this.update({
-      showButton: window.scrollY > 100
+      showButton: window.pageYOffset > 100
     })
   }, 1000 / 60)
 
