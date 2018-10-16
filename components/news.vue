@@ -19,14 +19,14 @@
 </template>
 
 <script lang="ts">
-import Component, { namespace } from 'nuxt-class-component'
+import Component, { namespace, State } from 'nuxt-class-component'
 import Vue from 'vue'
 
-const Article = namespace('articles')
+const ArticleState = namespace('articles', State)
 
 @Component
 export default class extends Vue {
-  @Article.State('list')
+  @ArticleState('list')
   articles
 }
 </script>
@@ -35,6 +35,8 @@ export default class extends Vue {
 .articles {
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
 @media (min-width: 600px) {
