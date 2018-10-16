@@ -8,12 +8,15 @@
     <nav>
       <h2>{{ $i18n.locale }}</h2>
       <ul>
-        <li
+        <nuxt-link
           v-for="locale in $i18n.locales"
           :key="locale.code"
+          tag="li"
+          :to="switchLocalePath(locale.code)"
+          exact
         >
-          <nuxt-link :to="switchLocalePath(locale.code)">{{ locale.name }}</nuxt-link>
-        </li>
+          <a>{{ locale.name }}</a>
+        </nuxt-link>
       </ul>
     </nav>
   </header>
