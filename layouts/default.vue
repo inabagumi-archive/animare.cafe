@@ -11,12 +11,12 @@
       rel="stylesheet"
     >
     <link
-      v-if="locale == 'ja'"
+      v-if="$i18n.locale == 'ja'"
       href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700"
       rel="stylesheet"
     >
     <link
-      v-if="locale == 'ja'"
+      v-if="$i18n.locale == 'ja'"
       href="https://fonts.googleapis.com/css?family=Noto+Serif+JP:400"
       rel="stylesheet"
     >
@@ -28,7 +28,7 @@ import Component, { Getter } from 'nuxt-class-component'
 import Vue from 'vue'
 import GlobalFooter from '~/components/GlobalFooter.vue'
 import GlobalHeader from '~/components/GlobalHeader.vue'
-import GotoTop from '~/components/GotoTop'
+import GotoTop from '~/components/GotoTop.vue'
 
 @Component({
   components: {
@@ -40,12 +40,6 @@ import GotoTop from '~/components/GotoTop'
 export default class extends Vue {
   $route: any
 
-  @Getter
-  locale
-
-  @Getter
-  locales
-
   head() {
     const { fullPath } = this.$route
     const base = 'https://animare.cafe'
@@ -56,9 +50,6 @@ export default class extends Vue {
     const mainVisualPath = `${base}${require('~/assets/images/main-visual.jpg')}`
 
     return {
-      htmlAttrs: {
-        lang: this.locale
-      },
       link: [
         {
           href: url,
@@ -69,14 +60,7 @@ export default class extends Vue {
           rel: 'icon',
           hid: 'icon',
           href: require('~/assets/images/favicon.png')
-        },
-        ...Object.keys(this.locales)
-          .filter(locale => locale !== this.locale)
-          .map(locale => ({
-            href: `/${locale}${path}`,
-            hreflang: locale,
-            rel: 'alternate'
-          }))
+        }
       ],
       meta: [
         { charset: 'UTF-8' },

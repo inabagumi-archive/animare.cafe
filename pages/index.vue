@@ -40,12 +40,16 @@ import News from '~/components/News.vue'
   }
 })
 export default class extends Vue {
-  transition(to, from) {
-    if (from && to.name !== from.name) return 'home'
-  }
-
   async fetch({ store }) {
     await store.dispatch('articles/fetch')
+  }
+
+  transition(to, from) {
+    if (from && to.name.split('___')[0] !== from.name.split('___')[0]) {
+      return 'home'
+    }
+
+    return 'page'
   }
 }
 </script>

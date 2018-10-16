@@ -1,14 +1,14 @@
 <template>
   <main>
     <h1>
-      {{ name }}
+      {{ talent.name[$i18n.locale] }}
     </h1>
     <img
       :src="talent.avatar['1x']"
       :srcset="imageSet(talent.avatar)"
       width="256"
       height="256"
-      :alt="name"
+      :alt="talent.name[$i18n.locale]"
     >
   </main>
 </template>
@@ -25,10 +25,6 @@ export default class Member extends Vue {
   @Talent.State('current')
   talent
 
-  get name() {
-    return this.talent.name[this.$i18n.locale]
-  }
-
   async fetch({ error, params, store }) {
     try {
       await store.dispatch('talents/fetch', params)
@@ -41,12 +37,13 @@ export default class Member extends Vue {
   }
 
   head() {
+    const title = this.talent.name[this.$i18n.locale]
     const mainVisual = `https://animare.cafe${this.talent.mainVisual}`
 
     return {
       meta: [
         {
-          content: this.name,
+          content: title,
           hid: 'og:title',
           property: 'og:title'
         },
@@ -60,7 +57,7 @@ export default class Member extends Vue {
           name: 'og:image'
         },
         {
-          content: this.name,
+          content: title,
           hid: 'twitter:title',
           name: 'twitter:title'
         },
@@ -70,7 +67,7 @@ export default class Member extends Vue {
           name: 'twitter:image'
         }
       ],
-      title: this.name
+      title
     }
   }
 
@@ -79,9 +76,15 @@ export default class Member extends Vue {
   }
 
   transition(to, from) {
-    if (from && (to.name !== from.name || to.params.id !== from.params.id)) {
-      return 'member'
+    if (from) {
+      if (to.name.split('___')[0] !== from.name.split('___')[0]) {
+        return 'member'
+      } else if (to.params.id !== from.params.id) {
+        return 'member'
+      }
     }
+
+    return 'page'
   }
 
   validate({ params }) {

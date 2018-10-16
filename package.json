@@ -8,6 +8,7 @@
     "lodash": "^4.17.11",
     "nuxt": "^2.2.0",
     "nuxt-class-component": "^1.2.1",
+    "nuxt-i18n": "^5.4.3",
     "vue-i18n": "^8.2.1"
   },
   "description": "The animare.cafe is a unofficial website",
@@ -36,6 +37,7 @@
     "precommit": "${npm_execpath} run lint",
     "start": "cross-env NODE_ENV=production node server"
   },
+  "types": "./index.d.ts",
   "version": "1.0.0",
   "workspaces": [
     "functions"
