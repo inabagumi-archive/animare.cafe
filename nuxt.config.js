@@ -50,21 +50,59 @@ module.exports = {
   mode: 'universal',
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/sitemap',
+    [
+      '@nuxtjs/sitemap',
+      {
+        generate: true,
+        hostname: 'https://animare.cafe',
+        routes: routes.map(url => ({
+          changefreq: 'daily',
+          priority: 1.0,
+          url
+        }))
+      }
+    ],
+    [
+      'nuxt-i18n',
+      {
+        baseUrl: 'https://animare.cafe',
+        defaultLocale: 'en',
+        langDir: './locales/',
+        locales: [
+          {
+            code: 'en',
+            file: 'en.json',
+            iso: 'en-US',
+            name: 'English'
+          },
+          {
+            code: 'ja',
+            file: 'ja.json',
+            iso: 'ja-JP',
+            name: '日本語'
+          }
+        ],
+        lazy: true,
+        parsePages: false,
+        seo: true,
+        strategy: 'prefix',
+        vueI18n: {},
+        vueI18nLoader: false
+      }
+    ],
     '~/modules/typescript',
     '~/modules/generate'
   ],
-  plugins: ['~/plugins/axios', '~/plugins/i18n'],
+  plugins: ['~/plugins/axios'],
   router: {
-    middleware: ['i18n']
-  },
-  sitemap: {
-    generate: true,
-    hostname: 'https://animare.cafe',
-    routes: routes.map(url => ({
-      changefreq: 'daily',
-      priority: 1.0,
-      url
-    }))
+    extendRoutes(routes) {
+      for (const route of routes) {
+        if (!route.path.endsWith('/')) continue
+
+        route.pathToRegexpOptions = {
+          strict: true
+        }
+      }
+    }
   }
 }

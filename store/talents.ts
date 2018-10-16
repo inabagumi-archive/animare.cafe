@@ -1,5 +1,4 @@
 import kebabCase from 'lodash/kebabCase'
-import snakeCase from 'lodash/snakeCase'
 
 const TALENT_AVATAR_LIST = {
   haneru_inaba: [
@@ -97,8 +96,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async fetch({ commit, state }, payload) {
-    const id = snakeCase(payload.id)
+  async fetch({ commit, state }, { id }) {
     const talent = state.list[id]
 
     if (!talent) {
@@ -116,7 +114,7 @@ export const actions = {
       talents: talents.reduce(
         (list, { id, ...talent }) => ({
           ...list,
-          [id]: {
+          [kebabCase(id)]: {
             avatar: TALENT_AVATAR_LIST[id].reduce(
               (avatar, { sizes, src }) => ({
                 ...avatar,
@@ -125,7 +123,6 @@ export const actions = {
               {}
             ),
             mainVisual: TALENT_MAIN_VISUAL_LIST[id],
-            path: `/member/${kebabCase(id)}`,
             ...talent
           }
         }),

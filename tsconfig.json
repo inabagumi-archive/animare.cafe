@@ -9,6 +9,7 @@
     "moduleResolution": "node",
     "noImplicitAny": false,
     "noImplicitThis": false,
+    "outDir": "./.nuxt/tmp/dummy/",
     "paths": {
       "~/*": ["./*"]
     },

@@ -4,13 +4,13 @@
       v-for="(talent, id) in talents"
       :key="id"
       class="member"
-      :class="`member__${kebabCase(id)}`"
+      :class="`member__${id}`"
     >
-      <nuxt-link :to="$i18n.path(talent.path)">
+      <nuxt-link :to="localePath({ name: 'member-id', params: { id } })">
         <img
           :src="talent.avatar['1x']"
           :srcset="imageSet(talent.avatar)"
-          :alt="talent.name[locale]"
+          :alt="talent.name[$i18n.locale]"
           width="256"
           height="256"
         >
@@ -20,8 +20,7 @@
 </template>
 
 <script lang="ts">
-import kebabCase from 'lodash/kebabCase'
-import Component, { Getter, namespace } from 'nuxt-class-component'
+import Component, { namespace } from 'nuxt-class-component'
 import Vue from 'vue'
 import imageSet from '~/utils/imageSet'
 
@@ -29,18 +28,11 @@ const Talent = namespace('talents')
 
 @Component
 export default class extends Vue {
-  @Getter
-  locale
-
   @Talent.State('list')
   talents
 
   imageSet(images) {
     return imageSet(images)
-  }
-
-  kebabCase(...args) {
-    return kebabCase(...args)
   }
 }
 </script>
