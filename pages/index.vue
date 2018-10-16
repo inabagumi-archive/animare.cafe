@@ -30,8 +30,8 @@
 <script lang="ts">
 import Component from 'nuxt-class-component'
 import Vue from 'vue'
-import MemberList from '~/components/MemberList.vue'
-import News from '~/components/News.vue'
+import MemberList from '~/components/member-list.vue'
+import News from '~/components/news.vue'
 
 @Component({
   components: {

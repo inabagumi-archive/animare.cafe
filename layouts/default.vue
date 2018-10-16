@@ -26,9 +26,9 @@
 <script lang="ts">
 import Component, { Getter } from 'nuxt-class-component'
 import Vue from 'vue'
-import GlobalFooter from '~/components/GlobalFooter.vue'
-import GlobalHeader from '~/components/GlobalHeader.vue'
-import GotoTop from '~/components/GotoTop.vue'
+import GlobalFooter from '~/components/global-footer.vue'
+import GlobalHeader from '~/components/global-header.vue'
+import GotoTop from '~/components/goto-top.vue'
 
 @Component({
   components: {
