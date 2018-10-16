@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="member-list">
     <li
       v-for="(talent, id) in talents"
       :key="id"
@@ -20,15 +20,15 @@
 </template>
 
 <script lang="ts">
-import Component, { namespace } from 'nuxt-class-component'
+import Component, { namespace, State } from 'nuxt-class-component'
 import Vue from 'vue'
 import imageSet from '~/utils/imageSet'
 
-const Talent = namespace('talents')
+const TalentState = namespace('talents', State)
 
 @Component
 export default class extends Vue {
-  @Talent.State('list')
+  @TalentState('list')
   talents
 
   imageSet(images) {
@@ -38,17 +38,18 @@ export default class extends Vue {
 </script>
 
 <style scoped>
-ul {
+.member-list {
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 2rem 0 2rem;
+  margin: 2rem auto;
+  max-width: 1200px;
   padding: 0;
 }
 
 @media (min-width: 600px) {
-  ul {
+  .member-list {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
