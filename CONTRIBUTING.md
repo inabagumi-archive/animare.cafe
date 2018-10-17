@@ -17,7 +17,7 @@ $ yarn dev
 
 ```console
 $ yarn generate
-$ npx firebase-tools serve
+$ npx firebase-tools serve --only hosting,functions
 ```
 
 `http://localhost:5000/` をウェブブラウザーで開いてください。
