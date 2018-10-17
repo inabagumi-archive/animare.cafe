@@ -1,12 +1,14 @@
 <template>
   <ul class="member-list">
-    <li
+    <nuxt-link
       v-for="(talent, id) in talents"
       :key="id"
+      tag="li"
+      :to="localePath({ name: 'member-id', params: { id } })"
       class="member"
       :class="`member__${id}`"
     >
-      <nuxt-link :to="localePath({ name: 'member-id', params: { id } })">
+      <a>
         <img
           :src="talent.avatar['1x']"
           :srcset="imageSet(talent.avatar)"
@@ -14,21 +16,21 @@
           width="256"
           height="256"
         >
-      </nuxt-link>
-    </li>
+      </a>
+    </nuxt-link>
   </ul>
 </template>
 
 <script lang="ts">
-import Component, { namespace, State } from 'nuxt-class-component'
+import Component, { namespace } from 'nuxt-class-component'
 import Vue from 'vue'
 import imageSet from '~/utils/imageSet'
 
-const TalentState = namespace('talents', State)
+const Talent = namespace('talents')
 
 @Component
 export default class extends Vue {
-  @TalentState('list')
+  @Talent.State('list')
   talents
 
   imageSet(images) {
@@ -97,12 +99,13 @@ li.member a {
   display: block;
   height: 256px;
   margin: 0 auto;
-  transition: background-color 1.5s;
+  transition: background-color 0.5s, transform 0.25s;
   width: 256px;
 }
 
 li.member a:hover {
-  transition-duration: 0.5s;
+  transform: scale(1.05);
+  transition-duration: 0.25s;
 }
 
 li.member__haneru-inaba a:hover {

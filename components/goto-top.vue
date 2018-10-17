@@ -83,17 +83,19 @@ export default class extends Vue {
   display: flex;
   height: 48px;
   justify-content: center;
+  opacity: 0;
   position: fixed;
   right: 1rem;
   text-decoration: none;
   transform: translateY(96px);
-  transition: transform 1s;
+  transition: transform 1s, opacity 0.5s;
   width: 48px;
 }
 
 .goto-top.show {
+  opacity: 1;
   transform: none;
-  transition: transform 0.5s;
+  transition: transform 0.5s, opacity 0.25s;
 }
 
 .goto-top span {
