@@ -13,7 +13,7 @@
   },
   "description": "The animare.cafe is a unofficial website",
   "devDependencies": {
-    "@types/node": "^10.11.7",
+    "@types/node": "^10.12.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.7.0",
     "eslint-config-prettier": "^3.1.0",
