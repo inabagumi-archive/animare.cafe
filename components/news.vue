@@ -19,14 +19,14 @@
 </template>
 
 <script lang="ts">
-import Component, { namespace, State } from 'nuxt-class-component'
+import Component, { namespace } from 'nuxt-class-component'
 import Vue from 'vue'
 
-const ArticleState = namespace('articles', State)
+const Article = namespace('articles')
 
 @Component
 export default class extends Vue {
-  @ArticleState('list')
+  @Article.State('list')
   articles
 }
 </script>
