@@ -63,11 +63,6 @@ export default class extends Vue {
         }
       ],
       meta: [
-        { charset: 'UTF-8' },
-        {
-          content: 'initial-scale=1.0,width=device-width',
-          name: 'viewport'
-        },
         {
           content: 'website',
           hid: 'og:type',
@@ -125,47 +120,8 @@ export default class extends Vue {
 }
 </script>
 
-<style>
-html {
-  line-height: 1;
-  font-family: Roboto, sans-serif;
-  font-size: 16px;
-  margin: 0;
-  padding: 0;
-}
-
-html:lang(ja) {
-  font-family: Roboto, Noto Sans JP, sans-serif;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-}
-</style>
-
 <style scoped>
 .container {
   min-height: 70vh;
-}
-
-.home-enter-active,
-.home-leave-active {
-  transition: opacity 0.5s;
-}
-
-.home-enter,
-.home-leave-active {
-  opacity: 0;
-}
-
-.member-enter-active,
-.member-leave-active {
-  transition: opacity 0.5s, transform 0.5s;
-}
-
-.member-enter {
-  opacity: 0;
-  transform: translateY(24px);
 }
 </style>

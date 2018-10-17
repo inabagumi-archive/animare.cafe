@@ -38,8 +38,17 @@ module.exports = {
       }
     }
   },
-  css: [],
+  css: ['~/assets/css/main.css'],
   dev: process.env.NODE_ENV !== 'production',
+  head: {
+    meta: [
+      { charset: 'UTF-8' },
+      {
+        content: 'initial-scale=1.0,width=device-width',
+        name: 'viewport'
+      }
+    ]
+  },
   generate: {
     fallback: false,
     routes
