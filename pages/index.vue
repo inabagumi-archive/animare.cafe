@@ -30,6 +30,7 @@
 <script lang="ts">
 import Component from 'nuxt-class-component'
 import Vue from 'vue'
+import { Route } from 'vue-router'
 import MemberList from '~/components/member-list.vue'
 import News from '~/components/news.vue'
 
@@ -40,12 +41,17 @@ import News from '~/components/news.vue'
   }
 })
 export default class extends Vue {
-  async fetch({ store }) {
-    await store.dispatch('articles/fetch')
+  async fetch({ store }): Promise<void> {
+    await store.dispatch('article/fetch')
   }
 
-  transition(to, from) {
-    if (from && to.name.split('___')[0] !== from.name.split('___')[0]) {
+  transition(to: Route, from: Route | undefined): string {
+    if (
+      to.name &&
+      from &&
+      from.name &&
+      to.name.split('___')[0] !== from.name.split('___')[0]
+    ) {
       return 'home'
     }
 

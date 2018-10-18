@@ -1,5 +1,9 @@
-export const actions: { [name: string]: Function } = {
+import { ActionTree } from 'vuex'
+
+export interface RootState {}
+
+export const actions: ActionTree<RootState, RootState> = {
   async nuxtServerInit({ dispatch }): Promise<void> {
-    await dispatch('talents/fetchAll')
+    await dispatch('talent/fetchAll')
   }
 }

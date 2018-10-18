@@ -4,8 +4,8 @@
       {{ talent.name[$i18n.locale] }}
     </h1>
     <img
-      :src="talent.avatar['1x']"
-      :srcset="imageSet(talent.avatar)"
+      :src="talent.icons[0].url"
+      :srcset="imageSet(talent.icons)"
       width="256"
       height="256"
       :alt="talent.name[$i18n.locale]"
@@ -16,18 +16,19 @@
 <script lang="ts">
 import Component, { namespace } from 'nuxt-class-component'
 import Vue from 'vue'
+import { Route } from 'vue-router'
 import imageSet from '~/utils/imageSet'
 
-const Talent = namespace('talents')
+const Talent = namespace('talent')
 
 @Component
 export default class Member extends Vue {
-  @Talent.State('current')
+  @Talent.Getter
   talent
 
-  async fetch({ error, params, store }) {
+  async fetch({ error, params, store }): Promise<void> {
     try {
-      await store.dispatch('talents/fetch', params)
+      await store.dispatch('talent/fetch', params)
     } catch ({ message }) {
       error({
         message,
@@ -36,7 +37,7 @@ export default class Member extends Vue {
     }
   }
 
-  head() {
+  head(): object {
     const title = this.talent.name[this.$i18n.locale]
     const mainVisual = `https://animare.cafe${this.talent.mainVisual}`
 
@@ -71,12 +72,12 @@ export default class Member extends Vue {
     }
   }
 
-  imageSet(images) {
+  imageSet(images): string {
     return imageSet(images)
   }
 
-  transition(to, from) {
-    if (from) {
+  transition(to: Route, from: Route | undefined): string {
+    if (to.name && from && from.name) {
       if (to.name.split('___')[0] !== from.name.split('___')[0]) {
         return 'member'
       } else if (to.params.id !== from.params.id) {
@@ -87,7 +88,7 @@ export default class Member extends Vue {
     return 'page'
   }
 
-  validate({ params }) {
+  validate({ params }): boolean {
     return /^[a-z-]+$/.test(params.id)
   }
 }

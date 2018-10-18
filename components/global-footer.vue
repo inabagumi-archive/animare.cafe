@@ -44,7 +44,7 @@
               <a
                 rel="noopener noreferrer"
                 target="_blank"
-                :href="talent[service.toLowerCase()]"
+                :href="talent.services.filter(({ name }) => name === service)[0].url"
               >{{ talent.name[$i18n.locale] }}</a>
             </li>
           </ul>
@@ -55,18 +55,20 @@
 </template>
 
 <script lang="ts">
-import Component, { State } from 'nuxt-class-component'
+import Component, { namespace } from 'nuxt-class-component'
 import Vue from 'vue'
 import AnimareLogo from '~/components/animare-logo.vue'
+
+const Talent = namespace('talent')
 
 @Component({
   components: { AnimareLogo }
 })
 export default class extends Vue {
-  @State(state => state.talents.list)
+  @Talent.Getter
   talents
 
-  data() {
+  data(): object {
     return {
       services: ['YouTube', 'Twitter']
     }

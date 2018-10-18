@@ -37,7 +37,7 @@
     "precommit": "${npm_execpath} run lint",
     "start": "cross-env NODE_ENV=production node server"
   },
-  "types": "./index.d.ts",
+  "types": "./types/index.d.ts",
   "version": "1.0.0",
   "workspaces": [
     "functions"

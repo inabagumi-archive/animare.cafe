@@ -1,11 +1,16 @@
-const kebabCase = require('lodash/kebabCase')
-const talents = require('./data/talents.json')
+const talents = [
+  'haneru-inaba',
+  'hinako-umori',
+  'ichika-souya',
+  'kuromu-inari',
+  'ran-hinokuma'
+]
 
 const routes = talents.reduce(
   (routes, talent) => [
     ...routes,
-    `/en/member/${kebabCase(talent.id)}`,
-    `/ja/member/${kebabCase(talent.id)}`
+    `/en/member/${talent}`,
+    `/ja/member/${talent}`
   ],
   ['/en/', '/ja/', '/404']
 )
