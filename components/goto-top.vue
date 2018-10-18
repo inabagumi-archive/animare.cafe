@@ -19,11 +19,11 @@ import Vue from 'vue'
 export default class extends Vue {
   showButton: boolean
 
-  mounted() {
+  mounted(): void {
     window.addEventListener('scroll', this.handleScroll)
   }
 
-  beforeDestroy() {
+  beforeDestroy(): void {
     if (typeof this.handleScroll === 'function') {
       window.removeEventListener('scroll', this.handleScroll)
     }
@@ -64,7 +64,7 @@ export default class extends Vue {
     }
   }
 
-  data() {
+  data(): object {
     return {
       showButton: false
     }

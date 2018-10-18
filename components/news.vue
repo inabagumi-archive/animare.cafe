@@ -22,11 +22,11 @@
 import Component, { namespace } from 'nuxt-class-component'
 import Vue from 'vue'
 
-const Article = namespace('articles')
+const Article = namespace('article')
 
 @Component
 export default class extends Vue {
-  @Article.State('list')
+  @Article.Getter
   articles
 }
 </script>

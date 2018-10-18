@@ -10,8 +10,8 @@
     >
       <a>
         <img
-          :src="talent.avatar['1x']"
-          :srcset="imageSet(talent.avatar)"
+          :src="talent.icons[0].src"
+          :srcset="imageSet(talent.icons)"
           :alt="talent.name[$i18n.locale]"
           width="256"
           height="256"
@@ -24,16 +24,17 @@
 <script lang="ts">
 import Component, { namespace } from 'nuxt-class-component'
 import Vue from 'vue'
+import { Image } from '~/types'
 import imageSet from '~/utils/imageSet'
 
-const Talent = namespace('talents')
+const Talent = namespace('talent')
 
 @Component
 export default class extends Vue {
-  @Talent.State('list')
+  @Talent.Getter
   talents
 
-  imageSet(images) {
+  imageSet(images: Image[]): string {
     return imageSet(images)
   }
 }
