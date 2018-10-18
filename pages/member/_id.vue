@@ -38,10 +38,16 @@ export default class Member extends Vue {
 
   head() {
     const title = this.talent.name[this.$i18n.locale]
+    const description = `${this.talent.name.en}'s Profile`
     const mainVisual = `https://animare.cafe${this.talent.mainVisual}`
 
     return {
       meta: [
+        {
+          content: description,
+          hid: 'description',
+          name: 'description'
+        },
         {
           content: title,
           hid: 'og:title',
@@ -52,6 +58,11 @@ export default class Member extends Vue {
           property: 'og:site_name'
         },
         {
+          content: description,
+          hid: 'og:description',
+          property: 'og:description'
+        },
+        {
           content: mainVisual,
           hid: 'og:image',
           name: 'og:image'
@@ -60,6 +71,11 @@ export default class Member extends Vue {
           content: title,
           hid: 'twitter:title',
           name: 'twitter:title'
+        },
+        {
+          content: description,
+          hid: 'twitter:description',
+          name: 'twitter:description'
         },
         {
           content: mainVisual,
