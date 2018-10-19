@@ -100,33 +100,38 @@ li.member a {
   display: block;
   height: 256px;
   margin: 0 auto;
-  transition: background-color 0.5s, transform 0.25s;
   width: 256px;
 }
 
-li.member a:hover {
-  transform: scale(1.05);
-  transition-duration: 0.25s;
-}
+@media (min-width: 600px) {
+  li.member a {
+    transition: background-color 0.5s, transform 0.25s;
+  }
 
-li.member__haneru-inaba a:hover {
-  background-color: #ffecb3;
-}
+  li.member a:hover {
+    transform: scale(1.05);
+    transition-duration: 0.25s;
+  }
 
-li.member__hinako-umori a:hover {
-  background-color: #fce4ec;
-}
+  li.member__haneru-inaba a:hover {
+    background-color: #ffecb3;
+  }
 
-li.member__ichika-souya a:hover {
-  background-color: #b3e5fc;
-}
+  li.member__hinako-umori a:hover {
+    background-color: #fce4ec;
+  }
 
-li.member__kuromu-inari a:hover {
-  background-color: #ffccbc;
-}
+  li.member__ichika-souya a:hover {
+    background-color: #b3e5fc;
+  }
 
-li.member__ran-hinokuma a:hover {
-  background-color: #c8e6c9;
+  li.member__kuromu-inari a:hover {
+    background-color: #ffccbc;
+  }
+
+  li.member__ran-hinokuma a:hover {
+    background-color: #c8e6c9;
+  }
 }
 
 li.member img {
