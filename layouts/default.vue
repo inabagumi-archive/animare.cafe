@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import Component, { Getter } from 'nuxt-class-component'
+import Component from 'nuxt-class-component'
 import Vue from 'vue'
 import GlobalFooter from '~/components/global-footer.vue'
 import GlobalHeader from '~/components/global-header.vue'
@@ -38,13 +38,10 @@ import GotoTop from '~/components/goto-top.vue'
   }
 })
 export default class extends Vue {
-  $route: any
-
-  head() {
+  head(): object {
     const { fullPath } = this.$route
     const base = 'https://animare.cafe'
     const url = `${base}${fullPath}`
-    const path = fullPath.replace(/^\/[^\/]+\//, '/')
     const title = this.$t('global.title')
     const description = this.$t('global.description')
     const mainVisualPath = `${base}${require('~/assets/images/main-visual.jpg')}`

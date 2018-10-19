@@ -17,7 +17,7 @@ import Vue from 'vue'
 
 @Component
 export default class extends Vue {
-  showButton: boolean
+  showButton = false
 
   mounted(): void {
     window.addEventListener('scroll', this.handleScroll)
@@ -29,7 +29,7 @@ export default class extends Vue {
     }
   }
 
-  handleClick(event): void {
+  handleClick(event: MouseEvent): void {
     event.preventDefault()
 
     let position: number = window.pageYOffset
@@ -61,12 +61,6 @@ export default class extends Vue {
   update({ showButton }: { showButton: boolean }): void {
     if (this.showButton !== showButton) {
       this.showButton = showButton
-    }
-  }
-
-  data(): object {
-    return {
-      showButton: false
     }
   }
 }
