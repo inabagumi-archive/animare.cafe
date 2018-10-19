@@ -15,6 +15,10 @@ export const state = (): TalentState => ({
 })
 
 export const getters: GetterTree<TalentState, RootState> = {
+  talent(state): Talent | null {
+    return state.current
+  },
+
   talents(state): { [id: string]: Talent } {
     return state.list
   }
