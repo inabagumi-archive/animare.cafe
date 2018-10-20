@@ -4,7 +4,7 @@
       {{ talent.name[$i18n.locale] }}
     </h1>
     <img
-      :src="talent.icons[0].url"
+      :src="talent.icons[0].src"
       :srcset="imageSet(talent.icons)"
       width="256"
       height="256"
