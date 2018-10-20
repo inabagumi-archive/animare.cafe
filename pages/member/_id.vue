@@ -17,12 +17,14 @@
 import Component, { namespace } from 'nuxt-class-component'
 import Vue from 'vue'
 import { Route } from 'vue-router'
-import { Image, NuxtContext, Talent } from '~/types'
-import imageSet from '~/utils/imageSet'
+import imageSetMixin from '~/mixins/imageSetMixin'
+import { NuxtContext, Talent } from '~/types'
 
 const talentModule = namespace('talent')
 
-@Component
+@Component({
+  mixins: [imageSetMixin]
+})
 export default class extends Vue {
   @talentModule.Getter
   talent?: Talent
@@ -89,10 +91,6 @@ export default class extends Vue {
       ],
       title
     }
-  }
-
-  imageSet(images: Image[]): string {
-    return imageSet(images)
   }
 
   transition(to: Route, from?: Route): string {

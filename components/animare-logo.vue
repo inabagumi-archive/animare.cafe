@@ -11,10 +11,12 @@
 <script lang="ts">
 import Component from 'nuxt-class-component'
 import Vue from 'vue'
+import imageSetMixin from '~/mixins/imageSetMixin'
 import { Image } from '~/types'
-import imageSet from '~/utils/imageSet'
 
-@Component
+@Component({
+  mixins: [imageSetMixin]
+})
 export default class extends Vue {
   images: Image[] = [
     {
@@ -30,9 +32,5 @@ export default class extends Vue {
       src: require('~/assets/images/animare-logo@3x.png')
     }
   ]
-
-  imageSet(images: Image[]): string {
-    return imageSet(images)
-  }
 }
 </script>
