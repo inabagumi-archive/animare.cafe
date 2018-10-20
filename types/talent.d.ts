@@ -5,7 +5,7 @@ export interface Service {
   url: string
 }
 
-export interface Talent {
+export default interface Talent {
   icons: Image[]
   id: string
   mainVisual: string

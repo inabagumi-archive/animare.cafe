@@ -17,16 +17,14 @@ import Vue from 'vue'
 
 @Component
 export default class extends Vue {
-  showButton = false
+  showButton: boolean = false
 
   mounted(): void {
     window.addEventListener('scroll', this.handleScroll)
   }
 
   beforeDestroy(): void {
-    if (typeof this.handleScroll === 'function') {
-      window.removeEventListener('scroll', this.handleScroll)
-    }
+    window.removeEventListener('scroll', this.handleScroll)
   }
 
   handleClick(event: MouseEvent): void {
@@ -36,9 +34,7 @@ export default class extends Vue {
     let start: number | null = null
 
     const step = (timestamp: number): void => {
-      if (!start) {
-        start = timestamp
-      }
+      if (!start) start = timestamp
 
       const percentage: number = (timestamp - start) / 500
 

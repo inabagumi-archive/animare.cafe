@@ -58,21 +58,18 @@
 import Component, { namespace } from 'nuxt-class-component'
 import Vue from 'vue'
 import AnimareLogo from '~/components/animare-logo.vue'
+import { Talent } from '~/types'
 
-const Talent = namespace('talent')
+const talentModule = namespace('talent')
 
 @Component({
   components: { AnimareLogo }
 })
 export default class extends Vue {
-  @Talent.Getter
-  talents
+  services: string[] = ['YouTube', 'Twitter']
 
-  data(): object {
-    return {
-      services: ['YouTube', 'Twitter']
-    }
-  }
+  @talentModule.Getter
+  talents?: Talent[]
 }
 </script>
 
