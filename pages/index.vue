@@ -33,6 +33,7 @@ import Vue from 'vue'
 import { Route } from 'vue-router'
 import MemberList from '~/components/member-list.vue'
 import News from '~/components/news.vue'
+import { NuxtContext } from '~/types'
 
 @Component({
   components: {
@@ -41,7 +42,7 @@ import News from '~/components/news.vue'
   }
 })
 export default class extends Vue {
-  async fetch({ store }): Promise<void> {
+  async fetch({ store }: NuxtContext): Promise<void> {
     await store.dispatch('article/fetch')
   }
 

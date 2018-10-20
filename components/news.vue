@@ -21,13 +21,14 @@
 <script lang="ts">
 import Component, { namespace } from 'nuxt-class-component'
 import Vue from 'vue'
+import { Article } from '~/types'
 
-const Article = namespace('article')
+const articleModule = namespace('article')
 
 @Component
 export default class extends Vue {
-  @Article.Getter
-  articles
+  @articleModule.Getter
+  articles?: Article[]
 }
 </script>
 

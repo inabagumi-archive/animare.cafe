@@ -17,18 +17,19 @@
 import Component, { namespace } from 'nuxt-class-component'
 import Vue from 'vue'
 import { Route } from 'vue-router'
+import { Image, NuxtContext, Talent } from '~/types'
 import imageSet from '~/utils/imageSet'
 
-const Talent = namespace('talent')
+const talentModule = namespace('talent')
 
 @Component
-export default class Member extends Vue {
-  @Talent.Getter
-  talent
+export default class extends Vue {
+  @talentModule.Getter
+  talent?: Talent
 
-  async fetch({ error, params, store }): Promise<void> {
+  async fetch({ error, params: { id }, store }: NuxtContext): Promise<void> {
     try {
-      await store.dispatch('talent/fetch', params)
+      await store.dispatch('talent/fetch', { id })
     } catch ({ message }) {
       error({
         message,
@@ -38,6 +39,8 @@ export default class Member extends Vue {
   }
 
   head(): object {
+    if (!this.talent) return {}
+
     const title = this.talent.name[this.$i18n.locale]
     const description = `${this.talent.name.en}'s Profile`
     const mainVisual = `https://animare.cafe${this.talent.mainVisual}`
@@ -88,11 +91,11 @@ export default class Member extends Vue {
     }
   }
 
-  imageSet(images): string {
+  imageSet(images: Image[]): string {
     return imageSet(images)
   }
 
-  transition(to: Route, from: Route | undefined): string {
+  transition(to: Route, from?: Route): string {
     if (to.name && from && from.name) {
       if (to.name.split('___')[0] !== from.name.split('___')[0]) {
         return 'member'
@@ -104,7 +107,7 @@ export default class Member extends Vue {
     return 'page'
   }
 
-  validate({ params }): boolean {
+  validate({ params }: NuxtContext): boolean {
     return /^[a-z-]+$/.test(params.id)
   }
 }

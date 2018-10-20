@@ -42,8 +42,8 @@ export default class extends Vue {
     const { fullPath } = this.$route
     const base = 'https://animare.cafe'
     const url = `${base}${fullPath}`
-    const title = this.$t('global.title')
-    const description = this.$t('global.description')
+    const title = this.$t('global.title') as string
+    const description = this.$t('global.description') as string
     const mainVisualPath = `${base}${require('~/assets/images/main-visual.jpg')}`
 
     return {
@@ -61,6 +61,11 @@ export default class extends Vue {
       ],
       meta: [
         {
+          content: description,
+          hid: 'description',
+          name: 'description'
+        },
+        {
           content: 'website',
           hid: 'og:type',
           property: 'og:type'
@@ -74,8 +79,9 @@ export default class extends Vue {
           content: null,
           hid: 'og:title',
           property: 'og:title',
-          template: titleChunk =>
-            titleChunk ? `${titleChunk} - ${title}` : title
+          template(titleChunk: string): string {
+            return titleChunk ? `${titleChunk} - ${title}` : title
+          }
         },
         {
           content: description,
@@ -96,8 +102,9 @@ export default class extends Vue {
           content: null,
           hid: 'twitter:title',
           name: 'twitter:title',
-          template: titleChunk =>
-            titleChunk ? `${titleChunk} - ${title}` : title
+          template(titleChunk: string): string {
+            return titleChunk ? `${titleChunk} - ${title}` : title
+          }
         },
         {
           content: description,
@@ -110,8 +117,9 @@ export default class extends Vue {
           name: 'twitter:image'
         }
       ],
-      titleTemplate: titleChunk =>
-        titleChunk ? `${titleChunk} - ${title}` : title
+      titleTemplate(titleChunk: string): string {
+        return titleChunk ? `${titleChunk} - ${title}` : title
+      }
     }
   }
 }
