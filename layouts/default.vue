@@ -38,7 +38,7 @@ import GotoTop from '~/components/goto-top.vue'
   }
 })
 export default class extends Vue {
-  head(): object {
+  public head(): object {
     const { fullPath } = this.$route
     const base = 'https://animare.cafe'
     const url = `${base}${fullPath}`

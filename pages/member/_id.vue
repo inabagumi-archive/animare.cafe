@@ -4,7 +4,7 @@
       {{ talent.name[$i18n.locale] }}
     </h1>
     <img
-      :src="talent.icons[0].src"
+      :src="talent.icons[0].url"
       :srcset="imageSet(talent.icons)"
       width="256"
       height="256"
@@ -15,21 +15,23 @@
 
 <script lang="ts">
 import Component, { namespace } from 'nuxt-class-component'
-import Vue from 'vue'
+import { mixins } from 'vue-class-component'
 import { Route } from 'vue-router'
-import imageSetMixin from '~/mixins/imageSetMixin'
+import ImageSetMixin from '~/mixins/ImageSetMixin'
 import { NuxtContext, Talent } from '~/types'
 
 const talentModule = namespace('talent')
 
-@Component({
-  mixins: [imageSetMixin]
-})
-export default class extends Vue {
+@Component
+export default class extends mixins(ImageSetMixin) {
   @talentModule.Getter
-  talent?: Talent
+  public talent?: Talent
 
-  async fetch({ error, params: { id }, store }: NuxtContext): Promise<void> {
+  public async fetch({
+    error,
+    params: { id },
+    store
+  }: NuxtContext): Promise<void> {
     try {
       await store.dispatch('talent/fetch', { id })
     } catch ({ message }) {
@@ -40,7 +42,7 @@ export default class extends Vue {
     }
   }
 
-  head(): object {
+  public head(): object {
     if (!this.talent) return {}
 
     const title = this.talent.name[this.$i18n.locale]
@@ -58,10 +60,6 @@ export default class extends Vue {
           content: title,
           hid: 'og:title',
           property: 'og:title'
-        },
-        {
-          content: this.$t('global.title'),
-          property: 'og:site_name'
         },
         {
           content: description,
@@ -93,7 +91,7 @@ export default class extends Vue {
     }
   }
 
-  transition(to: Route, from?: Route): string {
+  public transition(to: Route, from?: Route): string {
     if (to.name && from && from.name) {
       if (to.name.split('___')[0] !== from.name.split('___')[0]) {
         return 'member'
@@ -105,7 +103,7 @@ export default class extends Vue {
     return 'page'
   }
 
-  validate({ params }: NuxtContext): boolean {
+  public validate({ params }: NuxtContext): boolean {
     return /^[a-z-]+$/.test(params.id)
   }
 }

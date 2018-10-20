@@ -28,7 +28,7 @@ const articleModule = namespace('article')
 @Component
 export default class extends Vue {
   @articleModule.Getter
-  articles?: Article[]
+  public articles?: Article[]
 }
 </script>
 

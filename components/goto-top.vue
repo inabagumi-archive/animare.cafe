@@ -17,17 +17,17 @@ import Vue from 'vue'
 
 @Component
 export default class extends Vue {
-  showButton: boolean = false
+  public showButton: boolean = false
 
-  mounted(): void {
+  public mounted(): void {
     window.addEventListener('scroll', this.handleScroll)
   }
 
-  beforeDestroy(): void {
+  public beforeDestroy(): void {
     window.removeEventListener('scroll', this.handleScroll)
   }
 
-  handleClick(event: MouseEvent): void {
+  public handleClick(event: MouseEvent): void {
     event.preventDefault()
 
     let position: number = window.pageYOffset
@@ -48,13 +48,13 @@ export default class extends Vue {
     requestAnimationFrame(step)
   }
 
-  handleScroll = throttle((): void => {
+  private handleScroll = throttle((): void => {
     this.update({
       showButton: window.pageYOffset > 100
     })
   }, 1000 / 60)
 
-  update({ showButton }: { showButton: boolean }): void {
+  private update({ showButton }: { showButton: boolean }): void {
     if (this.showButton !== showButton) {
       this.showButton = showButton
     }

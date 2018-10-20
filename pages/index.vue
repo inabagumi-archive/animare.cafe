@@ -42,11 +42,11 @@ import { NuxtContext } from '~/types'
   }
 })
 export default class extends Vue {
-  async fetch({ store }: NuxtContext): Promise<void> {
+  public async fetch({ store }: NuxtContext): Promise<void> {
     await store.dispatch('article/fetch')
   }
 
-  transition(to: Route, from: Route | undefined): string {
+  public transition(to: Route, from?: Route): string {
     if (
       to.name &&
       from &&

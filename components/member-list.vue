@@ -23,16 +23,14 @@
 
 <script lang="ts">
 import Component, { namespace } from 'nuxt-class-component'
-import Vue from 'vue'
-import imageSetMixin from '~/mixins/imageSetMixin'
+import { mixins } from 'vue-class-component'
+import ImageSetMixin from '~/mixins/ImageSetMixin'
 import { Talent } from '~/types'
 
 const talentModule = namespace('talent')
 
-@Component({
-  mixins: [imageSetMixin]
-})
-export default class extends Vue {
+@Component
+export default class extends mixins(ImageSetMixin) {
   @talentModule.Getter
   talents?: Talent[]
 }
