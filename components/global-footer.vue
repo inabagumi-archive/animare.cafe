@@ -66,10 +66,10 @@ const talentModule = namespace('talent')
   components: { AnimareLogo }
 })
 export default class extends Vue {
-  services: string[] = ['YouTube', 'Twitter']
+  public services: string[] = ['YouTube', 'Twitter']
 
   @talentModule.Getter
-  talents?: Talent[]
+  public talents?: Talent[]
 }
 </script>
 
