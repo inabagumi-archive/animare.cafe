@@ -16,12 +16,29 @@ commands:
             - v1-node-dependencies-{{ checksum "yarn.lock" }}
             - v1-node-dependencies-
 
-      - run: yarn install --frozen-lockfile
+      - run:
+          command: yarn install --frozen-lockfile
+          name: yarn install
 
       - save_cache:
           key: v1-node-dependencies-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules/
+
+      - restore_cache:
+          keys:
+            - v1-functions-dependencies-{{ checksum "functions/yarn.lock" }}
+            - v1-functions-dependencies-
+
+      - run:
+          name: yarn install (functions)
+          command: yarn install --frozen-lockfile
+          working_directory: ./functions/
+
+      - save_cache:
+          key: v1-functions-dependencies-{{ checksum "functions/yarn.lock" }}
+          paths:
+            - ./functions/node_modules/
 
 jobs:
   build:
