@@ -12,7 +12,7 @@ const routes = talents.reduce(
     `/en/member/${talent}`,
     `/ja/member/${talent}`
   ],
-  ['/en/', '/ja/', '/404']
+  ['/en/', '/ja/']
 )
 
 module.exports = {
@@ -55,7 +55,7 @@ module.exports = {
     ]
   },
   generate: {
-    fallback: false,
+    fallback: true,
     routes
   },
   loading: {
