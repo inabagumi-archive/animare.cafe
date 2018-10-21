@@ -1,12 +1,12 @@
 <template>
   <ul class="member-list">
     <nuxt-link
-      v-for="(talent, id) in talents"
-      :key="id"
+      v-for="talent in talents"
+      :key="talent.id"
       tag="li"
-      :to="localePath({ name: 'member-id', params: { id } })"
+      :to="localePath({ name: 'member-id', params: { id: talent.id } })"
       class="member"
-      :class="`member__${id}`"
+      :class="`member__${talent.id}`"
     >
       <a>
         <img

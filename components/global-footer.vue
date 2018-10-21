@@ -38,13 +38,13 @@
           <h2>{{ service }}</h2>
           <ul>
             <li
-              v-for="(talent, id) in talents"
-              :key="id"
+              v-for="talent in talents"
+              :key="talent.id"
             >
               <a
                 rel="noopener noreferrer"
                 target="_blank"
-                :href="talent.services.filter(({ name }) => name === service)[0].url"
+                :href="talent.services.find(({ name }) => name === service).url"
               >{{ talent.name[$i18n.locale] }}</a>
             </li>
           </ul>
