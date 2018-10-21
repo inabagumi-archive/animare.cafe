@@ -4,14 +4,12 @@ import { Talent } from '~/types'
 
 export interface TalentState {
   current: Talent | null
-  list: {
-    [id: string]: Talent
-  }
+  list: Talent[]
 }
 
 export const state = (): TalentState => ({
   current: null,
-  list: {}
+  list: []
 })
 
 export const getters: GetterTree<TalentState, RootState> = {
@@ -19,7 +17,7 @@ export const getters: GetterTree<TalentState, RootState> = {
     return state.current
   },
 
-  talents(state): { [id: string]: Talent } {
+  talents(state): Talent[] {
     return state.list
   }
 }
@@ -36,7 +34,7 @@ export const mutations: MutationTree<TalentState> = {
 
 export const actions: ActionTree<TalentState, RootState> = {
   async fetch({ commit, state }, { id }: { id: string }): Promise<void> {
-    const talent = state.list[id]
+    const talent = state.list.find(talent => talent.id === id)
 
     if (!talent) {
       throw new TypeError('This page could not be found')
@@ -50,14 +48,6 @@ export const actions: ActionTree<TalentState, RootState> = {
 
     const { default: talents } = await import('~/data/talents')
 
-    commit('setList', {
-      talents: talents.reduce(
-        (list, { id, ...talent }) => ({
-          ...list,
-          [id]: talent
-        }),
-        {}
-      )
-    })
+    commit('setList', { talents })
   }
 }

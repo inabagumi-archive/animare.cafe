@@ -1,8 +1,13 @@
 import { MetaInfo } from 'vue-meta'
 import { Store } from 'vuex'
 
+export interface Error {
+  message: string
+  statusCode: number
+}
+
 export interface Context {
-  error: (error: { message: string; statusCode: number }) => void
+  error: (error: Error) => void
   params: {
     [key: string]: string
   }
