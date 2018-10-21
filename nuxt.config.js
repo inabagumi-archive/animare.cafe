@@ -81,6 +81,7 @@ module.exports = {
       {
         baseUrl: 'https://animare.cafe',
         defaultLocale: 'en',
+        detectBrowserLanguage: false,
         langDir: './locales/',
         locales: [
           {
@@ -101,7 +102,8 @@ module.exports = {
         seo: true,
         strategy: 'prefix',
         vueI18n: {},
-        vueI18nLoader: false
+        vueI18nLoader: false,
+        vuex: false
       }
     ],
     '~/modules/typescript',
