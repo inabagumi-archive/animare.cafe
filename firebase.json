@@ -37,6 +37,19 @@
         "headers": [
           {
             "key": "Cache-Control",
+            "value": "max-age=0, public"
+          },
+          {
+            "key": "Content-Type",
+            "value": "text/plain; charset=UTF-8"
+          }
+        ],
+        "source": "/_nuxt/LICENSES"
+      },
+      {
+        "headers": [
+          {
+            "key": "Cache-Control",
             "value": "max-age=0"
           }
         ],
