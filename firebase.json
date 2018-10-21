@@ -9,6 +9,10 @@
             "value": "max-age=600, public, s-maxage=60"
           },
           {
+            "key": "Content-Security-Policy",
+            "value": "default-src 'none'; font-src https://fonts.gstatic.com; img-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com"
+          },
+          {
             "key": "Referrer-Policy",
             "value": "same-origin"
           }
