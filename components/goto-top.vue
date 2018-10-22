@@ -116,6 +116,6 @@ export default class extends Vue {
 }
 
 .goto-top:hover svg {
-  animation: bounce 0.5s infinite;
+  animation: bounce 0.5s 2;
 }
 </style>
