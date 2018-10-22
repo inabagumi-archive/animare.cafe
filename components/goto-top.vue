@@ -6,7 +6,14 @@
     :title="$t('global.go_to_top')"
     @click="handleClick"
   >
-    <span>▲</span>
+    <!-- https://github.com/google/material-design-icons/blob/3.0.1/navigation/svg/production/ic_expand_less_48px.svg -->
+    <svg
+      height="24"
+      viewBox="0 0 48 48"
+      width="24"
+    >
+      <path d="M24 16L12 28l2.83 2.83L24 21.66l9.17 9.17L36 28z" />
+    </svg>
   </a>
 </template>
 
@@ -88,9 +95,27 @@ export default class extends Vue {
   transition: transform 0.5s, opacity 0.25s;
 }
 
-.goto-top span {
-  display: block;
-  font-family: Roboto, sans-serif;
-  font-size: 24px;
+@keyframes bounce {
+  50% {
+    transform: translateY(-2px);
+  }
+
+  75% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(1px);
+  }
+}
+
+.goto-top svg {
+  fill: currentColor;
+  height: auto;
+  width: 80%;
+}
+
+.goto-top:hover svg {
+  animation: bounce 0.5s infinite;
 }
 </style>
