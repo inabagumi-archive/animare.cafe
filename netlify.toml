@@ -1,6 +1,6 @@
 [build]
   base    = "./"
-  command = "yarn generate"
+  command = "NODE_ENV=production yarn generate"
   publish = "./dist/"
 
   [build.environment]
