@@ -18,7 +18,13 @@ import Vue from 'vue'
 @Component({
   props: ['error']
 })
-export default class extends Vue {}
+export default class extends Vue {
+  public head(): object {
+    return {
+      title: this.$t('global.error')
+    }
+  }
+}
 </script>
 
 <style scoped>

@@ -1,7 +1,7 @@
 import { LocaleMessageObject } from 'vue-i18n'
 
 export { default as Article } from './article'
-export { Context as NuxtContext } from './nuxt'
+export { Context as NuxtContext, ServerError as NuxtServerError } from './nuxt'
 export { default as Talent } from './talent'
 
 export interface Image {
