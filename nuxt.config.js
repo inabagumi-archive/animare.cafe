@@ -15,7 +15,7 @@ const routes = talents.reduce(
   ['/en/', '/ja/']
 )
 
-module.exports = {
+export default {
   build: {
     extend(config, { isClient, isDev }) {
       if (isDev && isClient) {
