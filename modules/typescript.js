@@ -3,7 +3,21 @@ export default function() {
   this.nuxt.options.extensions.push('ts')
 
   // Extend build
-  this.extendBuild(config => {
+  this.extendBuild((config, { isServer }) => {
+    const babelOptions = {
+      presets: [
+        [
+          '@nuxtjs/app',
+          {
+            buildTarget: isServer ? 'server' : 'client'
+          }
+        ]
+      ]
+    }
+    const babelLoader = {
+      loader: 'babel-loader',
+      options: babelOptions
+    }
     const tsLoader = {
       loader: 'ts-loader',
       options: {
@@ -13,8 +27,11 @@ export default function() {
 
     // Add TypeScript loader
     config.module.rules.push({
-      test: /(?:(?:client|server)\.js|\.tsx?)$/,
-      ...tsLoader
+      test: /\.tsx?$/,
+      use: [
+        babelLoader,
+        tsLoader
+      ]
     })
 
     // Add .ts extension in webpack resolve
