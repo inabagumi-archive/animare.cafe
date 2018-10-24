@@ -28,10 +28,7 @@ export default function() {
     // Add TypeScript loader
     config.module.rules.push({
       test: /\.tsx?$/,
-      use: [
-        babelLoader,
-        tsLoader
-      ]
+      use: [babelLoader, tsLoader]
     })
 
     // Add .ts extension in webpack resolve
