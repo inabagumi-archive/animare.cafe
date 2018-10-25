@@ -24,6 +24,12 @@ export default class extends Vue {
       title: this.$t('global.error')
     }
   }
+
+  public mounted(): void {
+    this.$nextTick(() => {
+      this.$store.dispatch('talent/fetchAll')
+    })
+  }
 }
 </script>
 
