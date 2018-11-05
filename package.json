@@ -10,7 +10,7 @@
   },
   "description": "The animare.cafe is a unofficial website",
   "devDependencies": {
-    "@types/lodash": "^4.14.117",
+    "@types/lodash": "^4.14.118",
     "@types/node": "^10.12.0",
     "eslint": "^5.7.0",
     "eslint-config-prettier": "^3.1.0",
