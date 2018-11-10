@@ -1,12 +1,8 @@
 <template>
   <main>
     <div class="title">
-      <h1>
-        {{ error.statusCode }}
-      </h1>
-      <h2 class="subheadline">
-        {{ error.message }}
-      </h2>
+      <h1>{{ error.statusCode }}</h1>
+      <h2 class="subheadline">{{ error.message }}</h2>
     </div>
   </main>
 </template>

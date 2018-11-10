@@ -1,7 +1,8 @@
 module.exports = {
   extends: [
+    'plugin:vue/recommended',
     'plugin:prettier/recommended',
-    'plugin:vue/strongly-recommended'
+    'prettier/vue'
   ],
   parserOptions: {
     parser: 'typescript-eslint-parser'
@@ -9,6 +10,7 @@ module.exports = {
   root: true,
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'vue/html-self-closing': 'off'
   }
 }

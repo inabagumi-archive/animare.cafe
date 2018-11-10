@@ -1,25 +1,23 @@
 <template>
   <div>
     <global-header />
-    <div class="container">
-      <nuxt />
-    </div>
+    <div class="container"><nuxt /></div>
     <global-footer />
     <goto-top />
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:400,700"
       rel="stylesheet"
-    >
+    />
     <link
       v-if="$i18n.locale == 'ja'"
       href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700"
       rel="stylesheet"
-    >
+    />
     <link
       v-if="$i18n.locale == 'ja'"
       href="https://fonts.googleapis.com/css?family=Noto+Serif+JP:400"
       rel="stylesheet"
-    >
+    />
   </div>
 </template>
 

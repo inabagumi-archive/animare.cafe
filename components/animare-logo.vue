@@ -5,7 +5,7 @@
     width="200"
     height="50"
     :alt="$t('global.animare')"
-  >
+  />
 </template>
 
 <script lang="ts">

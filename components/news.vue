@@ -11,7 +11,9 @@
       <div class="inner">
         <h3>{{ article.title }}</h3>
         <p class="published">
-          <time :datetime="article.published.toISOString()">{{ $d(article.published) }}</time>
+          <time :datetime="article.published.toISOString()">{{
+            $d(article.published)
+          }}</time>
         </p>
       </div>
     </a>

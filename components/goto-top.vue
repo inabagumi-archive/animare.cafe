@@ -6,12 +6,7 @@
     :title="$t('global.go_to_top')"
     @click="handleClick"
   >
-    <!-- https://github.com/google/material-design-icons/blob/3.0.1/navigation/svg/production/ic_expand_less_48px.svg -->
-    <svg
-      height="24"
-      viewBox="0 0 48 48"
-      width="24"
-    >
+    <svg height="24" viewBox="0 0 48 48" width="24">
       <path d="M24 16L12 28l2.83 2.83L24 21.66l9.17 9.17L36 28z" />
     </svg>
   </a>
