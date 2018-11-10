@@ -15,7 +15,7 @@
           :alt="talent.name[$i18n.locale]"
           width="256"
           height="256"
-        >
+        />
       </a>
     </nuxt-link>
   </ul>

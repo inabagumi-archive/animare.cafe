@@ -1,9 +1,7 @@
 <template>
   <header>
     <div class="brand">
-      <nuxt-link :to="localePath('index')">
-        <animare-logo />
-      </nuxt-link>
+      <nuxt-link :to="localePath('index')"><animare-logo /></nuxt-link>
     </div>
     <nav>
       <h2>{{ $i18n.locale }}</h2>

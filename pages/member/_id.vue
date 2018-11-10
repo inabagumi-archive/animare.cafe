@@ -7,7 +7,7 @@
       width="256"
       height="256"
       :alt="talent.name[$i18n.locale]"
-    >
+    />
   </main>
 </template>
 
