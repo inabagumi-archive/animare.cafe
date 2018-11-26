@@ -62,6 +62,7 @@ export default {
     color: '#fff'
   },
   mode: 'universal',
+  modern: 'client',
   modules: [
     '@nuxtjs/axios',
     [
