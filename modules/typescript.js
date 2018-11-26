@@ -7,7 +7,7 @@ export default function() {
     const babelOptions = {
       presets: [
         [
-          '@nuxtjs/app',
+          '@nuxt/app',
           {
             buildTarget: isServer ? 'server' : 'client'
           }
