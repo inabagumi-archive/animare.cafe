@@ -3,13 +3,14 @@ export default function() {
   this.nuxt.options.extensions.push('ts')
 
   // Extend build
-  this.extendBuild((config, { isServer }) => {
+  this.extendBuild((config, { isModern, isServer }) => {
     const babelOptions = {
       presets: [
         [
           '@nuxt/app',
           {
-            buildTarget: isServer ? 'server' : 'client'
+            buildTarget: isServer ? 'server' : 'client',
+            modern: isModern
           }
         ]
       ]
