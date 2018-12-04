@@ -20,7 +20,7 @@
     "prettier": "^1.15.3",
     "ts-loader": "^5.3.1",
     "typescript": "^3.2.1",
-    "typescript-eslint-parser": "^21.0.1"
+    "typescript-eslint-parser": "^21.0.2"
   },
   "license": "UNLICENSED",
   "name": "@ykzts/animare.cafe",
