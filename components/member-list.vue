@@ -1,14 +1,12 @@
 <template>
   <ul class="member-list">
-    <nuxt-link
+    <li
       v-for="talent in talents"
       :key="talent.id"
-      tag="li"
-      :to="localePath({ name: 'member-id', params: { id: talent.id } })"
       class="member"
       :class="`member__${talent.id}`"
     >
-      <a>
+      <span>
         <img
           :src="talent.icons[0].src"
           :srcset="imageSet(talent.icons)"
@@ -16,8 +14,8 @@
           width="256"
           height="256"
         />
-      </a>
-    </nuxt-link>
+      </span>
+    </li>
   </ul>
 </template>
 
@@ -90,7 +88,7 @@ li.member {
   }
 }
 
-li.member a {
+li.member span {
   background-color: transparent;
   border-radius: 50%;
   display: block;
@@ -100,32 +98,32 @@ li.member a {
 }
 
 @media (min-width: 600px) {
-  li.member a {
+  li.member span {
     transition: background-color 0.5s, transform 0.25s;
   }
 
-  li.member a:hover {
+  li.member span:hover {
     transform: scale(1.05);
     transition-duration: 0.25s;
   }
 
-  li.member__haneru-inaba a:hover {
+  li.member__haneru-inaba span:hover {
     background-color: #ffecb3;
   }
 
-  li.member__hinako-umori a:hover {
+  li.member__hinako-umori span:hover {
     background-color: #fce4ec;
   }
 
-  li.member__ichika-souya a:hover {
+  li.member__ichika-souya span:hover {
     background-color: #b3e5fc;
   }
 
-  li.member__kuromu-inari a:hover {
+  li.member__kuromu-inari span:hover {
     background-color: #ffccbc;
   }
 
-  li.member__ran-hinokuma a:hover {
+  li.member__ran-hinokuma span:hover {
     background-color: #c8e6c9;
   }
 }
