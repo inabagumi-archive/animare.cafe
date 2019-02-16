@@ -1,0 +1,54 @@
+[
+  {
+    "avatar": "animare-cafe/avatar/haneru-inaba.png",
+    "color": "#ffecb3",
+    "description": "Haneru Inaba's Profile",
+    "id": "haneru-inaba",
+    "mainVisual": "animare-cafe/main-visual/haneru-inaba.jpg",
+    "name": "Haneru Inaba",
+    "picture": "animare-cafe/picture/haneru-inaba.png",
+    "services": {
+      "twitter": "https://twitter.com/Haneru_Inaba?lang=en",
+      "youtube": "https://www.youtube.com/channel/UC0Owc36U9lOyi9Gx9Ic-4qg"
+    }
+  },
+  {
+    "avatar": "animare-cafe/avatar/hinako-umori.png",
+    "color": "#fce4ec",
+    "description": "Hinako Umori's Profile",
+    "id": "hinako-umori",
+    "mainVisual": "animare-cafe/main-visual/hinako-umori.jpg",
+    "name": "Hinako Umori",
+    "picture": "animare-cafe/picture/hinako-umori.png",
+    "services": {
+      "twitter": "https://twitter.com/Hinako_Umori?lang=en",
+      "youtube": "https://www.youtube.com/channel/UChqYnJlFxlBi6DfRz6jRenQ"
+    }
+  },
+  {
+    "avatar": "animare-cafe/avatar/ichika-souya.png",
+    "color": "#b3e5fc",
+    "description": "Ichika Souya's Profile",
+    "id": "ichika-souya",
+    "mainVisual": "animare-cafe/main-visual/ichika-souya.jpg",
+    "name": "Ichika Souya",
+    "picture": "animare-cafe/picture/ichika-souya.png",
+    "services": {
+      "twitter": "https://twitter.com/Ichika_Souya?lang=en",
+      "youtube": "https://www.youtube.com/channel/UC2kyQhzGOB-JPgcQX9OMgEw"
+    }
+  },
+  {
+    "avatar": "animare-cafe/avatar/ran-hinokuma.png",
+    "color": "#c8e6c9",
+    "description": "Ran Hinokuma's Profile",
+    "id": "ran-hinokuma",
+    "mainVisual": "animare-cafe/main-visual/ran-hinokuma.jpg",
+    "name": "Ran Hinokuma",
+    "picture": "animare-cafe/picture/ran-hinokuma.png",
+    "services": {
+      "twitter": "https://twitter.com/Ran_Hinokuma?lang=en",
+      "youtube": "https://www.youtube.com/channel/UCRvpMpzAXBRKJQuk-8-Sdvg"
+    }
+  }
+]

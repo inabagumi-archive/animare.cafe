@@ -8,18 +8,18 @@
 </template>
 
 <script lang="ts">
-import Component from 'nuxt-class-component'
-import Vue from 'vue'
+import { ErrorParams } from '@nuxt/vue-app'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({
-  props: ['error']
-})
-export default class extends Vue {
-  public head(): object {
+  head() {
     return {
-      title: this.$t('global.error')
+      title: this.$t('global.error') as string
     }
   }
+})
+export default class extends Vue {
+  @Prop(Object) error!: ErrorParams
 }
 </script>
 
