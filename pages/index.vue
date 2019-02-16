@@ -1,63 +1,83 @@
 <template>
   <div>
     <div class="hero">
-      <div class="title">
+      <div class="hero__title">
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <h1 v-html="$t('global.animare_html')" />
-        <h2 class="subheadline">{{ $t('home.subheadline') }}</h2>
+        <h1 class="hero__headline" v-html="$t('global.animare_html')" />
+        <h2 class="hero__subheadline">{{ $t('home.subheadline') }}</h2>
       </div>
     </div>
     <main>
-      <section id="members">
-        <h2>{{ $t('home.members.title') }}</h2>
-        <member-list />
+      <section class="section">
+        <h2 class="section__title">{{ $t('home.members.title') }}</h2>
+        <MemberList :members="members" />
       </section>
-      <section id="about">
-        <div class="inner">
+      <section class="section">
+        <div class="section__inner">
           <!-- eslint-disable-next-line vue/no-v-html -->
-          <h2 v-html="$t('home.about_animare.title')" />
-          <p>{{ $t('home.about_animare.text') }}</p>
+          <h2 class="section__title" v-html="$t('home.about_animare.title')" />
+          <p class="section__paragraph">{{ $t('home.about_animare.text') }}</p>
         </div>
       </section>
-      <section id="news">
-        <h2>{{ $t('home.news.title') }}</h2>
-        <news />
+      <section v-if="articles.length > 0" class="section">
+        <h2 class="section__title">{{ $t('home.news.title') }}</h2>
+        <ul class="article-list">
+          <li
+            v-for="article in articles"
+            :key="article.url"
+            class="article-list__item"
+          >
+            <a class="article-list__item__link" :href="article.url">
+              <span class="article-list__item__title">{{ article.title }}</span>
+              <time
+                class="article-list__item__time"
+                :datetime="article.published.toISOString()"
+                >({{ $d(article.published) }})</time
+              >
+            </a>
+          </li>
+        </ul>
       </section>
     </main>
   </div>
 </template>
 
 <script lang="ts">
-import Component from 'nuxt-class-component'
-import Vue from 'vue'
-import { Route } from 'vue-router'
-import MemberList from '~/components/member-list.vue'
-import News from '~/components/news.vue'
-import { NuxtContext } from '~/types'
+import { Component, Vue } from 'vue-property-decorator'
+import { namespace } from 'vuex-class'
+import MemberList from '~/components/MemberList.vue'
+import { Article } from '~/store/article'
+import { Member } from '~/store/member'
+
+const articleModule = namespace('article')
+const memberModule = namespace('member')
 
 @Component({
-  components: {
-    MemberList,
-    News
-  }
-})
-export default class extends Vue {
-  public async fetch({ store }: NuxtContext): Promise<void> {
-    await store.dispatch('article/fetch')
-  }
-
-  public transition(to: Route, from?: Route): string {
+  components: { MemberList },
+  async fetch({ store }) {
+    await Promise.all([
+      store.dispatch('member/fetchList'),
+      store.dispatch('article/fetchList')
+    ])
+  },
+  head() {
+    return {}
+  },
+  transition(to, from) {
     if (
       to.name &&
       from &&
       from.name &&
       to.name.split('___')[0] !== from.name.split('___')[0]
-    ) {
+    )
       return 'home'
-    }
 
     return 'page'
   }
+})
+export default class extends Vue {
+  @articleModule.Getter articles!: Article[]
+  @memberModule.Getter members!: Member[]
 }
 </script>
 
@@ -65,7 +85,7 @@ export default class extends Vue {
 .hero {
   align-items: center;
   background-color: #666;
-  background-image: url('~@/assets/images/animare-background.jpg');
+  background-image: url('~assets/images/animare-background.jpg');
   background-size: cover;
   color: #eee;
   display: flex;
@@ -87,13 +107,13 @@ export default class extends Vue {
   z-index: 1;
 }
 
-.title {
+.hero__title {
   padding: 3rem 1rem;
   position: relative;
   z-index: 2;
 }
 
-h1 {
+.hero__headline {
   font-size: 3rem;
   font-weight: 700;
   letter-spacing: 0.5rem;
@@ -101,59 +121,59 @@ h1 {
   margin: 0;
 }
 
-h1:lang(en) {
+.hero__headline:lang(en) {
   letter-spacing: 1rem;
 }
 
-h1 >>> .line {
+.hero__headline >>> .line {
   display: block;
 }
 
 @media (min-width: 600px) {
-  h1 >>> .line {
+  .hero__headline >>> .line {
     display: inline;
   }
 }
 
-.subheadline {
+.hero__subheadline {
   font-size: 1rem;
   font-weight: 400;
   margin: 1rem 0 0;
   text-align: center;
 }
 
-section {
+.section {
   background-color: #fff;
   color: #282828;
   padding: 3rem 1rem 2rem;
 }
 
-section + section {
+.section:not(:first-child) {
   border-top: 1px solid #ddd;
   margin-top: 1rem;
 }
 
-section:last-of-type {
+.section:last-of-type {
   margin-bottom: 2rem;
 }
 
 @media (min-width: 600px) {
-  section {
+  .section {
     padding-bottom: 5rem;
     padding-top: 6rem;
   }
 
-  section + section {
+  .section:not(:first-child) {
     margin-top: 2rem;
   }
 }
 
-section .inner {
-  max-width: 800px;
+.section__inner {
+  max-width: 750px;
   margin: 0 auto;
 }
 
-section h2 {
+.section__title {
   font-size: 2rem;
   margin: 0 0 2rem;
   padding: 0;
@@ -161,16 +181,52 @@ section h2 {
 }
 
 @media (min-width: 600px) {
-  section h2 >>> br {
+  .section__title >>> br {
     display: none;
   }
 }
 
-#about p {
+.section__paragraph {
   line-height: 2;
 }
 
-#about p:lang(ja) {
+.section__paragraph:lang(ja) {
   font-family: Roboto, Noto Serif JP, serif;
+}
+
+.article-list {
+  list-style: none;
+  margin: 0 auto;
+  max-width: 650px;
+  padding: 0;
+}
+
+.article-list__item {
+  font-size: 0.9rem;
+  line-height: 2;
+  margin: 0;
+  padding: 0;
+}
+
+.article-list__item:not(:first-child) {
+  margin-top: 3rem;
+  padding: 0;
+}
+
+.article-list__item__link {
+  color: inherit;
+  display: block;
+  text-decoration: none;
+}
+
+.article-list__item__title {
+  display: block;
+}
+
+.article-list__item__time {
+  color: #333;
+  display: block;
+  font-size: 0.8rem;
+  text-align: right;
 }
 </style>

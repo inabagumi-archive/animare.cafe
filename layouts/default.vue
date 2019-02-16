@@ -1,9 +1,38 @@
 <template>
   <div>
-    <global-header />
-    <div class="container"><nuxt /></div>
-    <global-footer />
-    <goto-top />
+    <header class="global-header">
+      <div class="global-header__brand">
+        <NLink :to="localePath('index')"><AnimareLogo /></NLink>
+      </div>
+      <nav class="global-header__navigation">
+        <h2 class="global-header__navigation__title">{{ $i18n.locale }}</h2>
+        <ul class="global-header__navigation__container">
+          <NLink
+            v-for="locale in $i18n.locales"
+            :key="locale.code"
+            active-class="global-header__navigation__item--active"
+            class="global-header__navigation__item"
+            exact
+            exact-active-class="global-header__navigation__item--active"
+            tag="li"
+            :to="switchLocalePath(locale.code)"
+          >
+            <a>{{ locale.name }}</a>
+          </NLink>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <Nuxt />
+    </div>
+
+    <footer class="global-footer">
+      <div class="global-foooter_container">
+        <div class="global-footer__brand"><AnimareLogo /></div>
+      </div>
+    </footer>
+
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:400,700"
       rel="stylesheet"
@@ -22,23 +51,14 @@
 </template>
 
 <script lang="ts">
-import Component from 'nuxt-class-component'
-import Vue from 'vue'
-import GlobalFooter from '~/components/global-footer.vue'
-import GlobalHeader from '~/components/global-header.vue'
-import GotoTop from '~/components/goto-top.vue'
+import { Component, Vue } from 'vue-property-decorator'
+import AnimareLogo from '~/components/AnimareLogo.vue'
 
 @Component({
-  components: {
-    GlobalFooter,
-    GlobalHeader,
-    GotoTop
-  }
-})
-export default class extends Vue {
-  public head(): object {
-    const { fullPath } = this.$route
+  components: { AnimareLogo },
+  head() {
     const base = 'https://animare.cafe'
+    const { fullPath } = this.$route
     const url = `${base}${fullPath}`
     const title = this.$t('global.title') as string
     const description = this.$t('global.description') as string
@@ -47,17 +67,26 @@ export default class extends Vue {
     return {
       link: [
         {
-          href: url,
           hid: 'canonical',
+          href: url,
           rel: 'canonical'
         },
         {
-          rel: 'icon',
-          hid: 'icon',
-          href: require('~/assets/images/favicon.png')
+          hid: 'favicon',
+          href: require('~/assets/images/favicon.png'),
+          rel: 'icon'
         }
       ],
       meta: [
+        {
+          charset: 'UTF-8',
+          hid: 'charset'
+        },
+        {
+          content: 'width=device-width',
+          hid: 'viewport',
+          name: 'viewport'
+        },
         {
           content: description,
           hid: 'description',
@@ -74,12 +103,10 @@ export default class extends Vue {
           property: 'og:url'
         },
         {
-          content: null,
+          content: undefined,
           hid: 'og:title',
           property: 'og:title',
-          template(titleChunk: string): string {
-            return titleChunk ? `${titleChunk} - ${title}` : title
-          }
+          template: chunk => (chunk ? `${chunk} - ${title}` : title)
         },
         {
           content: description,
@@ -97,12 +124,10 @@ export default class extends Vue {
           name: 'twitter:card'
         },
         {
-          content: null,
+          content: undefined,
           hid: 'twitter:title',
           name: 'twitter:title',
-          template(titleChunk: string): string {
-            return titleChunk ? `${titleChunk} - ${title}` : title
-          }
+          template: chunk => (chunk ? `${chunk} - ${title}` : title)
         },
         {
           content: description,
@@ -115,16 +140,97 @@ export default class extends Vue {
           name: 'twitter:image'
         }
       ],
-      titleTemplate(titleChunk: string): string {
-        return titleChunk ? `${titleChunk} - ${title}` : title
-      }
+      titleTemplate: chunk => (chunk ? `${chunk} - ${title}` : title)
     }
   }
-}
+})
+export default class extends Vue {}
 </script>
 
 <style scoped>
+.global-header {
+  align-items: flex-end;
+  background-color: #282828;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 1rem 1rem 0.5rem;
+}
+
+.global-header__navigation__title {
+  display: none;
+}
+
+.global-header__navigation__container {
+  display: flex;
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 0;
+}
+
+.global-header__navigation__item {
+  display: block;
+  margin: 0;
+  padding: 1px 0;
+}
+
+.global-header__navigation__item:not(:first-child) {
+  border-left: 1px solid #fff;
+  margin-left: 1rem;
+  padding-left: 1rem;
+}
+
+.global-header__navigation__item a {
+  color: rgba(255, 255, 255, 0.5);
+  display: block;
+  text-decoration: none;
+  transition: color 0.5s;
+}
+
+.global-header__navigation__item--active a {
+  color: #fff;
+  pointer-events: none;
+}
+
+.global-header__navigation__item a:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
 .container {
   min-height: 70vh;
+}
+
+.global-footer {
+  background-color: #282828;
+  color: #fff;
+  margin: 0;
+  min-height: 100px;
+  padding: 3rem 1rem 5rem;
+}
+
+.global-footer__container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1024px;
+}
+
+@media (min-width: 600px) {
+  .global-footer__container {
+    flex-direction: row;
+  }
+}
+
+.global-footer__brand {
+  margin: 0 0 2rem;
+}
+
+@media (min-width: 600px) {
+  .global-footer__brand {
+    margin-top: 2rem;
+  }
 }
 </style>

@@ -1,0 +1,54 @@
+[
+  {
+    "avatar": "animare-cafe/avatar/haneru-inaba.png",
+    "color": "#ffecb3",
+    "description": "因幡 はねるの紹介",
+    "id": "haneru-inaba",
+    "mainVisual": "animare-cafe/main-visual/haneru-inaba.jpg",
+    "name": "因幡 はねる",
+    "picture": "animare-cafe/picture/haneru-inaba.png",
+    "services": {
+      "twitter": "https://twitter.com/Haneru_Inaba?lang=ja",
+      "youtube": "https://www.youtube.com/channel/UC0Owc36U9lOyi9Gx9Ic-4qg"
+    }
+  },
+  {
+    "avatar": "animare-cafe/avatar/hinako-umori.png",
+    "color": "#fce4ec",
+    "description": "宇森 ひなこの紹介",
+    "id": "hinako-umori",
+    "mainVisual": "animare-cafe/main-visual/hinako-umori.jpg",
+    "name": "宇森 ひなこ",
+    "picture": "animare-cafe/picture/hinako-umori.png",
+    "services": {
+      "twitter": "https://twitter.com/Hinako_Umori?lang=ja",
+      "youtube": "https://www.youtube.com/channel/UChqYnJlFxlBi6DfRz6jRenQ"
+    }
+  },
+  {
+    "avatar": "animare-cafe/avatar/ichika-souya.png",
+    "color": "#b3e5fc",
+    "description": "宗谷 いちかの紹介",
+    "id": "ichika-souya",
+    "mainVisual": "animare-cafe/main-visual/ichika-souya.jpg",
+    "name": "宗谷 いちか",
+    "picture": "animare-cafe/picture/ichika-souya.png",
+    "services": {
+      "twitter": "https://twitter.com/Ichika_Souya?lang=ja",
+      "youtube": "https://www.youtube.com/channel/UC2kyQhzGOB-JPgcQX9OMgEw"
+    }
+  },
+  {
+    "avatar": "animare-cafe/avatar/ran-hinokuma.png",
+    "color": "#c8e6c9",
+    "description": "日ノ隈 らんの紹介",
+    "id": "ran-hinokuma",
+    "mainVisual": "animare-cafe/main-visual/ran-hinokuma.jpg",
+    "name": "日ノ隈 らん",
+    "picture": "animare-cafe/picture/ran-hinokuma.png",
+    "services": {
+      "twitter": "https://twitter.com/Ran_Hinokuma?lang=ja",
+      "youtube": "https://www.youtube.com/channel/UCRvpMpzAXBRKJQuk-8-Sdvg"
+    }
+  }
+]

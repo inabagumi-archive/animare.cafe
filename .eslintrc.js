@@ -5,20 +5,7 @@ module.exports = {
     'prettier/vue'
   ],
   parserOptions: {
-    parser: 'typescript-eslint-parser'
+    parser: '@typescript-eslint/parser'
   },
-  root: true,
-  rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'vue/component-name-in-template-casing': ['error', 'kebab-case'],
-    'vue/html-self-closing': [
-      'error',
-      {
-        html: {
-          void: 'any'
-        }
-      }
-    ]
-  }
+  root: true
 }

@@ -1,6 +1,11 @@
 import { ActionTree, GetterTree, MutationTree } from 'vuex'
 import { RootState } from '~/store'
-import { Article } from '~/types'
+
+export interface Article {
+  published: Date | string
+  title: string
+  url: string
+}
 
 export interface ArticleState {
   list: Article[]
@@ -11,22 +16,23 @@ export const state = (): ArticleState => ({
 })
 
 export const getters: GetterTree<ArticleState, RootState> = {
-  articles(state): Article[] {
-    return state.list
-  }
+  articles: state => state.list
 }
 
 export const mutations: MutationTree<ArticleState> = {
-  setList(state, { articles }: { articles: Article[] }): void {
+  setList(state, { articles }) {
     state.list = articles
   }
 }
 
 export const actions: ActionTree<ArticleState, RootState> = {
-  async fetch({ commit, state }): Promise<void> {
-    if (state.list && state.list.length > 0) return
-
-    const { default: articles } = await import('~/data/articles')
+  async fetchList({ commit, rootState }) {
+    const articles: Article[] = (await import(
+      `~/static/api/${rootState.i18n.locale}/articles.json`
+    )).default.map((article: Article) => ({
+      ...article,
+      published: new Date(article.published)
+    }))
 
     commit('setList', { articles })
   }

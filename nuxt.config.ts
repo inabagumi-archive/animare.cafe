@@ -1,32 +1,18 @@
-const talents = [
-  'haneru-inaba',
-  'hinako-umori',
-  'ichika-souya',
-  'kuromu-inari',
-  'ran-hinokuma'
+const routes = [
+  '/ja',
+  '/ja/member/haneru-inaba',
+  '/ja/member/hinako-umori',
+  '/ja/member/ichika-souya',
+  '/ja/member/ran-hinokuma',
+  '/en',
+  '/en/member/haneru-inaba',
+  '/en/member/hinako-umori',
+  '/en/member/ichika-souya',
+  '/en/member/ran-hinokuma'
 ]
-
-const routes = talents.reduce(
-  (routes, talent) => [
-    ...routes,
-    `/en/member/${talent}`,
-    `/ja/member/${talent}`
-  ],
-  ['/en/', '/ja/']
-)
 
 export default {
   build: {
-    extend(config, { isClient, isDev }) {
-      if (isDev && isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          exclude: /\/node_modules\//,
-          loader: 'eslint-loader',
-          test: /\.(js|ts|vue)$/
-        })
-      }
-    },
     html: {
       minify: {
         caseSensitive: false,
@@ -45,21 +31,12 @@ export default {
   },
   css: ['~/assets/css/main.css'],
   dev: process.env.NODE_ENV !== 'production',
-  head: {
-    meta: [
-      { charset: 'UTF-8' },
-      {
-        content: 'initial-scale=1.0,width=device-width',
-        name: 'viewport'
-      }
-    ]
-  },
   generate: {
     fallback: true,
     routes
   },
   loading: {
-    color: '#fff'
+    color: '#b00020'
   },
   mode: 'universal',
   modern: 'client',
@@ -70,11 +47,7 @@ export default {
       {
         generate: true,
         hostname: 'https://animare.cafe',
-        routes: routes.map(url => ({
-          changefreq: 'daily',
-          priority: 1.0,
-          url
-        }))
+        routes
       }
     ],
     [
@@ -104,22 +77,8 @@ export default {
         strategy: 'prefix',
         vueI18n: {},
         vueI18nLoader: false,
-        vuex: false
+        vuex: true
       }
-    ],
-    '~/modules/typescript',
-    '~/modules/generate'
-  ],
-  plugins: ['~/plugins/axios'],
-  router: {
-    extendRoutes(routes) {
-      for (const route of routes) {
-        if (!route.path.endsWith('/')) continue
-
-        route.pathToRegexpOptions = {
-          strict: true
-        }
-      }
-    }
-  }
+    ]
+  ]
 }
