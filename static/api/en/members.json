@@ -39,6 +39,20 @@
     }
   },
   {
+    "avatar": "animare-cafe/avatar/kuromu-inari.png",
+    "color": "#ffccbc",
+    "description": "Kuromu Inari's Profile",
+    "id": "kuromu-inari",
+    "mainVisual": "animare-cafe/main-visual/kuromu-inari.jpg",
+    "name": "Kuromu Inari",
+    "picture": "animare-cafe/picture/kuromu-inari.png",
+    "services": {
+      "twitter": "https://twitter.com/Kuromu_Inari?lang=en",
+      "youtube": "https://www.youtube.com/channel/UCGiFzwdasSAHILrx-DB1pVQ"
+    },
+    "unlisted": true
+  },
+  {
     "avatar": "animare-cafe/avatar/ran-hinokuma.png",
     "color": "#c8e6c9",
     "description": "Ran Hinokuma's Profile",
