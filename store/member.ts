@@ -11,7 +11,7 @@ export interface Member {
   picture: string
   services: {
     [name: string]: string
-  },
+  }
   unlisted?: boolean
 }
 
@@ -50,7 +50,7 @@ export const actions: ActionTree<MemberState, RootState> = {
   },
 
   async fetchList({ commit, rootState }) {
-    const members: Member[] = (await import(`~/static/api/${
+    const members: Member[] = (await import(`~/data/${
       rootState.i18n.locale
     }/members.json`)).default
 
