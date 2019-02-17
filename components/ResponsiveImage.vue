@@ -1,9 +1,17 @@
 <template>
-  <img :height="height" :src="src" :srcset="srcSet" :width="width" />
+  <img
+    class="responsive-image"
+    :height="height"
+    :src="src"
+    :srcset="srcSet"
+    :width="width"
+  />
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
+
+const RESPONSIVE_RATIOS = [1, 2, 3]
 
 @Component
 export default class extends Vue {
@@ -14,22 +22,32 @@ export default class extends Vue {
   @Prop(Number) width!: number
 
   get src() {
-    return `${this.baseURL}/f_auto,h_${this.height},w_${this.width}/${
-      this.publicId
-    }`
+    return this.getImageURL(this.width, this.height)
   }
 
   get srcSet() {
-    return [1, 2, 3]
-      .map(ratio => {
-        const options = [
-          'f_auto',
-          `h_${this.height * ratio}`,
-          `w_${this.width * ratio}`
-        ]
-        return `${this.baseURL}/${options.join(',')}/${this.publicId} ${ratio}x`
-      })
-      .join(', ')
+    return RESPONSIVE_RATIOS.map(
+      ratio =>
+        `${this.getImageURL(this.width * ratio, this.height * ratio)} ${ratio}x`
+    ).join(', ')
+  }
+
+  get placeholder() {
+    return this.getImageURL(10, Math.floor(this.height * (10 / this.width)))
+  }
+
+  getImageURL(width, height) {
+    const options = ['f_auto', `h_${height}`, `w_${width}`]
+
+    return `${this.baseURL}/${options.join(',')}/${this.publicId}`
   }
 }
 </script>
+
+<style scoped>
+.responsive-image {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+</style>
