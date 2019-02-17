@@ -27,9 +27,9 @@ export const mutations: MutationTree<ArticleState> = {
 
 export const actions: ActionTree<ArticleState, RootState> = {
   async fetchList({ commit, rootState }) {
-    const articles: Article[] = (await import(
-      `~/static/api/${rootState.i18n.locale}/articles.json`
-    )).default.map((article: Article) => ({
+    const articles: Article[] = (await import(`~/static/api/${
+      rootState.i18n.locale
+    }/articles.json`)).default.map((article: Article) => ({
       ...article,
       published: new Date(article.published)
     }))
