@@ -41,6 +41,13 @@ export default {
   mode: 'universal',
   modern: 'client',
   modules: [
+    [
+      '@nuxtjs/google-analytics',
+      {
+        dev: false,
+        id: 'UA-134662561-1'
+      }
+    ],
     '@nuxtjs/axios',
     [
       '@nuxtjs/sitemap',
