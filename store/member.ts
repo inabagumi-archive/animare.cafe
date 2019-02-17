@@ -11,7 +11,8 @@ export interface Member {
   picture: string
   services: {
     [name: string]: string
-  }
+  },
+  unlisted?: boolean
 }
 
 export interface MemberState {
