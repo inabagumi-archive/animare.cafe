@@ -29,7 +29,7 @@
 
     <footer class="global-footer">
       <div class="global-foooter_container">
-        <div class="global-footer__brand"><AnimareLogo /></div>
+        <p v-html="$t('global.disclaimer')" class="global-footer__disclaimer" />
       </div>
     </footer>
 
@@ -230,19 +230,17 @@ export default class extends Vue {}
   max-width: 1024px;
 }
 
-@media (min-width: 600px) {
-  .global-footer__container {
-    flex-direction: row;
-  }
+.global-footer__disclaimer {
+  color: #c3c3c3;
+  font-size: 0.8rem;
+  line-height: 2;
+  margin: 1rem 1rem 0.5rem 1rem;
+  text-align: right;
 }
 
-.global-footer__brand {
-  margin: 0 0 2rem;
-}
-
-@media (min-width: 600px) {
-  .global-footer__brand {
-    margin-top: 2rem;
-  }
+.global-footer__disclaimer >>> a {
+  color: inherit;
+  display: inline-block;
+  margin: 0 0.1rem;
 }
 </style>
