@@ -58,6 +58,16 @@ export default class extends Vue {
   padding: 0.75rem;
 }
 
+.member-list__item:not(:first-child) {
+  margin-top: 2rem;
+}
+
+@media (min-width: 600px) {
+  .member-list__item:not(:first-child) {
+    margin-top: 0;
+  }
+}
+
 .member-list__item a {
   background-color: transparent;
   border-radius: 50%;

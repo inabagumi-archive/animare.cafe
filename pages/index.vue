@@ -85,13 +85,13 @@ export default class extends Vue {
 .hero {
   align-items: center;
   background-color: #666;
-  background-image: url('~assets/images/animare-background.jpg');
+  background-image: url('https://res.cloudinary.com/dkdl7ze6r/f_auto/animare-cafe/assets/animare-background.jpg');
   background-size: cover;
   color: #eee;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 40vh;
+  height: 60vh;
   position: relative;
 }
 

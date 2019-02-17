@@ -15,7 +15,7 @@
             exact
             exact-active-class="global-header__navigation__item--active"
             tag="li"
-            :to="switchLocalePath(locale.code)"
+            :to="switchLocalePath(locale.code) || `/${locale.code}`"
           >
             <a>{{ locale.name }}</a>
           </NLink>
@@ -159,7 +159,15 @@ export default class extends Vue {}
   display: flex;
   justify-content: space-between;
   margin: 0;
-  padding: 1rem 1rem 0.5rem;
+  padding: 1.5rem 1rem 2rem;
+  position: relative;
+}
+
+.global-header__navigation {
+  bottom: 0;
+  padding: 0 1rem 1rem 0;
+  position: absolute;
+  right: 0
 }
 
 .global-header__navigation__title {

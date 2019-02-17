@@ -1,13 +1,18 @@
 <template>
-  <img
-    src="~/assets/images/animare-logo.png"
-    srcset="
-      ~/assets/images/animare-logo.png    1x,
-      ~/assets/images/animare-logo@2x.png 2x,
-      ~/assets/images/animare-logo@3x.png 3x
-    "
-    width="200"
-    height="50"
+  <ResponsiveImage
     :alt="$t('global.animare')"
+    :height="50"
+    public-id="animare-cafe/assets/animare-logo.png"
+    :width="200"
   />
 </template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import ResponsiveImage from '~/components/ResponsiveImage.vue'
+
+@Component({
+  components: { ResponsiveImage }
+})
+export default class extends Vue {}
+</script>

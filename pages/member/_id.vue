@@ -136,6 +136,7 @@ export default class extends Vue {
 
 <style scoped>
 .member-info {
+  min-height: 100vh;
   position: relative;
 }
 
@@ -144,7 +145,7 @@ export default class extends Vue {
     align-items: center;
     display: flex;
     flex-direction: row-reverse;
-    justify-content: space-between;
+    margin: 0 auto;
     max-width: 1024px;
   }
 }
@@ -205,9 +206,10 @@ export default class extends Vue {
 
 .member-info__button {
   align-items: center;
-  border-radius: 2px;
+  border-radius: 4px;
   box-sizing: border-box;
   display: flex;
+  font-weight: 700;
   justify-content: center;
   padding: 0.6rem;
   text-decoration: none;
@@ -236,10 +238,10 @@ export default class extends Vue {
   max-width: 100%;
 }
 
-.member-info__picture__image {
-  display: block;
-  height: auto;
-  max-width: 100%;
+@media (min-width: 600px) {
+  .member-info__picture {
+    margin-left: -50px;
+  }
 }
 
 .member-info__picture__caption {

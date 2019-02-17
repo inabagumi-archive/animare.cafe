@@ -27,7 +27,7 @@ export default class extends Vue {
 main {
   align-items: center;
   background-color: #666;
-  background-image: url('~@/assets/images/animare-background.jpg');
+  background-image: url('https://res.cloudinary.com/dkdl7ze6r/f_auto/animare-cafe/assets/animare-background.jpg');
   background-size: cover;
   color: rgba(255, 255, 255, 0.75);
   display: flex;
