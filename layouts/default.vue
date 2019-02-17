@@ -29,7 +29,8 @@
 
     <footer class="global-footer">
       <div class="global-foooter_container">
-        <p v-html="$t('global.disclaimer')" class="global-footer__disclaimer" />
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <p class="global-footer__disclaimer" v-html="$t('global.disclaimer')" />
       </div>
     </footer>
 
@@ -66,7 +67,8 @@ import AnimareLogo from '~/components/AnimareLogo.vue'
     const url = `${base}${fullPath}`
     const title = this.$t('global.title') as string
     const description = this.$t('global.description') as string
-    const mainVisualPath = `${base}${require('~/assets/images/main-visual.jpg')}`
+    const mainVisualURL =
+      'https://res.cloudinary.com/dkdl7ze6r/f_auto/animare-cafe/assets/main-visual.jpg'
 
     return {
       link: [
@@ -118,7 +120,7 @@ import AnimareLogo from '~/components/AnimareLogo.vue'
           property: 'og:description'
         },
         {
-          content: mainVisualPath,
+          content: mainVisualURL,
           hid: 'og:image',
           property: 'og:image'
         },
@@ -139,7 +141,7 @@ import AnimareLogo from '~/components/AnimareLogo.vue'
           name: 'twitter:description'
         },
         {
-          content: mainVisualPath,
+          content: mainVisualURL,
           hid: 'twitter:image',
           name: 'twitter:image'
         }
