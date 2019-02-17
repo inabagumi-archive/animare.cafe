@@ -167,7 +167,7 @@ export default class extends Vue {}
   bottom: 0;
   padding: 0 1rem 1rem 0;
   position: absolute;
-  right: 0
+  right: 0;
 }
 
 .global-header__navigation__title {

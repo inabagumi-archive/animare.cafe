@@ -1,5 +1,6 @@
 import { NuxtAxiosInstance } from '@nuxtjs/axios'
 import VueI18n, { IVueI18n, LocaleMessageObject } from 'vue-i18n'
+import { Article } from '~/store/article'
 import { Member } from '~/store/member'
 
 declare module 'vuex' {
@@ -20,7 +21,13 @@ declare module './locales/*.json' {
   export default localeMessage
 }
 
-declare module './static/api/*/members.json' {
+declare module './data/*/articles.json' {
+  const articles: Article[]
+
+  export default articles
+}
+
+declare module './data/*/members.json' {
   const members: Member[]
 
   export default members
