@@ -1,14 +1,14 @@
 const routes = [
   '/ja',
   '/ja/member/haneru-inaba',
-  '/ja/member/hinako-umori/',
-  '/ja/member/ichika-souya/',
-  '/ja/member/ran-hinokuma/',
+  '/ja/member/hinako-umori',
+  '/ja/member/ichika-souya',
+  '/ja/member/ran-hinokuma',
   '/en',
-  '/en/member/haneru-inaba/',
-  '/en/member/hinako-umori/',
-  '/en/member/ichika-souya/',
-  '/en/member/ran-hinokuma/'
+  '/en/member/haneru-inaba',
+  '/en/member/hinako-umori',
+  '/en/member/ichika-souya',
+  '/en/member/ran-hinokuma'
 ]
 
 export default {
