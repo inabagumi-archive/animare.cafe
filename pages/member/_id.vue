@@ -107,7 +107,7 @@ const memberModule = namespace('member')
         {
           content: mainVisual,
           hid: 'og:image',
-          name: 'og:image'
+          property: 'og:image'
         },
         {
           content: title,
