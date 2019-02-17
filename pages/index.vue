@@ -190,8 +190,12 @@ export default class extends Vue {
   line-height: 2;
 }
 
+.section__paragraph {
+  font-family: Noto Serif, serif;
+}
+
 .section__paragraph:lang(ja) {
-  font-family: Roboto, Noto Serif JP, serif;
+  font-family: Noto Serif, Noto Serif JP, serif;
 }
 
 .article-list {

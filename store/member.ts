@@ -49,9 +49,9 @@ export const actions: ActionTree<MemberState, RootState> = {
   },
 
   async fetchList({ commit, rootState }) {
-    const members: Member[] = (await import(
-      `~/static/api/${rootState.i18n.locale}/members.json`
-    )).default
+    const members: Member[] = (await import(`~/static/api/${
+      rootState.i18n.locale
+    }/members.json`)).default
 
     commit('setList', { members })
   }

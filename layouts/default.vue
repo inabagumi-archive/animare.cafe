@@ -38,12 +38,16 @@
       rel="stylesheet"
     />
     <link
-      v-if="$i18n.locale == 'ja'"
+      href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700"
+      rel="stylesheet"
+    />
+    <link
+      v-if="$i18n.locale === 'ja'"
       href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700"
       rel="stylesheet"
     />
     <link
-      v-if="$i18n.locale == 'ja'"
+      v-if="$i18n.locale === 'ja'"
       href="https://fonts.googleapis.com/css?family=Noto+Serif+JP:400"
       rel="stylesheet"
     />
