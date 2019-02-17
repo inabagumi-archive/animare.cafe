@@ -32,5 +32,5 @@
     "precommit": "${npm_execpath} run lint",
     "start": "nuxt-ts"
   },
-  "version": "2.1.1"
+  "version": "2.1.2"
 }
