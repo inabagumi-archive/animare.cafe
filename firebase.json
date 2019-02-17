@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "cleanUrls": true,
+    "cleanUrls": false,
     "headers": [
       {
         "headers": [
@@ -81,6 +81,7 @@
         "function": "root",
         "source": "/"
       }
-    ]
+    ],
+    "trailingSlash": false
   }
 }
