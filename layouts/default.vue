@@ -214,11 +214,14 @@ export default class extends Vue {}
 }
 
 .global-footer {
+  align-items: center;
   background-color: #282828;
   color: #fff;
+  display: flex;
+  justify-content: flex-end;
   margin: 0;
-  min-height: 100px;
-  padding: 3rem 1rem 5rem;
+  min-height: 150px;
+  padding: 0;
 }
 
 .global-footer__container {
