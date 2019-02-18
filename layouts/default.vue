@@ -29,8 +29,9 @@
 
     <footer class="global-footer">
       <div class="global-foooter_container">
-        <!-- eslint-disable-next-line vue/no-v-html -->
-        <p class="global-footer__disclaimer" v-html="$t('global.disclaimer')" />
+        <i18n class="global-footer__disclaimer" path="global.disclaimer" tag="p">
+          <a href="https://ykzts.com/" place="provider" rel="noopener noreferrer" target="_blank">{{ $t('global.author') }}</a>
+        </i18n>
       </div>
     </footer>
 
@@ -240,6 +241,7 @@ export default class extends Vue {}
   font-size: 0.8rem;
   line-height: 2;
   margin: 1rem 1rem 0.5rem 1rem;
+  max-width: 500px;
   text-align: right;
 }
 
