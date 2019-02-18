@@ -13,7 +13,6 @@
       </section>
       <section class="section">
         <div class="section__inner">
-          <!-- eslint-disable-next-line vue/no-v-html -->
           <h2 class="section__title">{{ $t('home.about_animare.title') }}</h2>
           <p class="section__paragraph">{{ $t('home.about_animare.text') }}</p>
         </div>
