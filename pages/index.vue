@@ -2,8 +2,7 @@
   <div>
     <div class="hero">
       <div class="hero__title">
-        <!-- eslint-disable-next-line vue/no-v-html -->
-        <h1 class="hero__headline" v-html="$t('global.animare_html')" />
+        <h1 class="hero__headline">{{ $t('global.animare') }}</h1>
         <h2 class="hero__subheadline">{{ $t('home.subheadline') }}</h2>
       </div>
     </div>
@@ -15,7 +14,7 @@
       <section class="section">
         <div class="section__inner">
           <!-- eslint-disable-next-line vue/no-v-html -->
-          <h2 class="section__title" v-html="$t('home.about_animare.title')" />
+          <h2 class="section__title">{{ $t('home.about_animare.title') }}</h2>
           <p class="section__paragraph">{{ $t('home.about_animare.text') }}</p>
         </div>
       </section>
@@ -119,6 +118,7 @@ export default class extends Vue {
   letter-spacing: 0.5rem;
   text-align: center;
   margin: 0;
+  word-break: keep-all;
 }
 
 .hero__headline:lang(en) {
@@ -178,6 +178,7 @@ export default class extends Vue {
   margin: 0 0 2rem;
   padding: 0;
   text-align: center;
+  word-break: keep-all;
 }
 
 @media (min-width: 600px) {
