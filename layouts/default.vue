@@ -4,23 +4,6 @@
       <div class="global-header__brand">
         <NLink :to="localePath('index')"><AnimareLogo /></NLink>
       </div>
-      <nav class="global-header__navigation">
-        <h2 class="global-header__navigation__title">{{ $i18n.locale }}</h2>
-        <ul class="global-header__navigation__container">
-          <NLink
-            v-for="locale in $i18n.locales"
-            :key="locale.code"
-            active-class="global-header__navigation__item--active"
-            class="global-header__navigation__item"
-            exact
-            exact-active-class="global-header__navigation__item--active"
-            tag="li"
-            :to="switchLocalePath(locale.code) || `/${locale.code}`"
-          >
-            <a>{{ locale.name }}</a>
-          </NLink>
-        </ul>
-      </nav>
     </header>
 
     <div class="container">
@@ -29,8 +12,18 @@
 
     <footer class="global-footer">
       <div class="global-foooter_container">
-        <i18n class="global-footer__disclaimer" path="global.disclaimer" tag="p">
-          <a href="https://ykzts.com/" place="provider" rel="noopener noreferrer" target="_blank">{{ $t('global.author') }}</a>
+        <i18n
+          class="global-footer__disclaimer"
+          path="global.disclaimer"
+          tag="p"
+        >
+          <a
+            href="https://ykzts.com/"
+            place="provider"
+            rel="noopener noreferrer"
+            target="_blank"
+            >{{ $t('global.author') }}</a
+          >
         </i18n>
       </div>
     </footer>
@@ -164,52 +157,6 @@ export default class extends Vue {}
   margin: 0;
   padding: 1.5rem 1rem 2rem;
   position: relative;
-}
-
-.global-header__navigation {
-  bottom: 0;
-  padding: 0 1rem 1rem 0;
-  position: absolute;
-  right: 0;
-}
-
-.global-header__navigation__title {
-  display: none;
-}
-
-.global-header__navigation__container {
-  display: flex;
-  font-size: 0.8rem;
-  margin: 0;
-  padding: 0;
-}
-
-.global-header__navigation__item {
-  display: block;
-  margin: 0;
-  padding: 1px 0;
-}
-
-.global-header__navigation__item:not(:first-child) {
-  border-left: 1px solid #fff;
-  margin-left: 1rem;
-  padding-left: 1rem;
-}
-
-.global-header__navigation__item a {
-  color: rgba(255, 255, 255, 0.5);
-  display: block;
-  text-decoration: none;
-  transition: color 0.5s;
-}
-
-.global-header__navigation__item--active a {
-  color: #fff;
-  pointer-events: none;
-}
-
-.global-header__navigation__item a:hover {
-  color: rgba(255, 255, 255, 0.8);
 }
 
 .container {
