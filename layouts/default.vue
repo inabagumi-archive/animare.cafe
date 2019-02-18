@@ -4,6 +4,9 @@
       <div class="global-header__brand">
         <NLink :to="localePath('index')"><AnimareLogo /></NLink>
       </div>
+
+      <nav class="global-header__navigation">
+      </nav>
     </header>
 
     <div class="container">
