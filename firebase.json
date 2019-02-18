@@ -10,7 +10,7 @@
           },
           {
             "key": "Content-Security-Policy",
-            "value": "connect-src https://www.google-analytics.com; default-src 'none'; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; style-src 'unsafe-inline' https://fonts.googleapis.com"
+            "value": "connect-src https://stats.g.doubleclick.net https://www.google-analytics.com; default-src 'none'; font-src https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com https://stats.g.doubleclick.net https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; style-src 'unsafe-inline' https://fonts.googleapis.com"
           },
           {
             "key": "Referrer-Policy",
