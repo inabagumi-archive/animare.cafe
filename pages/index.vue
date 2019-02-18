@@ -26,7 +26,12 @@
             :key="article.url"
             class="article-list__item"
           >
-            <a class="article-list__item__link" :href="article.url">
+            <a
+              class="article-list__item__link"
+              :href="article.url"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <span class="article-list__item__title">{{ article.title }}</span>
               <time
                 class="article-list__item__time"
@@ -90,7 +95,7 @@ export default class extends Vue {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 60vh;
+  min-height: 40vh;
   position: relative;
 }
 
@@ -104,6 +109,12 @@ export default class extends Vue {
   right: 0;
   top: 0;
   z-index: 1;
+}
+
+@media (min-width: 600px) {
+  .hero {
+    min-height: 60vh;
+  }
 }
 
 .hero__title {
@@ -175,6 +186,7 @@ export default class extends Vue {
 
 .section__title {
   font-size: 2rem;
+  letter-spacing: 0.2rem;
   margin: 0 0 2rem;
   padding: 0;
   text-align: center;
@@ -219,9 +231,16 @@ export default class extends Vue {
 }
 
 .article-list__item__link {
+  border-radius: 0.3rem;
   color: inherit;
   display: block;
+  padding: 0.1rem 0.3rem;
   text-decoration: none;
+  transition: background-color 0.3s linear;
+}
+
+.article-list__item__link:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .article-list__item__title {
