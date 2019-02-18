@@ -162,6 +162,7 @@ export default class extends Vue {
   position: absolute;
   right: 0;
   top: 0;
+  z-index: 2;
 }
 
 @media (min-width: 600px) {
@@ -236,12 +237,28 @@ export default class extends Vue {
 .member-info__picture {
   margin: 0;
   max-width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 @media (min-width: 600px) {
   .member-info__picture {
-    margin-left: -50px;
+    position: static;
   }
+}
+
+@keyframes pan-up {
+  0% {
+    transform: translateY(100px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.member-info__picture__image {
+  animation: pan-up 0.6s ease-out;
 }
 
 .member-info__picture__caption {
