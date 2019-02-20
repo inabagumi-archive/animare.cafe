@@ -50,6 +50,9 @@
           </li>
         </ul>
       </nav>
+      <div v-if="liveBroadcasts.length > 0" class="member-info__video">
+        <YouTube :id="liveBroadcasts[0].id" />
+      </div>
     </div>
     <figure class="member-info__picture">
       <ResponsiveImage
@@ -70,12 +73,15 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 import ResponsiveImage from '~/components/ResponsiveImage.vue'
+import YouTube from '~/components/YouTube.vue'
 import { Member } from '~/store/member'
+import { Video } from '~/store/video'
 
 const memberModule = namespace('member')
+const videoModule = namespace('video')
 
 @Component({
-  components: { ResponsiveImage },
+  components: { ResponsiveImage, YouTube },
   async fetch({ params, store }) {
     await store.dispatch('member/fetch', params)
   },
@@ -131,6 +137,15 @@ const memberModule = namespace('member')
 })
 export default class extends Vue {
   @memberModule.Getter member!: Member
+  @videoModule.Getter liveBroadcasts!: Video[]
+
+  mounted() {
+    this.$store.dispatch('video/fetchLiveBroadcasts', { id: this.member.id })
+  }
+
+  destroyed() {
+    this.$store.dispatch('video/refreshLiveBroadcasts')
+  }
 }
 </script>
 
@@ -232,6 +247,13 @@ export default class extends Vue {
   height: 32px;
   margin: 0 6px 0 0;
   width: 32px;
+}
+
+.member-info__video {
+  box-sizing: border-box;
+  margin: 5rem 0 1rem;
+  padding: 0 0.5rem;
+  width: 100%;
 }
 
 .member-info__picture {
