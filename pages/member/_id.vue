@@ -151,13 +151,13 @@ export default class extends Vue {
 
 <style scoped>
 .member-info {
-  min-height: 100vh;
+  min-height: 60vh;
   position: relative;
 }
 
 @media (min-width: 600px) {
   .member-info {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     flex-direction: row-reverse;
     margin: 0 auto;
@@ -166,14 +166,11 @@ export default class extends Vue {
 }
 
 .member-info__content {
-  align-items: center;
-  display: flex;
   background-color: rgba(0, 0, 0, 0.6);
   bottom: 0;
   color: #eee;
-  flex-direction: column;
-  justify-content: center;
   left: 0;
+  padding-top: 5rem;
   position: absolute;
   right: 0;
   top: 0;
@@ -184,6 +181,7 @@ export default class extends Vue {
   .member-info__content {
     background-color: transparent;
     color: inherit;
+    padding-top: 10rem;
     position: static;
     flex: 1;
   }
@@ -192,7 +190,8 @@ export default class extends Vue {
 .member-info__title {
   font-size: 2rem;
   font-weight: 700;
-  margin: 0 0 2rem;
+  margin: 0 0 3rem;
+  text-align: center;
 }
 
 @media (min-width: 600px) {
