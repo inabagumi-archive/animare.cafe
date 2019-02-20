@@ -1,4 +1,7 @@
 {
+  "functions": {
+    "predeploy": "yarn --cwd functions build"
+  },
   "hosting": {
     "cleanUrls": false,
     "headers": [
@@ -15,9 +18,26 @@
           {
             "key": "Referrer-Policy",
             "value": "same-origin"
+          },
+          {
+            "key": "Vary",
+            "value": "Accept-Encoding, Accept-Language"
           }
         ],
         "source": "/**"
+      },
+      {
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=1800, public, s-maxage=600"
+          },
+          {
+            "key": "Content-Security-Policy",
+            "value": "default-src: 'none'"
+          }
+        ],
+        "source": "/api/**"
       },
       {
         "headers": [
@@ -78,8 +98,12 @@
     "redirects": [],
     "rewrites": [
       {
-        "function": "root",
+        "function": "handler",
         "source": "/"
+      },
+      {
+        "function": "handler",
+        "source": "/api/**"
       }
     ],
     "trailingSlash": false
