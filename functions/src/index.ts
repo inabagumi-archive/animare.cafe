@@ -1,3 +1,4 @@
+import * as cors from 'cors'
 import * as express from 'express'
 import * as functions from 'firebase-functions'
 import { google } from 'googleapis'
@@ -16,6 +17,7 @@ const auth: string = functions.config().youtube.api_key
 
 app.set('trust proxy', true)
 app.disable('etag')
+app.use('/api/*', cors())
 
 app.get('/', (req, res) => {
   const locale = req.acceptsLanguages('en', 'ja')
@@ -52,7 +54,7 @@ app.get('/api/members/:id([A-Za-z\\d-]+)/lives', (req, res, next) => {
     }))
 
     res
-      .header('cache-control', 'max-age=1800, public, s-maxage=600')
+      .header('cache-control', 'max-age=600, public, s-maxage=300')
       .json(liveBroadcasts)
   })().catch(next)
 })
