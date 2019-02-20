@@ -23,13 +23,16 @@ export default class extends Vue {
 
 <style scoped>
 .youtube {
+  border-radius: 4px;
   height: 0;
+  overflow: hidden;
   padding-top: 56.25%;
   position: relative;
   width: 100%;
 }
 
 .youtube__frame {
+  border-radius: 4px;
   height: 100%;
   position: absolute;
   right: 0;

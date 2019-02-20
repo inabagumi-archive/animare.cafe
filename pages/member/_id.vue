@@ -52,6 +52,34 @@
       </nav>
       <div v-if="liveBroadcasts.length > 0" class="member-info__video">
         <YouTube :id="liveBroadcasts[0].id" />
+        <nav>
+          <ol class="video-list">
+            <li
+              v-for="liveBroadcast in liveBroadcasts.slice(1, 4)"
+              :key="liveBroadcast.id"
+              class="video-list__item"
+            >
+              <a
+                class="video-list__item__link"
+                :href="`https://www.youtube.com/watch?v=${liveBroadcast.id}`"
+                rel="noopener noreferrer"
+                target="_blank"
+                :title="liveBroadcast.title"
+              >
+                <img
+                  :alt="liveBroadcast.title"
+                  class="video-list__item__thumbnail"
+                  :height="liveBroadcast.thumbnails.high.height"
+                  :src="liveBroadcast.thumbnails.high.url"
+                  :width="liveBroadcast.thumbnails.high.width"
+                />
+              </a>
+            </li>
+          </ol>
+        </nav>
+      </div>
+      <div v-else class="member-info__video">
+        <div class="member-info__loading" />
       </div>
     </div>
     <figure class="member-info__picture">
@@ -253,6 +281,64 @@ export default class extends Vue {
   margin: 5rem 0 1rem;
   padding: 0 0.5rem;
   width: 100%;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(45deg);
+  }
+
+  100% {
+    transform: rotate(405deg);
+  }
+}
+
+.member-info__loading {
+  animation: spin 2s ease-in-out infinite;
+  border: 2rem solid rgba(255, 255, 255, 0.4);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  box-sizing: border-box;
+  margin: 2rem auto;
+  height: 15rem;
+  transform-origin: 50%;
+  width: 15rem;
+}
+
+@media (min-width: 600px) {
+  .member-info__loading {
+    border-color: rgba(0, 0, 0, 0.4);
+    border-bottom-color: transparent;
+  }
+}
+
+.video-list {
+  box-sizing: border-box;
+  display: flex;
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+}
+
+.video-list__item {
+  display: block;
+  flex-basis: 33.333%;
+  flex-basis: calc(100% / 3);
+}
+
+.video-list__item:not(:first-child) {
+  margin-left: 0.5rem;
+}
+
+.video-list__item__link {
+  display: block;
+}
+
+.video-list__item__thumbnail {
+  border-radius: 3px;
+  display: block;
+  height: auto;
+  max-width: 100%;
 }
 
 .member-info__picture {
