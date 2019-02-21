@@ -1,5 +1,4 @@
 {
-  "extends": "@nuxt/typescript",
   "compilerOptions": {
     "baseUrl": ".",
     "noImplicitAny": false,
@@ -9,6 +8,7 @@
       "@nuxt/vue-app"
     ]
   },
+  "extends": "./node_modules/@nuxt/typescript/tsconfig.json",
   "exclude": [
     "./functions/**/*"
   ]
