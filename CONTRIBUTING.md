@@ -22,19 +22,12 @@ $ npx firebase-tools serve --only hosting,functions
 
 `http://localhost:5000/` をウェブブラウザーで開いてください。
 
-## 画像の変換
+## 画像の変換や最適化
 
-アルファチャンネルのないPNG形式の画像はJPEG形式に変換してください。JPEGの品質は80を基本にして、背景などの注視されない場所で使われている画像の場合は70にしましょう。
+画像は[Squoosh](https://squoosh.app/)を使って変換や最適化を行ってください。
 
-|             | Tool                                               | Command                                              |
-|-------------|----------------------------------------------------|------------------------------------------------------|
-| PNG -> JPEG | [ImageMagick](https://www.imagemagick.org/script/) | `convert in.png -quality 80 -interlace jpeg out.jpg` |
+画像にアルファチャンネル (透過) がない場合はできる限りJPEGに変換してください。PNGはJPEGとは違い、不可逆圧縮であるために綺麗ですが一般的に容量が大きくなってしまいがちです。昨今は通信容量に応じて速度の制限がかけられてしまう環境が多いため、ファイルの容量には気を使うべきでしょう。
 
-## 画像の最適化
+さらにJPEGの場合はMozJPEG、PNGの場合はOptiPNGを使って画像の最適化をしましょう。アルゴリズムの最適化を行うことによってファイルの容量削減に繋がります。
 
-画像は[mozjpeg](https://github.com/mozilla/mozjpeg)や[pngcrush](https://pmt.sourceforge.io/pngcrush/)を使って最適化しましょう。最小限の画像の劣化があるものの簡単にファイル容量の削減ができます。
-
-| Format | Tool                                             | Command                                                              |
-|--------|--------------------------------------------------|----------------------------------------------------------------------|
-| JPEG   | [mozjpeg](https://github.com/mozilla/mozjpeg)    | `jpegtran -copy none -optimize -progressive -outfile out.jpg in.jpg` |
-| PNG    | [pngcrush](https://pmt.sourceforge.io/pngcrush/) | `pngcrush -brute -reduce -rem alla in.png out.png`                   |
+またPNGの場合は「Reduce palette」から色数に制限をかけましょう。パレットの色数を減らすことによってファイルの容量削減に大きな効果があります。256色よりも多い色数が必要な場合はJPEGにするべきでしょう。
