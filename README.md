@@ -15,3 +15,7 @@
 ## 開発について
 
 開発については[CONTRIBUTING.md](/CONTRIBUTING.md)を参照してください。
+
+## ライセンス
+
+[MIT](LICENSE)
