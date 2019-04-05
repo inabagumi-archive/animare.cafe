@@ -4,16 +4,15 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/google-analytics": "^2.1.0",
     "@nuxtjs/sitemap": "^0.2.0",
-    "@types/lodash": "^4.14.121",
-    "@types/node": "^11.9.5",
-    "lodash": "^4.17.11",
+    "nuxt": "^2.6.1",
     "nuxt-i18n": "^5.8.4",
-    "nuxt-ts": "^2.4.5",
+    "ts-node": "^8.0.3",
     "vue-property-decorator": "^7.3.0",
     "vuex-class": "^0.3.1"
   },
   "description": "The animare.cafe is a unofficial website",
   "devDependencies": {
+    "@nuxt/typescript": "^2.6.1",
     "@typescript-eslint/parser": "^1.4.2",
     "eslint": "^5.14.1",
     "eslint-config-prettier": "^4.0.0",
@@ -25,12 +24,12 @@
   "name": "@ykzts/animare.cafe",
   "private": true,
   "scripts": {
-    "build": "nuxt-ts build",
-    "dev": "nuxt-ts dev",
-    "generate": "nuxt-ts generate",
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
     "lint": "eslint --ext .js,.ts,.vue --fix .",
     "precommit": "${npm_execpath} run lint",
-    "start": "nuxt-ts"
+    "start": "nuxt"
   },
   "version": "2.4.1"
 }

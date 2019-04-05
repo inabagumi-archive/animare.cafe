@@ -1,17 +1,17 @@
+import NuxtConfiguration from '@nuxt/config'
+
 const routes = [
-  '/ja',
   '/ja/member/haneru-inaba',
   '/ja/member/hinako-umori',
   '/ja/member/ichika-souya',
   '/ja/member/ran-hinokuma',
-  '/en',
   '/en/member/haneru-inaba',
   '/en/member/hinako-umori',
   '/en/member/ichika-souya',
   '/en/member/ran-hinokuma'
 ]
 
-export default {
+const config: NuxtConfiguration = {
   build: {
     html: {
       minify: {
@@ -54,7 +54,7 @@ export default {
       {
         generate: true,
         hostname: 'https://animare.cafe',
-        routes
+        routes: routes.concat(['/ja', '/en'])
       }
     ],
     [
@@ -89,3 +89,5 @@ export default {
     ]
   ]
 }
+
+export default config
