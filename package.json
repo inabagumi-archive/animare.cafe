@@ -12,12 +12,10 @@
   "description": "The animare.cafe is a unofficial website",
   "devDependencies": {
     "@nuxt/typescript": "^2.6.1",
-    "@typescript-eslint/parser": "^1.6.0",
+    "@vue/eslint-config-prettier": "^4.0.1",
+    "@vue/eslint-config-typescript": "^4.0.0",
     "eslint": "^5.14.1",
-    "eslint-config-prettier": "^4.0.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-vue": "^5.2.2",
-    "prettier": "^1.16.4"
+    "eslint-plugin-vue": "^5.2.2"
   },
   "license": "MIT",
   "name": "@inabagumi/animare.cafe",
