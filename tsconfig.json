@@ -1,14 +1,23 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "baseUrl": ".",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "lib": ["dom", "esnext", "esnext.asynciterable"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
     "noImplicitAny": false,
-    "types": [
-      "@types/lodash",
-      "@types/node",
-      "@nuxt/vue-app"
-    ]
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"]
+    },
+    "sourceMap": true,
+    "strict": true,
+    "target": "esnext",
+    "types": ["@nuxt/vue-app", "@types/node"]
   },
-  "extends": "./node_modules/@nuxt/typescript/tsconfig.json",
   "exclude": [
     "./functions/**/*"
   ]
