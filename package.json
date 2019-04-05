@@ -12,7 +12,7 @@
   "description": "The animare.cafe is a unofficial website",
   "devDependencies": {
     "@nuxt/typescript": "^2.6.1",
-    "@typescript-eslint/parser": "^1.4.2",
+    "@typescript-eslint/parser": "^1.6.0",
     "eslint": "^5.14.1",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-prettier": "^3.0.1",
