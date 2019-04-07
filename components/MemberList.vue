@@ -1,7 +1,7 @@
 <template>
   <ul class="member-list">
     <NLink
-      v-for="member in members.filter(member => !member.unlisted)"
+      v-for="member in members"
       :key="member.id"
       class="member-list__item"
       :style="`--theme-color: ${member.color}`"
