@@ -34,8 +34,8 @@
               <span class="article-list__item__title">{{ article.title }}</span>
               <time
                 class="article-list__item__time"
-                :datetime="article.published.toISOString()"
-                >({{ $d(article.published) }})</time
+                :datetime="article.published"
+                >({{ $d(new Date(article.published)) }})</time
               >
             </a>
           </li>
@@ -56,16 +56,19 @@ const articleModule = namespace('article')
 const memberModule = namespace('member')
 
 @Component({
-  components: { MemberList },
+  components: { MemberList }
+})
+export default class extends Vue {
+  @articleModule.State readonly articles!: Article[]
+  @memberModule.State readonly members!: Member[]
+
   async fetch({ store }) {
     await Promise.all([
       store.dispatch('member/fetchList'),
       store.dispatch('article/fetchList')
     ])
-  },
-  head() {
-    return {}
-  },
+  }
+
   transition(to, from) {
     if (
       to.name &&
@@ -77,10 +80,6 @@ const memberModule = namespace('member')
 
     return 'page'
   }
-})
-export default class extends Vue {
-  @articleModule.Getter articles!: Article[]
-  @memberModule.Getter members!: Member[]
 }
 </script>
 
@@ -135,16 +134,6 @@ export default class extends Vue {
   letter-spacing: 1rem;
 }
 
-.hero__headline >>> .line {
-  display: block;
-}
-
-@media (min-width: 600px) {
-  .hero__headline >>> .line {
-    display: inline;
-  }
-}
-
 .hero__subheadline {
   font-size: 1rem;
   font-weight: 400;
@@ -190,12 +179,6 @@ export default class extends Vue {
   padding: 0;
   text-align: center;
   word-break: keep-all;
-}
-
-@media (min-width: 600px) {
-  .section__title >>> br {
-    display: none;
-  }
 }
 
 .section__paragraph {

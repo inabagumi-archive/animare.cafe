@@ -48,7 +48,6 @@ const config: NuxtConfiguration = {
         id: 'UA-134662561-1'
       }
     ],
-    '@nuxtjs/axios',
     [
       '@nuxtjs/sitemap',
       {
@@ -80,6 +79,7 @@ const config: NuxtConfiguration = {
         ],
         lazy: true,
         parsePages: false,
+        rootRedirect: 'ja',
         seo: true,
         strategy: 'prefix',
         vueI18n: {},
@@ -87,7 +87,8 @@ const config: NuxtConfiguration = {
         vuex: true
       }
     ]
-  ]
+  ],
+  plugins: ['~/plugins/vue-property-decorator']
 }
 
 export default config

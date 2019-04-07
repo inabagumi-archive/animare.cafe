@@ -6,7 +6,7 @@
         <ul class="member-info__navigation__list">
           <li class="member-info__navigation__list__item">
             <a
-              :href="member.services.youtube"
+              :href="member.links.youtube"
               class="member-info__button member-info__button--youtube"
               rel="noopenner noreferrer"
               role="button"
@@ -28,7 +28,7 @@
           </li>
           <li class="member-info__navigation__list__item">
             <a
-              :href="member.services.twitter"
+              :href="member.links.twitter"
               class="member-info__button member-info__button--twitter"
               rel="noopenner noreferrer"
               role="button"
@@ -50,7 +50,10 @@
           </li>
         </ul>
       </nav>
-      <div v-if="liveBroadcasts.length > 0" class="member-info__video">
+      <div v-if="isLoading" class="member-info__video">
+        <div class="member-info__loading" />
+      </div>
+      <div v-else-if="liveBroadcasts.length > 0" class="member-info__video">
         <YouTube :id="liveBroadcasts[0].id" />
         <nav>
           <ol class="video-list">
@@ -78,9 +81,6 @@
           </ol>
         </nav>
       </div>
-      <div v-else class="member-info__video">
-        <div class="member-info__loading" />
-      </div>
     </div>
     <figure class="member-info__picture">
       <ResponsiveImage
@@ -102,77 +102,79 @@ import { Component, Vue } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
 import ResponsiveImage from '~/components/ResponsiveImage.vue'
 import YouTube from '~/components/YouTube.vue'
-import { Member } from '~/store/member'
-import { Video } from '~/store/video'
+import { LiveBroadcast } from '~/store/liveBroadcast'
+import { Member, MemberID } from '~/store/member'
 
+const liveBroadcastModule = namespace('liveBroadcast')
 const memberModule = namespace('member')
-const videoModule = namespace('video')
 
 @Component({
-  components: { ResponsiveImage, YouTube },
+  components: { ResponsiveImage, YouTube }
+})
+export default class extends Vue {
+  isLoading = true
+
+  @liveBroadcastModule.State readonly liveBroadcasts!: LiveBroadcast[]
+
+  @memberModule.Getter readonly getMemberById!: (id: MemberID) => Member
+
+  get member() {
+    const { id } = this.$route.params
+
+    return this.getMemberById(id)
+  }
+
+  mounted() {
+    this.$store
+      .dispatch('liveBroadcast/fetch', this.$route.params)
+      .finally(() => (this.isLoading = false))
+  }
+
   async fetch({ params, store }) {
     await store.dispatch('member/fetch', params)
-  },
-  head(this: { member: Member }) {
-    if (!this.member) return {}
+  }
 
-    const { name: title, description } = this.member
-    const mainVisual = `https://res.cloudinary.com/dkdl7ze6r/f_auto/${
-      this.member.mainVisual
-    }`
-
+  head() {
     return {
       meta: [
         {
-          content: description,
+          content: this.member.description,
           hid: 'description',
           name: 'description'
         },
         {
-          content: title,
+          content: this.member.name,
           hid: 'og:title',
           property: 'og:title'
         },
         {
-          content: description,
+          content: this.member.description,
           hid: 'og:description',
           property: 'og:description'
         },
         {
-          content: mainVisual,
+          content: this.member.mainVisual,
           hid: 'og:image',
           property: 'og:image'
         },
         {
-          content: title,
+          content: this.member.name,
           hid: 'twitter:title',
           name: 'twitter:title'
         },
         {
-          content: description,
+          content: this.member.description,
           hid: 'twitter:description',
           name: 'twitter:description'
         },
         {
-          content: mainVisual,
+          content: this.member.mainVisual,
           hid: 'twitter:image',
           name: 'twitter:image'
         }
       ],
-      title
+      title: this.member.name
     }
-  }
-})
-export default class extends Vue {
-  @memberModule.Getter member!: Member
-  @videoModule.Getter liveBroadcasts!: Video[]
-
-  mounted() {
-    this.$store.dispatch('video/fetchLiveBroadcasts', { id: this.member.id })
-  }
-
-  destroyed() {
-    this.$store.dispatch('video/refreshLiveBroadcasts')
   }
 }
 </script>

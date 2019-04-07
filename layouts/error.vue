@@ -11,15 +11,15 @@
 import { ErrorParams } from '@nuxt/vue-app'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
-@Component({
-  head() {
-    return {
-      title: this.$t('global.error') as string
-    }
-  }
-})
+@Component
 export default class extends Vue {
   @Prop(Object) error!: ErrorParams
+
+  head() {
+    return {
+      title: this.$t('global.error')
+    }
+  }
 }
 </script>
 
