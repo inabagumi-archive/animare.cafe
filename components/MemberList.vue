@@ -9,10 +9,10 @@
       :to="localePath({ name: 'member-id', params: { id: member.id } })"
     >
       <a>
-        <ResponsiveImage
+        <img
+          v-lazy="member.avatar"
           :alt="member.name"
           :height="256"
-          :public-id="member.avatar"
           :width="256"
         />
       </a>
@@ -22,12 +22,9 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import ResponsiveImage from '~/components/ResponsiveImage.vue'
 import { Member } from '~/store/member'
 
-@Component({
-  components: { ResponsiveImage }
-})
+@Component
 export default class extends Vue {
   @Prop(Array) members!: Member[]
 }

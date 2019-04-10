@@ -88,7 +88,7 @@ const config: NuxtConfiguration = {
       }
     ]
   ],
-  plugins: ['~/plugins/vue-property-decorator']
+  plugins: ['~/plugins/vue-lazyload.client', '~/plugins/vue-property-decorator']
 }
 
 export default config
