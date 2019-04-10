@@ -83,11 +83,11 @@
       </div>
     </div>
     <figure class="member-info__picture">
-      <ResponsiveImage
+      <img
         alt=""
         class="member-info__picture__image"
         :height="990"
-        :public-id="member.picture"
+        :src="member.picture"
         :width="540"
       />
       <figcaption class="member-info__picture__caption">
@@ -100,7 +100,6 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { namespace } from 'vuex-class'
-import ResponsiveImage from '~/components/ResponsiveImage.vue'
 import YouTube from '~/components/YouTube.vue'
 import { LiveBroadcast } from '~/store/liveBroadcast'
 import { Member, MemberID } from '~/store/member'
@@ -109,7 +108,7 @@ const liveBroadcastModule = namespace('liveBroadcast')
 const memberModule = namespace('member')
 
 @Component({
-  components: { ResponsiveImage, YouTube }
+  components: { YouTube }
 })
 export default class extends Vue {
   isLoading = true
