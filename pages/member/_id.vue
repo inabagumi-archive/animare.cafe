@@ -367,6 +367,8 @@ export default class extends Vue {
 
 .member-info__picture__image {
   animation: pan-up 0.6s ease-out;
+  height: auto;
+  max-width: 100%;
 }
 
 .member-info__picture__caption {
