@@ -3,7 +3,7 @@ version: 2.1
 executors:
   default:
     docker:
-      - image: circleci/node:8.15.1
+      - image: circleci/node:8.16.0
     environment:
       NODE_ENV: development
     working_directory: ~/animare.cafe
