@@ -11,7 +11,7 @@
   },
   "description": "The animare.cafe is a unofficial website",
   "devDependencies": {
-    "@nuxt/typescript": "^2.6.2",
+    "@nuxt/typescript": "^2.6.3",
     "@vue/eslint-config-prettier": "^4.0.1",
     "@vue/eslint-config-typescript": "^4.0.0",
     "eslint": "^5.16.0",
