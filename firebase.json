@@ -1,7 +1,4 @@
 {
-  "functions": {
-    "predeploy": "yarn --cwd functions build"
-  },
   "hosting": {
     "cleanUrls": false,
     "headers": [
@@ -79,12 +76,6 @@
     ],
     "public": "./dist/",
     "redirects": [],
-    "rewrites": [
-      {
-        "function": "handler",
-        "source": "/"
-      }
-    ],
     "trailingSlash": false
   }
 }

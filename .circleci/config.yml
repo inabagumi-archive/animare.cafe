@@ -25,21 +25,6 @@ commands:
           paths:
             - ./node_modules/
 
-      - restore_cache:
-          keys:
-            - v1-functions-dependencies-{{ checksum "functions/yarn.lock" }}
-            - v1-functions-dependencies-
-
-      - run:
-          name: yarn install (functions)
-          command: yarn install --frozen-lockfile
-          working_directory: ./functions/
-
-      - save_cache:
-          key: v1-functions-dependencies-{{ checksum "functions/yarn.lock" }}
-          paths:
-            - ./functions/node_modules/
-
 jobs:
   setup:
     executor:
@@ -75,7 +60,7 @@ jobs:
       - attach_workspace:
           at: .
       - run: NODE_ENV=production yarn generate
-      - run: npx firebase-tools deploy --only hosting,functions --token $FIREBASE_TOKEN
+      - run: npx firebase-tools deploy --only hosting --token $FIREBASE_TOKEN
 
 workflows:
   version: 2
