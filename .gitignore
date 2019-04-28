@@ -1,11 +1,7 @@
 /.firebase/
 /.nuxt/
 /dist/
-/functions/lib/
-/functions/node_modules/
 /node_modules/
 /firebase-debug.log
-/functions/.runtimeconfig.json
-/functions/yarn-error.log
 /static/sitemap.xml
 /yarn-error.log
