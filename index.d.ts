@@ -1,1 +1,1 @@
-import 'vue-i18n'
+import 'nuxt-i18n'

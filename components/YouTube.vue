@@ -13,12 +13,20 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import Vue from 'vue'
 
-@Component
-export default class extends Vue {
-  @Prop({ required: true, type: String }) id!: string
+type Props = {
+  id: string
 }
+
+export default Vue.extend<{}, {}, {}, Props>({
+  props: {
+    id: {
+      required: true,
+      type: String
+    }
+  }
+})
 </script>
 
 <style scoped>

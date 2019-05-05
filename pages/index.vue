@@ -46,41 +46,41 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import { namespace } from 'vuex-class'
+import Vue from 'vue'
+import { mapState } from 'vuex'
 import MemberList from '~/components/MemberList.vue'
 import { Article } from '~/store/article'
 import { Member } from '~/store/member'
 
-const articleModule = namespace('article')
-const memberModule = namespace('member')
+type Computed = {
+  articles: Article[]
+  members: Member[]
+}
 
-@Component({
-  components: { MemberList }
-})
-export default class extends Vue {
-  @articleModule.State readonly articles!: Article[]
-  @memberModule.State readonly members!: Member[]
+export default Vue.extend<{}, {}, Computed, {}>({
+  components: { MemberList },
+
+  computed: {
+    ...mapState('article', ['articles']),
+    ...mapState('member', ['members'])
+  } as any,
 
   async fetch({ store }) {
     await Promise.all([
       store.dispatch('member/fetchList'),
       store.dispatch('article/fetchList')
     ])
-  }
+  },
 
   transition(to, from) {
-    if (
-      to.name &&
+    return to.name &&
       from &&
       from.name &&
       to.name.split('___')[0] !== from.name.split('___')[0]
-    )
-      return 'home'
-
-    return 'page'
+      ? 'home'
+      : 'page'
   }
-}
+})
 </script>
 
 <style scoped>

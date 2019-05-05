@@ -98,40 +98,45 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import { namespace } from 'vuex-class'
+import Vue from 'vue'
+import { mapGetters, mapState } from 'vuex'
 import YouTube from '~/components/YouTube.vue'
 import { LiveBroadcast } from '~/store/liveBroadcast'
 import { Member, MemberID } from '~/store/member'
 
-const liveBroadcastModule = namespace('liveBroadcast')
-const memberModule = namespace('member')
+type Data = {
+  isLoading: boolean
+}
 
-@Component({
-  components: { YouTube }
-})
-export default class extends Vue {
-  isLoading = true
+type Computed = {
+  getMemberById: (id: MemberID) => Member
+  liveBroadcasts: LiveBroadcast[]
+  member: Member
+}
 
-  @liveBroadcastModule.State readonly liveBroadcasts!: LiveBroadcast[]
+export default Vue.extend<Data, {}, Computed, {}>({
+  components: { YouTube },
 
-  @memberModule.Getter readonly getMemberById!: (id: MemberID) => Member
+  data() {
+    return {
+      isLoading: false
+    }
+  },
 
-  get member() {
-    const { id } = this.$route.params
+  computed: {
+    ...(mapGetters('member', ['getMemberById']) as any),
+    ...(mapState('liveBroadcast', ['liveBroadcasts']) as any),
 
-    return this.getMemberById(id)
-  }
+    member() {
+      const { id } = this.$route.params
 
-  mounted() {
-    this.$store
-      .dispatch('liveBroadcast/fetch', this.$route.params)
-      .finally(() => (this.isLoading = false))
-  }
+      return this.getMemberById(id)
+    }
+  },
 
   async fetch({ params, store }) {
     await store.dispatch('member/fetch', params)
-  }
+  },
 
   head() {
     return {
@@ -174,8 +179,14 @@ export default class extends Vue {
       ],
       title: this.member.name
     }
+  },
+
+  mounted() {
+    this.$store
+      .dispatch('liveBroadcast/fetch', this.$route.params)
+      .finally(() => (this.isLoading = false))
   }
-}
+})
 </script>
 
 <style scoped>

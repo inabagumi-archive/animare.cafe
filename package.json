@@ -5,9 +5,7 @@
     "nuxt": "^2.6.3",
     "nuxt-i18n": "^5.10.0",
     "ts-node": "^8.1.0",
-    "vue-lazyload": "^1.2.6",
-    "vue-property-decorator": "^8.1.0",
-    "vuex-class": "^0.3.2"
+    "vue-lazyload": "^1.2.6"
   },
   "description": "The animare.cafe is a unofficial website",
   "devDependencies": {

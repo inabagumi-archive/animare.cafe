@@ -21,13 +21,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import Vue from 'vue'
 import { Member } from '~/store/member'
 
-@Component
-export default class extends Vue {
-  @Prop(Array) members!: Member[]
+type Props = {
+  members: Member[]
 }
+
+export default Vue.extend<{}, {}, {}, Props>({
+  props: {
+    members: {
+      required: true,
+      type: Array
+    }
+  }
+})
 </script>
 
 <style scoped>
