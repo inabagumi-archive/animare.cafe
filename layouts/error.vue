@@ -9,18 +9,26 @@
 
 <script lang="ts">
 import { ErrorParams } from '@nuxt/vue-app'
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import Vue from 'vue'
 
-@Component
-export default class extends Vue {
-  @Prop(Object) error!: ErrorParams
+type Props = {
+  error: ErrorParams
+}
+
+export default Vue.extend<{}, {}, {}, Props>({
+  props: {
+    error: {
+      required: true,
+      type: Object
+    }
+  },
 
   head() {
     return {
-      title: this.$t('global.error')
+      title: this.$t('global.error') as string
     }
   }
-}
+})
 </script>
 
 <style scoped>

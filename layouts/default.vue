@@ -52,11 +52,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import Vue from 'vue'
 import AnimareLogo from '~/components/AnimareLogo.vue'
 
-@Component({
+export default Vue.extend({
   components: { AnimareLogo },
+
   head() {
     const base = 'https://animare.cafe'
     const { fullPath } = this.$route
@@ -146,7 +147,6 @@ import AnimareLogo from '~/components/AnimareLogo.vue'
     }
   }
 })
-export default class extends Vue {}
 </script>
 
 <style scoped>
