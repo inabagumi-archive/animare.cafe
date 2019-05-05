@@ -4979,7 +4979,7 @@ number-is-nan@^1.0.0:
   resolved "https://registry.npmjs.org/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nuxt-i18n@^5.10.0:
+nuxt-i18n@^5.11.0:
   version "5.11.0"
   resolved "https://registry.npmjs.org/nuxt-i18n/-/nuxt-i18n-5.11.0.tgz#02b244835803500586cf511eece6aac61ad07a21"
   integrity sha512-5d+mW4Hzj+sxheHkz7YP1ExJBGsrP4M9QYTpGnEUYTtt+pJIC0haBpuPEkZ1NP7f7vSqwJKCMv7pByma9IrgaQ==
