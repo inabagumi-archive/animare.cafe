@@ -13,6 +13,7 @@
           v-lazy="member.avatar"
           :alt="member.name"
           :height="256"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
           :width="256"
         />
       </a>
