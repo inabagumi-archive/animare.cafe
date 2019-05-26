@@ -31,21 +31,21 @@
     </footer>
 
     <link
-      href="https://fonts.googleapis.com/css?family=Roboto:400,700"
+      href="https://fonts.googleapis.com/css?display=swap&amp;family=Roboto:400,700"
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700"
-      rel="stylesheet"
-    />
-    <link
-      v-if="$i18n.locale === 'ja'"
-      href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700"
+      href="https://fonts.googleapis.com/css?display=swap&amp;family=Noto+Serif:400,700"
       rel="stylesheet"
     />
     <link
       v-if="$i18n.locale === 'ja'"
-      href="https://fonts.googleapis.com/css?family=Noto+Serif+JP:400"
+      href="https://fonts.googleapis.com/css?display=swap&amp;family=Noto+Sans+JP:400,700"
+      rel="stylesheet"
+    />
+    <link
+      v-if="$i18n.locale === 'ja'"
+      href="https://fonts.googleapis.com/css?display=swap&amp;family=Noto+Serif+JP:400"
       rel="stylesheet"
     />
   </div>
