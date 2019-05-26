@@ -9,20 +9,29 @@
   },
   "description": "The animare.cafe is a unofficial website",
   "devDependencies": {
+    "@inabagumi/prettier-config": "^1.0.0",
     "@nuxt/typescript": "^2.7.1",
     "@vue/eslint-config-prettier": "^4.0.1",
     "@vue/eslint-config-typescript": "^4.0.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.2"
   },
+  "eslintConfig": {
+    "extends": [
+      "plugin:vue/recommended",
+      "@vue/prettier",
+      "@vue/typescript"
+    ]
+  },
   "license": "MIT",
   "name": "@inabagumi/animare.cafe",
+  "prettier": "@inabagumi/prettier-config",
   "private": true,
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.ts,.vue --fix .",
+    "lint": "eslint --ext .js,.ts,.vue --fix --ignore-path .gitignore .",
     "now-build": "${npm_execpath} run generate",
     "start": "nuxt"
   },
