@@ -59,8 +59,8 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - run: NODE_ENV=production yarn generate
-      - run: npx firebase-tools deploy --only hosting --token $FIREBASE_TOKEN
+      - run: npx now -t ${NOW_TOKEN}
+      - run: npx now -t ${NOW_TOKEN} alias animare.cafe
 
 workflows:
   version: 2

@@ -23,7 +23,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.ts,.vue --fix .",
-    "precommit": "${npm_execpath} run lint",
+    "now-build": "${npm_execpath} run generate",
     "start": "nuxt"
   },
   "version": "3.2.0"
