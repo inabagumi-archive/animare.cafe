@@ -35,5 +35,5 @@
     "now-build": "${npm_execpath} run generate",
     "start": "nuxt"
   },
-  "version": "4.0.0"
+  "version": "4.0.1"
 }
