@@ -1,6 +1,6 @@
 # 有閑喫茶 あにまーれ 非公式ウェブサイト
 
-[:yellow_heart: animare.cafe :yellow_heart:](https://animare.cafe/)
+:yellow_heart: [animare.cafe](https://animare.cafe/) :yellow_heart:
 
 ## プロフィール
 
