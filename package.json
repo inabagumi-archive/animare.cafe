@@ -13,5 +13,5 @@
     "format": "prettier --ignore-path .gitignore --write \"**/*.{json,md,yml}\"",
     "lint": "prettier --ignore-path .gitignore --check \"**/*.{json,md,yml}\""
   },
-  "version": "4.0.1"
+  "version": "5.0.0"
 }
