@@ -1,14 +1,5 @@
 {
   "alias": ["edge.animare.cafe"],
-  "builds": [
-    {
-      "config": {
-        "distDir": "dist"
-      },
-      "src": "package.json",
-      "use": "@now/static-build"
-    }
-  ],
   "github": {
     "silent": true
   },
@@ -17,22 +8,10 @@
   "routes": [
     {
       "headers": {
-        "cache-control": "max-age=0",
-        "content-type": "text/plain; charset=utf-8"
+        "location": "https://haneru.dev/"
       },
-      "src": "/_nuxt/LICENSES"
-    },
-    {
-      "headers": {
-        "cache-control": "immutable, max-age=31536000"
-      },
-      "src": "/_nuxt/.+"
-    },
-    {
-      "headers": {
-        "cache-control": "max-age=600, s-maxage=60"
-      },
-      "src": "/.*"
+      "src": "/.*",
+      "status": 307
     }
   ],
   "scope": "inabagumi",
