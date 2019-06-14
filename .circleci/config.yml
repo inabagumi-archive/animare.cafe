@@ -45,14 +45,6 @@ jobs:
           at: .
       - run: yarn lint
 
-  build:
-    executor:
-      name: default
-    steps:
-      - attach_workspace:
-          at: .
-      - run: yarn build
-
   deploy:
     executor:
       name: default
@@ -76,16 +68,9 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - build:
-          requires:
-            - setup
-          filters:
-            tags:
-              only: /.*/
       - deploy:
           requires:
             - lint
-            - build
           filters:
             tags:
               only: /^v\d+(?:\.\d+){0,2}$/

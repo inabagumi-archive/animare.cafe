@@ -1,39 +1,17 @@
 {
-  "dependencies": {
-    "@nuxtjs/google-analytics": "^2.2.0",
-    "@nuxtjs/sitemap": "^1.2.0",
-    "nuxt": "^2.8.1",
-    "nuxt-i18n": "^5.12.4",
-    "ts-node": "^8.2.0",
-    "vue-lazyload": "^1.2.6"
-  },
+  "dependencies": {},
   "description": "The animare.cafe is a unofficial website",
   "devDependencies": {
     "@inabagumi/prettier-config": "^1.0.0",
-    "@nuxt/typescript": "^2.8.1",
-    "@vue/eslint-config-prettier": "^4.0.1",
-    "@vue/eslint-config-typescript": "^4.0.0",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.2.2"
-  },
-  "eslintConfig": {
-    "extends": [
-      "plugin:vue/recommended",
-      "@vue/prettier",
-      "@vue/typescript"
-    ]
+    "prettier": "^1.18.2"
   },
   "license": "MIT",
   "name": "@inabagumi/animare.cafe",
   "prettier": "@inabagumi/prettier-config",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.ts,.vue --fix --ignore-path .gitignore .",
-    "now-build": "${npm_execpath} run generate",
-    "start": "nuxt"
+    "format": "prettier --ignore-path .gitignore --write \"**/*.{json,md,yml}\"",
+    "lint": "prettier --ignore-path .gitignore --check \"**/*.{json,md,yml}\""
   },
   "version": "4.0.1"
 }
